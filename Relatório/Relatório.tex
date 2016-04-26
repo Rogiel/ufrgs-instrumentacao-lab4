@@ -37,7 +37,8 @@
 \chapter{Introdução}
 % ...
 
-\chapter{Metodologia Experimental}
+\chapter{Sensor de temperatura baseado em Pt100}
+\label{ch:pt100}
 
 \section{Calibração do sensor Pt100}
 Pt100 é o nome dado à um tipo de termoresistor composto de Platina cuja resistência à temperatura de 0ºC é $100 \Omega$ a relação entre a resistência elétrica e a temperatura do componente é associada de forma direta e linear. Este último que torna a criação de um termômetro eletrônico algo trivial que possa ser implementado de forma simples e direta.
@@ -63,6 +64,43 @@ Para estimar a função de transferência experimental do termoresistor, projeto
 
 \noindent
 onde $R$ é um resistor Pt100, $T$ é a temperatura da água dentro do copo de Béquer, e o instrumento $\Omega$ é um ohmímetro.
+
+As medidas foram feitas de forma aleatória e com 2 repetições por célula. Após a extração dos resultados, fez-se o ajuste de curvas e obteve-se a função de transferência experimental do termoresistor.
+
+\todo{resto do experimento do pt100}
+
+\chapter{Sensor de temperatura baseado em NTC}
+
+\section{Calibração do sensor NTC}
+O NTC (\textit{Negative Temperatura Coefficient}) é um termoresistor, não-linear cujo coeficiente de temperatura é negativo e, portanto, sua resistência elétrica decai a medida que a temperatura se eleva.
+
+Analogamente ao sensor de temperatura baseado em Pt100 (Página \ref{ch:pt100}), para que seja possível a construção de um termômetro utilizando um sensor do tipo NTC, é necessário que primeiramente seja levantada a função de transferência do componente para que seja possível utilizá-la na cadeia de medidas do termômetro.
+
+De acordo com \todo{referencia}, a função de transferência teórica do NTC é dada pela Equação \ref{eq:ntc}:
+
+\begin{equation}
+	\large
+	R(T) \approxeq R_0 e^{\beta\left(\frac{1}{T} - \frac{1}{T_0}\right)}
+	\label{eq:ntc}
+\end{equation}
+
+\noindent
+onde $R(T)$ é a resistência elétrica do NTC para uma dada temperatura $T$, $\beta$ é uma constante dependente do material e características de construção do NTC, $R_0$ é a resistência de referência e $T_0$ é a temperatura de referência do termoresistor.
+
+Para estimar a função de transferência experimental do NTC, projetou-se um experimento onde foram feitas 2 medidas de forma aleatória para temperaturas de $18ºC$ até $78ºC$ graduadas em $2ºC$ cada. Na Figura \ref{fig:ntc-esquematico} está apresentado um desenho simplificado da configuração utilizada no experimento.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Bequer.pdf}
+\caption{Desenho esquemático do experimento -- dentro de um béquer é colocada água com temperatura variando de $18ºC$ à $78ºC$ e mede-se a resistência elétrica correspondente do NTC.}
+\label{fig:ntc-esquematico}
+\end{figure}
+\todo{trocar a figura}
+
+\noindent
+onde $R$ é um resistor NTC, $T$ é a temperatura da água dentro do copo de Béquer, e o instrumento $\Omega$ é um ohmímetro.
+
+As medidas foram feitas de forma aleatória e com 2 repetições por célula. Após a extração dos resultados, fez-se o ajuste de curvas e obteve-se a função de transferência experimental do termoresistor.
 
 \chapter{Resultados e Discussões}
 
