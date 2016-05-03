@@ -56,6 +56,8 @@ Nestes experimentos de laboratório foi utilizado o software Wolfram Mathematica
 \label{ch:pt100}
 
 \subsection{Calibração do sensor Pt100}
+\label{sec:resistencia-pt100}
+
 Pt100 é o nome dado a um tipo de termoresistor composto de Platina cuja variação de resistência elétrica é associada à variação de temperatura de forma linear. Outra caraterística importante é que a resistência elétrica nominal a $0ºC$ é de $100 \Omega$. Sendo um sensor linear, faz com que a criação de um termômetro eletrônico seja mais simples do que outros sensores não lineares ou de utilização mais complexa, embora a inércia térmica do sensor não permita que sejam feitas medidas em frequências elevadas como os sensores do tipo termopares permitem.
 
 A função de transferência teórica do Pt100 é dada pela Equação \ref{eq:pt100} \cite{livro-texto}:
@@ -123,6 +125,7 @@ Como \textit{ohmímetro} foi utilizado um multímetro digital da Minipa, modelo 
 \end{tabular}
 \end{table}
 
+\todo{discussão sobre os amplificadores, como ele pede no roteiro}
 
 \todo{resto do experimento do pt100}
 
@@ -170,6 +173,56 @@ A cadeia de medidas deste experimento é dada pela Figura \ref{fig:ntc-cadeia-me
 \noindent
 onde a entrada é dada em temperatura (ºC) e a saída é dada em resistência elétrica ($\Omega$).
 
+
+
+\section{Ponte de Wheatstone}
+
+A próxima etapa da cadeia de medição passa por uma ponte de Whatstone, conforme apresentada na Figura \ref{fig:wheatstone}.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.7\textwidth]{Wheatstone.pdf}
+\caption{Circuito elétrico da ponte de Wheatstone}
+\label{fig:wheatstone}
+\end{figure}
+
+\noindent onde $R_1$, $R_2$ e $R_3$ são os valores de resistência elétrica calculadas para equilíbrio e sensibilidade de especificação da ponte, $R_s$ é a resistência elétrica do sensor (NTC e Pt100), $V-$ e $V+$ são as saídas em tensão elétrica.
+
+A equação da tensão de saída da ponte é dada conforma a Equação \ref{eq:wheatstone}:
+
+\begin{equation}
+	V_o = \left({{R_2}\over{R_1 + R_2}} - {{R_s}\over{R_s + R_3}}\right)V_s
+	\label{eq:wheatstone}
+\end{equation}
+
+\noindent onde $R_1$, $R_2$ e $R_3$ são os valores de resistência elétrica calculadas para equilíbrio e sensibilidade de especificação da ponte, $R_s$ é a resistência elétrica do sensor (NTC e Pt100), $V_0$ é a tensão elétrica diferencial de saída da ponte e $V_s$ é a tensão de alimentação da ponte.
+
+Logo, é possível observar que para o caso em que a resistência elétrica do sensor é igual à resistência elétrica de $R_2$ a saída da ponte é de $0V$. Está situação é chamada de equilíbrio da ponte. Também é importante notar que qualquer incerteza no valor de tensão elétrica da fonte ($V_s$), incorre numa incerteza propagada no valor medido da saída da ponte ($V_o$), para tanto é importante que o valor de tensão elétrica de alimentação seja o mais estável e com menor incerteza possível para obter o melhor resultado.
+
+\subsection{Equilíbrio da ponte de Wheatstone para o Pt100}
+Uma vez que o Pt100 já possui comportamento linear, pode-se utilizar seu valor de resistência caraterístico diretamente na ponte. Uma vez que o intervalo de temperatura testadas não incluía a temperatura de $0ºC$, escolheu-se uma outra temperatura intermediária para fazer o equilíbrio da ponte. A fim de obter uma excursão de sinal maior, optou-se por utilizar o ponto médio de resistência elétrica como o ponto de equilíbrio. Este ponto favorece a excursão do sinal pois para temperaturas acima da referência, a tensão de saída da ponte se torna positiva, para temperaturas abaixo, a tensão de saída da ponte se torna negativa.
+
+Dessa forma, considerando o intervalo de medição de resistência elétrica realizado na Seção \ref{sec:resistencia-pt100}, onde o intervalo estipulado foi de 18ºC até 76ºC, a temperatura média entre estes dois extremos é 47ºC, contudo as medidas foram realizadas com resolução de 2ºC, escolheu-se aproximar este valor para a temperatura de 46ºC. Dessa forma, temperaturas entre 48ºC até 76ºC devem fornecer um valor positivo de tensão elétrica na saída da ponte e temperaturas entre 18ºC até 44ºC devem fornecer um valor negativo de tensão elétrica na saída da ponte.
+
+Na Tabela \ref{tab:pt100-ponte-resistores} estão apresentados os valores de resistências elétricas utilizadas na ponte de Wheatstone:
+
+\begin{table}[]
+\centering
+\caption{Valores de resistência elétrica da ponte de Wheatstone para sensor do tipo Pt100}
+\label{tab:pt100-ponte-resistores}
+\begin{tabular}{|c|c|c|}
+\hline
+	\textbf{Resistor} 	& \textbf{Valor nominal ($\Omega$)} 	& \textbf{Tolerância ($\Omega$)} 	\\ \hline
+	$R_1$				& 100									& 10\%								\\ \hline
+	$R_2$				& 100									& 10\%								\\ \hline
+	$R_3$				& 100									& 10\%								\\ \hline
+\end{tabular}
+\end{table}
+\todo{nao anotamos esses valores, precisamos recalcular ou descobrir eles}
+
+Para alimentação da fonte, foi utilizada uma fonte \todo{fonte do lab} ajustada para tensão elétrica de $2V$ que foi medida utilizando um multímetro \todo{do rodrigo} com uma incerteza de \todo{qual?}. De acordo com os dados fornecidos no manual pelo fabricante da fonte, o \textit{ripple} de tensão da tensão elétrica de saída é insignificante no experimento e pode ser desprezada.
+
+Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-9008 \todo{confirmar estas informações da placa e o modelo}, cujo conversor analógico-digital possui 14 bits. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 12 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}ß$.
 
 
 
