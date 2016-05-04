@@ -204,9 +204,33 @@ Uma vez que o Pt100 já possui comportamento linear, pode-se utilizar seu valor 
 
 Dessa forma, considerando o intervalo de medição de resistência elétrica realizado na Seção \ref{sec:resistencia-pt100}, onde o intervalo estipulado foi de 18ºC até 76ºC, a temperatura média entre estes dois extremos é 47ºC, contudo as medidas foram realizadas com resolução de 2ºC, escolheu-se aproximar este valor para a temperatura de 46ºC. Dessa forma, temperaturas entre 48ºC até 76ºC devem fornecer um valor positivo de tensão elétrica na saída da ponte e temperaturas entre 18ºC até 44ºC devem fornecer um valor negativo de tensão elétrica na saída da ponte.
 
+As Equações \ref{eq:ponte-wheatstone-pt100-sensibilidade} e \ref{eq:ponte-wheatstone-pt100-erro} apresentam as definições da sensibilidade e do erro de linearidade da ponte de Wheatstone aplicadas ao Pt100:
+
+
+\begin{eqnarray}
+	S = V_s \alpha \frac{r}{(r+1)}	 \label{eq:ponte-wheatstone-pt100-sensibilidade} \\
+	\text{Erro de Linearidade} = \left|\frac{\alpha \Delta T}{r+1}\right|			   \label{eq:ponte-wheatstone-pt100-erro}
+\end{eqnarray}
+
+\noindent onde $V_s$ é a tensão elétrica de alimentação da ponte, $r$ é a razão característica da ponte, $\alpha$ é a constante característica do Pt100 e $\Delta T$ é a variação máxima de temperatura medida pelo sensor.
+
+A razão característica da ponte de Wheatstone é definida de acordo com a Equação \ref{eq:ponte-wheatstone-pt100-razao}:
+
+\begin{equation*}
+	R_2 = R_3 = R = r R_0 \therefore
+\end{equation*}
+\begin{equation}
+	r = \frac{R}{R_0}
+	\label{eq:ponte-wheatstone-pt100-razao}
+\end{equation}
+
+\noindent onde $R_2$ e $R_3$ são resistores do braço inferior da ponte e $R_0$ é o valor de resistência elétrica de equilíbrio da ponte (valor de resistência em que a saída é zero).
+
+\todo{falar sobre o erro de linearidade e senbilidade de projeto}
+
 Na Tabela \ref{tab:pt100-ponte-resistores} estão apresentados os valores de resistências elétricas utilizadas na ponte de Wheatstone:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{Valores de resistência elétrica da ponte de Wheatstone para sensor do tipo Pt100}
 \label{tab:pt100-ponte-resistores}
@@ -222,15 +246,114 @@ Na Tabela \ref{tab:pt100-ponte-resistores} estão apresentados os valores de res
 
 Para alimentação da fonte, foi utilizada uma fonte \todo{fonte do lab} ajustada para tensão elétrica de $2V$ que foi medida utilizando um multímetro \todo{do rodrigo} com uma incerteza de \todo{qual?}. De acordo com os dados fornecidos no manual pelo fabricante da fonte, o \textit{ripple} de tensão da tensão elétrica de saída é insignificante no experimento e pode ser desprezada.
 
-Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-9008 \todo{confirmar estas informações da placa e o modelo}, cujo conversor analógico-digital possui 14 bits. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 12 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}ß$.
+Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-9008 \todo{confirmar estas informações da placa e o modelo}, cujo conversor analógico-digital possui 14 bits. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 12 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
 
+\subsection{Linearização do NTC}
 
+Conforme indicado na Equação \ref{eq:ntc}, o NTC possui comportamento não-linear e, para realizar processamento utilizando eletrônica analógica no sinal, e se linearizado, o trabalho com este sinal se torna muito mais simples e direto. Para tanto, é possível utilizar o método de linearização do ponto médio que consiste em adicionar um resistor em paralelo com o sensor calculado a partir de três pontos da curva do sensor. Na Figura \ref{fig:ntc-linear} está apresentado o esquemático elétrico do método de linearização proposto.
+
+\begin{figure}[H]
+\center
+[circuito]
+\caption{Circuito elétrico da ponte de Wheatstone}
+\label{fig:ntc-linear}
+\end{figure}
+\todo{circuito}
+
+\noindent
+onde $R_l$ é o valor numérico da resistência elétrica de linearização, $R_s$ é o sensor e $R$ é a resistência elétrica equivalente do sensor linearizado. É importante ressaltar que este método não oferece uma linearização perfeita, isto é, o método apenas tenta aproximar o comportamento linear da melhor forma possível nesta topologia.
+
+A Equação \ref{eq:ntc-linear-paralelo} fornece a expressão matemática da associação de dois resistores em paralelo:
+
+\begin{equation}
+	\frac{1}{R_{eq}}=\frac{1}{R_s} + \frac{1}{R_L}
+	\label{eq:ntc-linear-paralelo}
+\end{equation}
+
+\noindent
+onde $R_{eq}$ é a resistência elétrica equivalente da associação e $R_T$ e $R_L$ são os valores das resistências elétricas do sensor e da resistência elétrica de linearização, respectivamente.
+
+Isolando-se o termo $R_{eq}$ da Equação \ref{eq:ntc-linear-paralelo}, resulta a Equação \ref{eq:ntc-linear-paralelo-isolado}, que representa o valor de resistência elétrica do sensor linearizado.
+
+\begin{equation}
+	R_{\text{linear}} = \frac{R_L R_T}{R_L+R_T}
+	\label{eq:ntc-linear-paralelo-isolado}
+\end{equation}
+
+É fácil observar que há uma relação inversa da resistência elétrica, o formato da curva da função $1/x$ é muito próximo de uma função do tipo $e^{-x}$, conforme é possível observar graficamente na Figura \ref{fig:ntc-linear-funcao-comparacao}:
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{X1-vs-Exponencial.pdf}
+\caption{Comparação entre a função $1/x$ e a função $e^{-x}$}
+\label{fig:ntc-linear-funcao-comparacao}
+\end{figure}
+
+Desta forma, é possível aproximar o comportamento da ponte para que pareça linear, isto é, tenha um erro de linearidade baixo e, portanto, pode-se desprezar qualquer termo não linear na expressão da ponte.
+
+Sabe-se que a expressão de saída da ponte de Wheatstone, é dada pela Equação \ref{eq:ponte-wheatstone}:
+
+\begin{equation}
+	V(T) = V_s \frac{(R_1 R(T)- R_1 R_3)}{(R_1+R(T)) (R_2+R_3)}
+	\label{eq:ponte-wheatstone}
+\end{equation}
+
+\noindent onde $V(T)$ é a tensão elétrica de saída da ponte para uma temperatura $T$, $R_1$, $R_2$ e $R_3$ são resistores que definem as características da ponte, $R(T)$ é o elemento resistivo sensível a temperatura (NTC) e $V_s$ é a tensão elétrica de alimentação da ponte.
+
+Considerando que $R_s$ seja a resistência elétrica do sensor linearizado conforme dada pela Equação \ref{eq:ntc-linear-paralelo-isolado}, pode-se substituir a Equação \ref{eq:ntc-linear-paralelo-isolado} na Equação \ref{eq:ponte-wheatstone} com a substituição de variáveis para obter a Equação \ref{eq:ponte-wheatstone-ntc} da ponte de Wheatstone linearizada.
+
+\begin{equation}
+	V(T) = \frac{V_s \left(\frac{R_1}{\frac{1}{R_L}+\frac{1}{R(T)}}-R_1 R_3\right)}{(R_2+R_3) \left(R_1+\frac{1}{\frac{1}{R_L}+\frac{1}{R(T)}}\right)}
+	\label{eq:ponte-wheatstone-ntc}
+\end{equation}
+
+\noindent onde $V(T)$ é a tensão elétrica de saída da ponte para uma temperatura $T$, $R_1$, $R_2$ e $R_3$ são resistores que definem as características da ponte, $R(T)$ é o elemento resistivo sensível a temperatura (NTC), $R_L$ é o sensor em paralelo ao sensor de temperatura NTC e $V_s$ é a tensão elétrica de alimentação da ponte.
+
+O processo apresentado é funcional e a saída tem um erro de linearidade bem baixo (é quase imperceptível a curvatura da curva de medida), mas há outro problema; a corrente que circula pelo NTC causará um erro de auto aquecimento do termoresistor, que, se não controlado, poderá causar sérios erros na medida de tensão elétrica em função da temperatura na saída da ponte. Para compensar este efeito, um resistor em série com o sensor será adicionado para que a corrente circulando pelo sensor seja limitada até um valor aceitável, que é definido pelo erro de auto aquecimento máximo tolerável pelo projeto. Na Equação \ref{eq:ntc-linear-sensor-serie}, está apresentada a equação equivalente do sensor e seu resistor série:
+
+\begin{equation}
+	R_{\text{limitado}}(T) = R_s + R(T)
+	\label{eq:ntc-linear-sensor-serie}
+\end{equation}
+
+\noindent onde $R_{\text{limitado}}(T)$ é a resistência elétrica equivalente com a corrente limitada, $R_s$ é a resistência elétrica série que faz o limite de corrente e $R(T)$ é a resistência elétrica do sensor. Substituindo a Equação \ref{eq:ntc-linear-sensor-serie} na Equação \ref{eq:ponte-wheatstone-ntc}, obtém-se a Equação \ref{eq:ponte-wheatstone-ntc-limitado} que representa a mesma ponte de Equação \ref{eq:ponte-wheatstone-ntc}, mas dessa vez com o resistor de limite de corrente:
+
+\begin{equation}
+	V(T) = \frac{V_s \left(\frac{R_1}{\frac{1}{R_L}+\frac{1}{R_s+R_T}}-R_1 R_3\right)}{(R_2+R_3) \left(R_1+\frac{1}{\frac{1}{R_L}+\frac{1}{R_s+R_T}}\right)}
+	\label{eq:ponte-wheatstone-ntc-limitado}
+\end{equation}
+
+Da equação \ref{eq:ponte-wheatstone-ntc-limitado}, é possível extrair as equações correspondentes à sensibilidade (Equação \ref{eq:ponte-wheatstone-ntc-sensibilidade}) e ao erro de linearidade da ponte linearizada  (Equação \ref{eq:ponte-wheatstone-ntc-erro}).
+
+\begin{eqnarray}
+	S 							= ...			\\ \label{eq:ponte-wheatstone-ntc-sensibilidade}
+	\text{Erro de Linearidade} = ...			 	   \label{eq:ponte-wheatstone-ntc-erro}
+\end{eqnarray}
+
+\todo{equações anteriores}
+
+Por definição de projeto, adotou-se um erro de linearidade máximo de $20\%$ e sensibilidade de $0.2 V$. 
+
+\subsection{Equilíbrio da ponte de Wheatstone para o NTC}
+
+\todo{apresentar os calculos dos resistores}
+
+Na Figura \ref{fig:ntc-linear-esperado} está apresentado a curva esperada da saída da ponte para o NTC linearizado:
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{NTC-Linear-Esperado.pdf}
+\caption{Curva de saída esperada da ponte para o NTC linearizado}
+\label{fig:ntc-linear-esperado}
+\end{figure}
+
+Na Figura \ref{fig:ntc-linear-esperado} a linha contínua é o valor real da linearização (note que a curva não é perfeitamente linear) e a linha tracejada é a curva desprezando componentes não lineares da curva contínua. É fácil observar que o erro de linearidade nas extremidades tende à zero e no ponto médio é máximo. Isso mostra que a linearização proposta não é perfeita, e possui um erro de linearidade intrínseco atrelado, mas se comparado com o formato da curva bruta, sem linearização, o resultado obtido possui um erro de linearidade muito inferior, isto é, a forma linearizada é muito mais linear que a forma não linear.
 
 \chapter{Resultados e Discussões}
 \section{Sensor de temperatura baseado em Pt100}
 Com base na metodologia apresentada na seção \ref{ch:pt100} da Metodologia Experimental, foram levantadas os valores da resistência elétrica para o sensor Pt100, na faixa especificada, com 2 amostras por temperatura. Os resultados são observados da Tabela \ref{tab:amostras-pt100}, que mostra também uma coluna com o valor médio para cada temperatura, com base nas duas medições. O multímetro foi utilizado na escala de resistência elétrica, para a faixa de 200 $\Omega$, e possui precisão e resolução conforme apresenta da Tabela \ref{tab:precisao-multimetro}.
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{Amostras de medidas de resistência elétrica do Pt100 - Temperatura 18ºC a 76ºC}
 \label{tab:amostras-pt100}
