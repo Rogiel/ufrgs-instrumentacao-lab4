@@ -1,0 +1,203 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7883,        195]
+NotebookOptionsPosition[      7625,        181]
+NotebookOutlinePosition[      7984,        197]
+CellTagsIndexPosition[      7941,        194]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ThermalShockAnalysis", "=", 
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"name", ",", " ", "dataIn"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"data", "=", "dataIn"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"frequency", "=", 
+        RowBox[{"1", "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"data", "[", 
+            RowBox[{"[", 
+             RowBox[{"2", ",", "1"}], "]"}], "]"}], "-", 
+           RowBox[{"data", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ")"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "=", 
+        RowBox[{"LowpassFilter", "[", 
+         RowBox[{
+          RowBox[{"data", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], ",", 
+          RowBox[{"5", "/", "frequency"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"timePlot", "=", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{"data", ",", " ", 
+          RowBox[{"Joined", "\[Rule]", "True"}], ",", " ", 
+          RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"Thickness", "[", "0.005", "]"}]}], ",", " ", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+            "\"\<t (segundos)\>\"", ",", " ", 
+             "\"\<Temperatura (\[Degree]C)\>\""}], "}"}]}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Export", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+          "\"\<Images/ThermalShock-\>\"", "<>", "name", "<>", 
+          "\"\<-Time.pdf\>\""}], ",", " ", "timePlot"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"fourier", "=", "data"}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"fourier", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "2"}], "]"}], "]"}], "=", 
+        RowBox[{
+         RowBox[{"fourier", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "-", " ", 
+         RowBox[{"Mean", "[", 
+          RowBox[{"fourier", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"fourier", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "2"}], "]"}], "]"}], "=", 
+        RowBox[{"Abs", "[", 
+         RowBox[{"Fourier", "[", 
+          RowBox[{"fourier", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "2"}], "]"}], "]"}], "]"}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"fourier", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "1"}], "]"}], "]"}], "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"i", ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "0", ",", " ", 
+            RowBox[{"frequency", "*", "2"}], ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"2", "*", "frequency"}], ")"}], "/", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Length", "[", "data", "]"}], "-", "1"}], ")"}]}]}], 
+           "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"interp", "=", 
+        RowBox[{"Interpolation", "[", 
+         RowBox[{"fourier", ",", 
+          RowBox[{"InterpolationOrder", "\[Rule]", "10"}], ",", 
+          RowBox[{"Method", "\[Rule]", "\"\<Spline\>\""}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"frequencyPlot", "=", 
+        RowBox[{"Show", "[", "\[IndentingNewLine]", 
+         RowBox[{"Plot", "[", 
+          RowBox[{
+           RowBox[{"interp", "[", "\[Omega]", "]"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"\[Omega]", ",", " ", "0", ",", "10"}], "}"}], ",", " ", 
+           RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", " ", 
+           RowBox[{"Filling", "\[Rule]", "Axis"}], ",", " ", 
+           RowBox[{"AxesLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<f (Hz)\>\"", ",", " ", "\"\<Amplitude\>\""}], 
+             "}"}]}], ",", " ", 
+           RowBox[{"PlotStyle", "\[Rule]", 
+            RowBox[{"Thickness", "[", "0.005", "]"}]}]}], "]"}], 
+         "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Export", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+          "\"\<Images/ThermalShock-\>\"", "<>", "name", "<>", 
+          "\"\<-Frequency.pdf\>\""}], ",", " ", "frequencyPlot"}], "]"}], 
+       ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ThermalShockAnalysis", "[", 
+  RowBox[{"\"\<Up\>\"", ",", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<../Data/aa.lvm\>\""}], ",", " ", "\"\<TSV\>\""}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ThermalShockAnalysis", "[", 
+  RowBox[{"\"\<Down\>\"", ",", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<../Data/aa_2.lvm\>\""}], ",", " ", "\"\<TSV\>\""}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.671373041128169*^9, 3.6713732794953127`*^9}, {
+   3.671373310335762*^9, 3.671373387532209*^9}, {3.671373456227798*^9, 
+   3.671373593036887*^9}, {3.6713736233017073`*^9, 3.6713737053853483`*^9}, {
+   3.671373808828648*^9, 3.671373850005144*^9}, {3.671373932956389*^9, 
+   3.6713739329810266`*^9}, {3.671374018072324*^9, 3.671374039542698*^9}, {
+   3.671374074879918*^9, 3.6713740984673443`*^9}, {3.671374204827105*^9, 
+   3.671374372331073*^9}, {3.6713744112373333`*^9, 3.6713744813401318`*^9}, {
+   3.67137451715154*^9, 3.671374528025627*^9}, {3.671374564275481*^9, 
+   3.671374572059763*^9}, {3.671374613758008*^9, 3.6713747196097193`*^9}, {
+   3.6713747820070133`*^9, 3.671374921050768*^9}, {3.671374980238179*^9, 
+   3.6713750515363827`*^9}, {3.671375118101956*^9, 3.671375120650223*^9}, {
+   3.671375164088138*^9, 3.671375220774906*^9}, {3.671375252896325*^9, 
+   3.6713752691538153`*^9}, {3.6713754107968283`*^9, 3.671375487487167*^9}, {
+   3.671375588752124*^9, 3.6713756089817543`*^9}, {3.671375680003639*^9, 
+   3.6713757284832563`*^9}, {3.671375764215763*^9, 3.6713758673904037`*^9}, {
+   3.671375903510683*^9, 3.671375970136607*^9}, {3.6713760099376383`*^9, 
+   3.671376048047254*^9}, {3.671376113159885*^9, 3.671376252114233*^9}, {
+   3.6713762887646112`*^9, 3.671376307383788*^9}, {3.671376365056427*^9, 
+   3.6713765246983843`*^9}, {3.671376727427813*^9, 3.671376733674182*^9}, {
+   3.671376857492054*^9, 3.671376881214444*^9}, 3.6713770054551497`*^9}]
+},
+WindowSize->{808, 869},
+WindowMargins->{{158, Automatic}, {Automatic, 28}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7063, 159, 471, "Input"]
+}
+]
+*)
+
