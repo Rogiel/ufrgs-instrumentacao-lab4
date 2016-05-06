@@ -249,6 +249,7 @@ Para alimentação da fonte, foi utilizada uma fonte \todo{fonte do lab} ajustad
 Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-9008 \todo{confirmar estas informações da placa e o modelo}, cujo conversor analógico-digital possui 14 bits. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 12 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
 
 \subsection{Linearização do NTC}
+\label{sec:ntc-linearizacao}
 
 Conforme indicado na Equação \ref{eq:ntc}, o NTC possui comportamento não-linear e, para realizar processamento utilizando eletrônica analógica no sinal, e se linearizado, o trabalho com este sinal se torna muito mais simples e direto. Para tanto, é possível utilizar o método de linearização do ponto médio que consiste em adicionar um resistor em paralelo com o sensor calculado a partir de três pontos da curva do sensor. Na Figura \ref{fig:ntc-linear} está apresentado o esquemático elétrico do método de linearização proposto.
 
@@ -436,6 +437,136 @@ O valor de $\alpha$ encontrado experimentalmente é compatível com o valor tabe
 Nota-se ainda que a Equação \ref{eq:pt100-alpha-valor} apresenta o valor da sensibilidade $S_{Pt100}$ do sensor.
 
 
+\section{Sensor de temperatura baseado em NTC}
+
+Na Tabela \ref{tab:amostras-ntc}, estão apresentados os valores de resistência elétrica do NTC que foram obtidas em função da temperatura do termoresistor.
+
+
+\begin{table}[H]
+\centering
+\caption{Amostras de medidas de resistência elétrica do NTC - Temperatura 18ºC a 74ºC}
+\label{tab:amostras-ntc}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Temp. ($ºC$)} & \textbf{Medida 1 ($\Omega$)} & \textbf{Medida 2 ($\Omega$)} & \textbf{Escala} \\ \hline
+ 16 & 3340 & 3330 & \textit{Auto-scale} \\ \hline
+ 18 & 3000 & 3000 & \textit{Auto-scale} \\ \hline
+ 20 & 2810 & 2770 & \textit{Auto-scale} \\ \hline
+ 22 & 2590 & 2530 & \textit{Auto-scale} \\ \hline
+ 24 & 2380 & 2400 & \textit{Auto-scale} \\ \hline
+ 26 & 2180 & 2160 & \textit{Auto-scale} \\ \hline
+ 28 & 1990 & 1970 & \textit{Auto-scale} \\ \hline
+ 30 & 1790 & 1770 & \textit{Auto-scale} \\ \hline
+ 32 & 1650 & 1640 & \textit{Auto-scale} \\ \hline
+ 34 & 1540 & 1520 & \textit{Auto-scale} \\ \hline
+ 36 & 1360 & 1380 & \textit{Auto-scale} \\ \hline
+ 38 & 1310 & 1300 & \textit{Auto-scale} \\ \hline
+ 40 & 1210 & 1180 & \textit{Auto-scale} \\ \hline
+ 42 & 1110 & 1090 & \textit{Auto-scale} \\ \hline
+ 44 & 1020 & 990 & \textit{Auto-scale} \\ \hline
+ 46 & 950 & 930 & \textit{Auto-scale} \\ \hline
+ 48 & 860 & 880 & \textit{Auto-scale} \\ \hline
+ 50 & 810 & 790 & \textit{Auto-scale} \\ \hline
+ 52 & 740 & 740 & \textit{Auto-scale} \\ \hline
+ 54 & 690 & 680 & \textit{Auto-scale} \\ \hline
+ 56 & 630 & 630 & \textit{Auto-scale} \\ \hline
+ 58 & 580 & 580 & \textit{Auto-scale} \\ \hline
+ 60 & 560 & 550 & \textit{Auto-scale} \\ \hline
+ 62 & 520 & 510 & \textit{Auto-scale} \\ \hline
+ 64 & 470 & 480 & \textit{Auto-scale} \\ \hline
+ 66 & 460 & 440 & \textit{Auto-scale} \\ \hline
+ 68 & 420 & 420 & \textit{Auto-scale} \\ \hline
+ 70 & 380 & 380 & \textit{Auto-scale} \\ \hline
+ 72 & 360 & 360 & \textit{Auto-scale} \\ \hline
+ 74 & 340 & 330 & \textit{Auto-scale} \\ \hline
+\end{tabular}
+\end{table}
+
+
+Na figura \ref{fig:ntc-medidas} está apresentado um gráfico de pontos onde cada ponto corresponde à uma medida realizada experimentalmente.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{NTC-MeasurementsPlot.pdf}
+\caption{Gráfico apresentando as medidas realizadas}
+\label{fig:ntc-medidas}
+\end{figure}
+
+Com isto, pode-se fazer um ajuste de curvas não-linear utilizando a Equação \ref{eq:ntc} como formato de equação para o ajuste para obter a função de transferência experimental do termoresistor. Na Equação \ref{eq:ntc-experimental}, está dada a função de transferência resultante do ajuste:
+
+\begin{equation} \large
+	R(T) = 0.0043 e^{\frac{3920.77}{T+273}}
+	\label{eq:ntc-experimental}
+\end{equation}
+
+\noindent onde $R(T)$ é a resistência elétrica em $\Omega$ do termoresistor e $T$ é a temperatura em $ºC$.
+
+O ajuste foi realizado com um erro de conformidade $R^2$ dado pela Equação \ref{eq:ntc-experimental-erro}:
+
+\begin{equation}
+	R^2 = 0.9998
+	\label{eq:ntc-experimental-erro}
+\end{equation}
+
+A título de comparação entre a função de transferência ajustada e os pontos medidos individualmente, a Figura \ref{fig:ntc-experimental-comparacao} apresenta a sobreposição entre o gráfico da Figura \ref{fig:ntc-medidas} e a curva da Equação \ref{eq:ntc-experimental}.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{NTC-FitPlot.pdf}
+\caption{Comparação entre as medidas individuais e a função de transferência ajustada}
+\label{ntc-experimental-comparacao}
+\end{figure}
+
+Para realizar a linearização do NTC, foi escolhido o intervalo de 18ºC até 44ºC para linearizar através do método à 3 pontos equidistantes conforme explicado no capítulo de Metodologia Experimental, página \pageref{sec:ntc-linearizacao}.
+
+Para tanto, foram feitas 3 medidas em 3 pontos, nos dois extremos (18 e 44 ºC) e no ponto médio (32 ºC). A Tabela \ref{tab:ntc-linearizado} apresenta os valores de tensão elétrica medida na saída da ponte com o sensor linearizado conectado.
+
+\begin{table}[H]
+\centering
+\caption{Medidas de tensão elétrica na saída da ponte de Wheatstone para o sensor NTC linearizado. É importante lembrar que estas medidas foram feitas utilizando o dispositivo de aquisição de dados no LabVIEW.}
+\label{tab:amostras-linearizado}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Temp. ($ºC$)} & \textbf{Tensão elétrica (mV)} \\ \hline
+ 18 & 50.7  \\ \hline
+ 20 & 43.8  \\ \hline
+ 22 & 38.1  \\ \hline
+ 24 & 31.1  \\ \hline
+ 26 & 23.9  \\ \hline
+ 28 & 18.6  \\ \hline
+ 30 & 9.8   \\ \hline
+ 32 & 2.1   \\ \hline
+ 34 & -8.1  \\ \hline
+ 36 & -15.7 \\ \hline
+ 38 & -23.7 \\ \hline
+ 40 & -36.1 \\ \hline
+ 42 & -42.9 \\ \hline
+ 44 & -53.9 \\ \hline
+\end{tabular}
+\end{table}
+
+A Figura \ref{fig:ntc-linear-obtido} apresenta a comparação entre uma linearização perfeita, a curva linearizada esperada e os valores obtidos experimentalmente.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{NTC-Linear-Obtido.pdf}
+\caption{Comparação entre as medidas individuais e a função de transferência ajustada}
+\label{ntc-experimental-comparacao}
+\end{figure}
+
+\noindent onde a linha contínua representa a curva esperada da linearização, a linha tracejada indica uma reta ligando os extremos da região de interesse e os pontos indicam as medidas realizadas experimentalmente.
+
+A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:amostras-linearizado} e da Figura \ref{ntc-experimental-comparacao}, é dada pela função da transferência na Equação \ref{eq:ntc-linearizado}:
+
+
+\begin{equation}
+	V(T) = 125 - 4.03 T
+	\label{eq:ntc-linearizado}
+\end{equation}
+
+\noindent onde $V(T)$ é a tensão elétrica (em mV) de saída da ponte em função da temperatura $T$ em ºC.
+
+
 %% -------------------------------------------------------------------
 
 \begin{figure}[H]
@@ -448,7 +579,7 @@ Nota-se ainda que a Equação \ref{eq:pt100-alpha-valor} apresenta o valor da se
 \begin{figure}[H]
 \center
 \includegraphics[width=\textwidth]{ThermalShock-Up-Frequency.pdf}
-\caption{Transformada de Fourier da resposta do NTC no tempo ao dar um choque térmico de uma temperatura para outra superior (choque térmico de aquecimento)}
+\caption{Transformada de Fourier da resposta do NTC no tempo ao dar um choque térmico de uma temperatura para outra superior (choque térmico de aquecimento). Foi feito uma interpolação utilizando uma \textit{Spline} de 10ª ordem para suavizar o espectro.}
 \label{fig:ntc-choque-acima-frequencia}
 \end{figure}
 
@@ -464,11 +595,9 @@ Nota-se ainda que a Equação \ref{eq:pt100-alpha-valor} apresenta o valor da se
 \begin{figure}[H]
 \center
 \includegraphics[width=\textwidth]{ThermalShock-Down-Frequency.pdf}
-\caption{Transformada de Fourier da resposta do NTC no tempo ao dar um choque térmico de uma temperatura para outra inferior (choque térmico de resfriamento)}
+\caption{Transformada de Fourier da resposta do NTC no tempo ao dar um choque térmico de uma temperatura para outra inferior (choque térmico de resfriamento). Foi feito uma interpolação utilizando uma \textit{Spline} de 10ª ordem para suavizar o espectro.}
 \label{fig:ntc-choque-abaixo-frequencia}
 \end{figure}
-
-\section{Sensor de temperatura baseado em NTC}
 
 \chapter{Conclusões}
 

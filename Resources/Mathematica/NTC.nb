@@ -1,0 +1,296 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10574,        286]
+NotebookOptionsPosition[     10038,        264]
+NotebookOutlinePosition[     10396,        280]
+CellTagsIndexPosition[     10353,        277]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"16", ",", "3340", ",", "3330"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"18", ",", "3000", ",", "3000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"20", ",", "2810", ",", "2770"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"22", ",", "2590", ",", "2530"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"24", ",", "2380", ",", "2400"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"26", ",", "2180", ",", "2160"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"28", ",", "1990", ",", "1970"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"30", ",", "1790", ",", "1770"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"32", ",", "1650", ",", "1640"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"34", ",", "1540", ",", "1520"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"36", ",", "1360", ",", "1380"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"38", ",", "1310", ",", "1300"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"40", ",", "1210", ",", "1180"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"42", ",", "1110", ",", "1090"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"44", ",", "1020", ",", "990"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"46", ",", "950", ",", "930"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"48", ",", "860", ",", "880"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"50", ",", "810", ",", "790"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"52", ",", "740", ",", "740"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"54", ",", "690", ",", "680"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"56", ",", "630", ",", "630"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"58", ",", "580", ",", "580"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"60", ",", "560", ",", "550"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"62", ",", "520", ",", "510"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"64", ",", "470", ",", "480"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"66", ",", "460", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"68", ",", "420", ",", "420"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"70", ",", "380", ",", "380"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"72", ",", "360", ",", "360"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"74", ",", "340", ",", "330"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"separated", "=", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"data", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", " ", "2"}], "}"}]}], "]"}], "]"}], ",", " ", 
+      RowBox[{"data", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", " ", "3"}], "}"}]}], "]"}], "]"}]}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"measurementsPlot", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"separated", ",", " ", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Temperatura (\[Degree]C)\>\"", ",", " ", 
+        "\"\<Resist\[EHat]ncia El\[EAcute]trica (\[CapitalOmega])\>\""}], 
+       "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+     "\"\<Images/NTC-MeasurementsPlot.pdf\>\""}], ",", " ", 
+    "measurementsPlot"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fitted", "=", 
+    RowBox[{"NonlinearModelFit", "[", 
+     RowBox[{"separated", ",", " ", 
+      RowBox[{
+       SubscriptBox["R", "0"], 
+       RowBox[{"Exp", "[", 
+        RowBox[{"\[Beta]", 
+         RowBox[{"(", 
+          FractionBox["1", 
+           RowBox[{"T", "+", "273"}]], ")"}]}], "]"}]}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        SubscriptBox["R", "0"], ",", " ", "\[Beta]"}], "}"}], ",", " ", "T"}],
+      "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fitPlot", "=", 
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"separated", ",", 
+       RowBox[{"PlotStyle", "\[Rule]", "Red"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"fitted", "[", "T", "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"T", ",", " ", 
+         RowBox[{"Min", "[", 
+          RowBox[{"separated", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], "]"}], ",", " ", 
+         RowBox[{"Max", "[", 
+          RowBox[{"separated", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], "]"}]}], "}"}]}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Temperatura (\[Degree]C)\>\"", ",", " ", 
+        "\"\<Resist\[EHat]ncia El\[EAcute]trica (\[CapitalOmega])\>\""}], 
+       "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+     "\"\<Images/NTC-FitPlot.pdf\>\""}], ",", " ", "fitPlot"}], "]"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.67154114296144*^9, 3.671541151958334*^9}, {
+  3.671541206126721*^9, 3.671541215412079*^9}, {3.671541391590073*^9, 
+  3.671541437997037*^9}, {3.671541527756139*^9, 3.6715416834299183`*^9}, {
+  3.671541767253438*^9, 3.671541882935687*^9}, {3.6715419340457773`*^9, 
+  3.671542243069551*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"NotebookDirectory", "::", "nosv"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The notebook \
+\[NoBreak]\\!\\(\\*TemplateBox[List[FrontEndObject[LinkObject[\\\"2jne7_shm\\\
+\", 3, 1]], 16, \\\"FrontEndObject[LinkObject[\\\\\\\"2jne7_shm\\\\\\\", 3, \
+1]]\\\", \\\"16\\\", \\\"\\\\\\\"Untitled-1\\\\\\\"\\\"], \
+\\\"NotebookObjectUnsaved\\\"]\\)\[NoBreak] is not saved. \\!\\(\\*ButtonBox[\
+\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/NotebookDirectory\\\", ButtonNote -> \
+\\\"NotebookDirectory::nosv\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6715422438392963`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"StringJoin", "::", "string"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"String expected at position \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] in \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"<>\\\", \
+\\\"\\\\\\\"Images/NTC-MeasurementsPlot.pdf\\\\\\\"\\\"}]\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/StringJoin\\\", ButtonNote -> \
+\\\"StringJoin::string\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6715422439573097`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Export", "::", "chtype"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \
+\\\"<>\\\", \\\"\\\\\\\"Images/NTC-MeasurementsPlot.pdf\\\\\\\"\\\"}]\\)\
+\[NoBreak] is not a valid file specification. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Export/chtype\\\", ButtonNote -> \
+\\\"Export::chtype\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.671542244003188*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"NotebookDirectory", "::", "nosv"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The notebook \
+\[NoBreak]\\!\\(\\*TemplateBox[List[FrontEndObject[LinkObject[\\\"2jne7_shm\\\
+\", 3, 1]], 16, \\\"FrontEndObject[LinkObject[\\\\\\\"2jne7_shm\\\\\\\", 3, \
+1]]\\\", \\\"16\\\", \\\"\\\\\\\"Untitled-1\\\\\\\"\\\"], \
+\\\"NotebookObjectUnsaved\\\"]\\)\[NoBreak] is not saved. \\!\\(\\*ButtonBox[\
+\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/NotebookDirectory\\\", ButtonNote -> \
+\\\"NotebookDirectory::nosv\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.671542244157958*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"StringJoin", "::", "string"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"String expected at position \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] in \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"<>\\\", \
+\\\"\\\\\\\"Images/NTC-FitPlot.pdf\\\\\\\"\\\"}]\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/StringJoin\\\", ButtonNote -> \
+\\\"StringJoin::string\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.671542244267178*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Export", "::", "chtype"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \
+\\\"<>\\\", \\\"\\\\\\\"Images/NTC-FitPlot.pdf\\\\\\\"\\\"}]\\)\[NoBreak] is \
+not a valid file specification. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Export/chtype\\\", ButtonNote -> \
+\\\"Export::chtype\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.671542244300912*^9}]
+}, Open  ]]
+},
+WindowSize->{808, 690},
+WindowMargins->{{69, Automatic}, {Automatic, 26}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 5748, 155, 391, "Input"],
+Cell[6331, 179, 688, 13, 34, "Message"],
+Cell[7022, 194, 598, 12, 24, "Message"],
+Cell[7623, 208, 563, 11, 24, "Message"],
+Cell[8189, 221, 686, 13, 34, "Message"],
+Cell[8878, 236, 587, 12, 24, "Message"],
+Cell[9468, 250, 554, 11, 24, "Message"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
