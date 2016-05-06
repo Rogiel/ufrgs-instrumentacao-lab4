@@ -566,8 +566,9 @@ A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:amostras-line
 
 \noindent onde $V(T)$ é a tensão elétrica (em mV) de saída da ponte em função da temperatura $T$ em ºC.
 
+Com a função de transferência linearizada do NTC na ponte de Wheatstone e utilizando o programa do LabVIEW desenvolvido, é possível extrair curvas da resposta temporal do sensor quando a temperatura a qual ele está submetido é variada bruscamente, isto é, quando é dado um choque térmico no sensor.
 
-%% -------------------------------------------------------------------
+A Figura \ref{fig:ntc-choque-acima-tempo}, apresenta a resposta temporal do sensor quando submetido à uma diferença positiva de temperatura, isto é, quando ele é removido da água fria (18ºC) e colocado sobre um frasco com água quente (35ºC).
 
 \begin{figure}[H]
 \center
@@ -576,6 +577,10 @@ A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:amostras-line
 \label{fig:ntc-choque-acima-tempo}
 \end{figure}
 
+Na Figura \ref{fig:ntc-choque-acima-tempo} é importante observar que o sensor foi posto em choque térmico logo após o marco de 1 segundo, de acordo com o gráfico, é possível observar que 70\% da variação de temperatura do sensor tem sua resposta em 2 segundos (variação de 18 até 30ºC). Os 5ºC restantes tem uma inércia muito mais alta e precisam de mais de 10 segundos para que o valor estabilize no valor real de temperatura da água.
+
+Também é possível realizar a transformada de Fourier do sinal da Figura \ref{fig:ntc-choque-acima-tempo} e obter a resposta em frequência do choque térmico do sensor.
+
 \begin{figure}[H]
 \center
 \includegraphics[width=\textwidth]{ThermalShock-Up-Frequency.pdf}
@@ -583,7 +588,9 @@ A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:amostras-line
 \label{fig:ntc-choque-acima-frequencia}
 \end{figure}
 
-%% -------------------------------------------------------------------
+Na Transformada de Fourier do sinal, visto na Figura \ref{fig:ntc-choque-acima-frequencia} é possível comprovar as observações feitas sobre a resposta temporal. Isto é, a maior componente de frequência do sinal está em $0.5Hz$, que corresponde ao 2 segundos do tempo de estabilização de 70\% do valor de temperatura.
+
+A curva para o processo inverso, um choque térmico de uma temperatura alta (35ºC) para outra baixa (18ºC) é apresentada na Figura \ref{fig:ntc-choque-abaixo-tempo}:
 
 \begin{figure}[H]
 \center
@@ -592,12 +599,20 @@ A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:amostras-line
 \label{fig:ntc-choque-abaixo-tempo}
 \end{figure}
 
+Ao contrário do observado no choque térmico positivo, a variação de temperatura no primeiro segundo de após a troca de frasco é muito acentuada, a curva apresenta uma derivada altíssima, mas logo após o rebaixamento de 10ºC, a derivada começa a baixar rapidamente o valor até chegar ao marco de 12 segundos, onde o mesmo está entrando em regime permanente.
+
+A análise em frequência da resposta transitória do sensor é apresentada na Figura \ref{fig:ntc-choque-abaixo-frequencia}.
+
 \begin{figure}[H]
 \center
 \includegraphics[width=\textwidth]{ThermalShock-Down-Frequency.pdf}
 \caption{Transformada de Fourier da resposta do NTC no tempo ao dar um choque térmico de uma temperatura para outra inferior (choque térmico de resfriamento). Foi feito uma interpolação utilizando uma \textit{Spline} de 10ª ordem para suavizar o espectro.}
 \label{fig:ntc-choque-abaixo-frequencia}
 \end{figure}
+
+Conforme afirmado na análise de resposta temporal, o primeiro segundo de variação apresenta uma variação altíssima, conforme pode ser observado na componente espectral de frequência em frequências baixas (abaixo de 1Hz) na Figura \ref{fig:ntc-choque-abaixo-frequencia}. Mas diferente do caso de aquecimento, no resfriamento a energia do espectro de potência do sinal se encontra mais disperso pelo espectro o que indica que sua resposta temporal é mais rápida comparada com o tempo de resposta do aquecimento.
+
+Embora hajam diferenças nos tempos de acomodação das respostas apresentadas nas Figuras \ref{fig:ntc-choque-acima-tempo} e \ref{fig:ntc-choque-abaixo-tempo}, é visível que o sensor apresenta inércia térmica acima de 10s e seu uso seria impróprio para aplicações com frequências acima de $0.05Hz$, pois o sensor ainda não estaria em regime permanente e portanto incapaz de estimar a temperatura real.
 
 \chapter{Conclusões}
 
