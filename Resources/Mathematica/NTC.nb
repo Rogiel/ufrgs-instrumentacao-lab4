@@ -10,16 +10,14 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10574,        286]
-NotebookOptionsPosition[     10038,        264]
-NotebookOutlinePosition[     10396,        280]
-CellTagsIndexPosition[     10353,        277]
+NotebookDataLength[     10616,        313]
+NotebookOptionsPosition[     10202,        294]
+NotebookOutlinePosition[     10560,        310]
+CellTagsIndexPosition[     10517,        307]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-
-Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{
   RowBox[{"data", "=", 
@@ -175,95 +173,127 @@ Cell[BoxData[{
   3.671541206126721*^9, 3.671541215412079*^9}, {3.671541391590073*^9, 
   3.671541437997037*^9}, {3.671541527756139*^9, 3.6715416834299183`*^9}, {
   3.671541767253438*^9, 3.671541882935687*^9}, {3.6715419340457773`*^9, 
-  3.671542243069551*^9}}],
+  3.671542243069551*^9}, {3.6715428729270077`*^9, 3.671542877877303*^9}, {
+  3.671542974372744*^9, 3.671542978136784*^9}, {3.6715436098528957`*^9, 
+  3.671543609978033*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"data", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"18", ",", "50.7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"20", ",", "43.8"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"22", ",", "38.1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"24", ",", "31.1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"26", ",", "23.9"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"28", ",", "18.6"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"30", ",", "9.8"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"32", ",", "2.1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"34", ",", 
+        RowBox[{"-", "8"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"36", ",", 
+        RowBox[{"-", "15.7"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"38", ",", 
+        RowBox[{"-", "23.7"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"40", ",", 
+        RowBox[{"-", "36.1"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"42", ",", 
+        RowBox[{"-", "42.9"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"44", ",", 
+        RowBox[{"-", "53.9"}]}], "}"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", "data", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", "data", "]"}]}], "Input",
+ CellChangeTimes->{{3.671544136497114*^9, 3.6715441434739447`*^9}, {
+  3.671544426197731*^9, 3.671544430603113*^9}}],
 
 Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"NotebookDirectory", "::", "nosv"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"The notebook \
-\[NoBreak]\\!\\(\\*TemplateBox[List[FrontEndObject[LinkObject[\\\"2jne7_shm\\\
-\", 3, 1]], 16, \\\"FrontEndObject[LinkObject[\\\\\\\"2jne7_shm\\\\\\\", 3, \
-1]]\\\", \\\"16\\\", \\\"\\\\\\\"Untitled-1\\\\\\\"\\\"], \
-\\\"NotebookObjectUnsaved\\\"]\\)\[NoBreak] is not saved. \\!\\(\\*ButtonBox[\
-\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/NotebookDirectory\\\", ButtonNote -> \
-\\\"NotebookDirectory::nosv\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.6715422438392963`*^9}],
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     PointBox[{{18., 50.7}, {20., 43.8}, {22., 38.1}, {24., 31.1}, {26., 
+      23.9}, {28., 18.6}, {30., 9.8}, {32., 2.1}, {34., -8.}, {36., -15.7}, {
+      38., -23.7}, {40., -36.1}, {42., -42.9}, {44., -53.9}}]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{17.593750000000004`, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{18., 44.}, {-53.9, 50.7}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.671544143821568*^9, 3.671544431170862*^9}],
 
 Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"StringJoin", "::", "string"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"String expected at position \
-\[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] in \
-\[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"<>\\\", \
-\\\"\\\\\\\"Images/NTC-MeasurementsPlot.pdf\\\\\\\"\\\"}]\\)\[NoBreak]. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/StringJoin\\\", ButtonNote -> \
-\\\"StringJoin::string\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.6715422439573097`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Export", "::", "chtype"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \
-\\\"<>\\\", \\\"\\\\\\\"Images/NTC-MeasurementsPlot.pdf\\\\\\\"\\\"}]\\)\
-\[NoBreak] is not a valid file specification. \\!\\(\\*ButtonBox[\\\"\
-\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/Export/chtype\\\", ButtonNote -> \
-\\\"Export::chtype\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.671542244003188*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"NotebookDirectory", "::", "nosv"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"The notebook \
-\[NoBreak]\\!\\(\\*TemplateBox[List[FrontEndObject[LinkObject[\\\"2jne7_shm\\\
-\", 3, 1]], 16, \\\"FrontEndObject[LinkObject[\\\\\\\"2jne7_shm\\\\\\\", 3, \
-1]]\\\", \\\"16\\\", \\\"\\\\\\\"Untitled-1\\\\\\\"\\\"], \
-\\\"NotebookObjectUnsaved\\\"]\\)\[NoBreak] is not saved. \\!\\(\\*ButtonBox[\
-\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/NotebookDirectory\\\", ButtonNote -> \
-\\\"NotebookDirectory::nosv\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.671542244157958*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"StringJoin", "::", "string"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"String expected at position \
-\[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\"}]\\)\[NoBreak] in \
-\[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"<>\\\", \
-\\\"\\\\\\\"Images/NTC-FitPlot.pdf\\\\\\\"\\\"}]\\)\[NoBreak]. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/StringJoin\\\", ButtonNote -> \
-\\\"StringJoin::string\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.671542244267178*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Export", "::", "chtype"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(\\*RowBox[{\\\"$Failed\\\", \
-\\\"<>\\\", \\\"\\\\\\\"Images/NTC-FitPlot.pdf\\\\\\\"\\\"}]\\)\[NoBreak] is \
-not a valid file specification. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/Export/chtype\\\", ButtonNote -> \
-\\\"Export::chtype\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.671542244300912*^9}]
+ TagBox[GridBox[{
+    {"18", "50.7`"},
+    {"20", "43.8`"},
+    {"22", "38.1`"},
+    {"24", "31.1`"},
+    {"26", "23.9`"},
+    {"28", "18.6`"},
+    {"30", "9.8`"},
+    {"32", "2.1`"},
+    {"34", 
+     RowBox[{"-", "8"}]},
+    {"36", 
+     RowBox[{"-", "15.7`"}]},
+    {"38", 
+     RowBox[{"-", "23.7`"}]},
+    {"40", 
+     RowBox[{"-", "36.1`"}]},
+    {"42", 
+     RowBox[{"-", "42.9`"}]},
+    {"44", 
+     RowBox[{"-", "53.9`"}]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.671544143821568*^9, 3.6715444311807137`*^9}]
 }, Open  ]]
 },
-WindowSize->{808, 690},
-WindowMargins->{{69, Automatic}, {Automatic, 26}},
+WindowSize->{808, 685},
+WindowMargins->{{52, Automatic}, {Automatic, 31}},
 FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
 2016)",
 StyleDefinitions->"Default.nb"
@@ -279,18 +309,13 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[558, 20, 5896, 157, 391, "Input"],
 Cell[CellGroupData[{
-Cell[580, 22, 5748, 155, 391, "Input"],
-Cell[6331, 179, 688, 13, 34, "Message"],
-Cell[7022, 194, 598, 12, 24, "Message"],
-Cell[7623, 208, 563, 11, 24, "Message"],
-Cell[8189, 221, 686, 13, 34, "Message"],
-Cell[8878, 236, 587, 12, 24, "Message"],
-Cell[9468, 250, 554, 11, 24, "Message"]
+Cell[6479, 181, 1491, 44, 114, "Input"],
+Cell[7973, 227, 1574, 36, 227, "Output"],
+Cell[9550, 265, 636, 26, 251, "Output"]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

@@ -246,7 +246,7 @@ Na Tabela \ref{tab:pt100-ponte-resistores} estão apresentados os valores de res
 
 Para alimentação da fonte, foi utilizada uma fonte \todo{fonte do lab} ajustada para tensão elétrica de $2V$ que foi medida utilizando um multímetro \todo{do rodrigo} com uma incerteza de \todo{qual?}. De acordo com os dados fornecidos no manual pelo fabricante da fonte, o \textit{ripple} de tensão da tensão elétrica de saída é insignificante no experimento e pode ser desprezada.
 
-Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-9008 \todo{confirmar estas informações da placa e o modelo}, cujo conversor analógico-digital possui 14 bits. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 12 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
+Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
 
 \subsection{Linearização do NTC}
 \label{sec:ntc-linearizacao}
@@ -616,13 +616,16 @@ Embora hajam diferenças nos tempos de acomodação das respostas apresentadas n
 
 \chapter{Conclusões}
 
-\todo{lembrar as escalas dos multímetros}
+\todo{lembrar as escalas dos multímetros, é importante mesmo. é a primeira coisa que ele enche o saco}
 
 \newpage
 \begin{thebibliography}{9}
 \bibitem{mathematica-numerial-precision} \url{https://reference.wolfram.com/language/tutorial/NumericalPrecision.html}, acessado em 26 de abril de 2016
 \bibitem{wikipedia-epsilon} \url{https://en.wikipedia.org/wiki/Machine_epsilon}, acessado em 26 de abril de 2016
 \bibitem{livro-texto}  Balbinot, Alexandre; Brusamarello, Valner J., Instrumentação e Fundamentos de Medida - Vol.1 - 2ª Ed. Rio de Janeiro: LTC, 2014.
+
+\bibitem{daq-specifications} NI USB-6009 -- DEVICE SPECIFICATIONS, \url{http://www.ni.com/pdf/manuals/375296a.pdf}, acessado em 3 de maio de 2016
+\bibitem{daq-user-guide} NI USB-6009 -- USER GUIDE, \url{http://www.ni.com/pdf/manuals/371303n.pdf}, acessado em 3 de maio de 2016
 
 
 %\bibitem{datasheet-lm7905} Datasheet oferecido pelo fabricante do regulador de tensão LM7905PI, disponível em \url{http://www.datasheetlib.com/datasheet/190159/kia7905pi_kec-korea-electronics-corporation.html}.
