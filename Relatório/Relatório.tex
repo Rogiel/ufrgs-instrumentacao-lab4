@@ -590,12 +590,24 @@ Na Figura \ref{fig:amplificador-c-sensibilidade}, é visível que a sensibilidad
 
 O amplificador de instrumentação é uma topologia típica utilizada em instrumentação. Sua entrada é diferencial e, embora seja possível, não é comum utilizá-los para dar ganhos significantes (maior de 1000) em um sinal. A Figura \ref{fig:amplificador-instrumentacao} apresenta a topologia típica do amplificador de instrumentação.
 
-%\begin{figure}[H]
-%\center
-%\includegraphics[width=\textwidth]{Amplificador-D-Sensibility.pdf}
-%\caption{Gráfico apresentando a sensibilidade função de transferência do amplificador (D) para $V=1V$}
-%\label{fig:amplificador-d-sensibilidade}
-%\end{figure}
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-Instrumentacao.pdf}
+\caption{Esquemático elétrico do amplificador de instrumentação (AI)}
+\label{fig:amplificador-instrumentacao}
+\end{figure}
+
+Os dois primeiros amplificadores (ligados às entradas a e b) são \textit{buffers} de tensão elétrica e o terceiro amplificador (ligado à saída) é um amplificador diferencial. Os \textit{buffers} na entrada garantem que a impedância de entrada seja muito alta, o que é ideal para realizar medidas de tensão elétrica com a menor interferência possível no sistema.
+
+A função de transferência deste amplificador é dada pela Equação \ref{...}, conforme extraído do artigo da Wikipedia\cite{wikipedia-ia} sobre o amplificador de instrumentação:
+
+\begin{equation}
+	V_\mathrm{out} = \left (1 + {2 R_1 \over R_\mathrm{a}} \right ) {R_6 \over R_2} \left(V_a - V_b\right)
+\end{equation}
+
+A finalidade dos resistores $R_a$ e $R_6$ é fazer a regulagem do ganho do sistema. Aumento de $R_a$ implica na redução do ganho e um aumento em $R_6$ implica no aumento do ganho. Também é possível fazer ajuste de ganho pelos resistores $R_1$, $R_2$ e $R_3$, mas tal é mais trabalhoso pois os resistores estão presentes em partes e é preciso que seja aumentado ambos na mesma proporcionalidade, caso contrário o amplificador perde a sua característica.
+
+Embora seja possível construir um amplificador de instrumentação utilizando peças discretas o casamento de resistências elétricas é muito difícil pois resistores de baixa tolerância são difíceis de encontrar ou muito custosos. Para tanto, é comum utilizar amplificadores comerciais e encapsulados onde os resistores são ajustados à laser\cite{wikipedia-ia}, para que haja o casamento de resistências, o que implica que o $CMRR$ seja muito mais baixo que um mesmo amplificador de instrumentação discreto.
 
 \chapter{Resultados e Discussões}
 \section{Sensor de temperatura baseado em Pt100}
@@ -935,6 +947,7 @@ Embora hajam diferenças nos tempos de acomodação das respostas apresentadas n
 \begin{thebibliography}{9}
 \bibitem{mathematica-numerial-precision} \url{https://reference.wolfram.com/language/tutorial/NumericalPrecision.html}, acessado em 26 de abril de 2016
 \bibitem{wikipedia-epsilon} \url{https://en.wikipedia.org/wiki/Machine_epsilon}, acessado em 26 de abril de 2016
+\bibitem{wikipedia-ia} \url{https://en.wikipedia.org/wiki/Instrumentation_amplifier}, acessado em 4 de maio de 2016
 \bibitem{livro-texto}  Balbinot, Alexandre; Brusamarello, Valner J., Instrumentação e Fundamentos de Medida - Vol.1 - 2ª Ed. Rio de Janeiro: LTC, 2014.
 \bibitem{daq-specifications} NI USB-6009 -- DEVICE SPECIFICATIONS, \url{http://www.ni.com/pdf/manuals/375296a.pdf}, acessado em 3 de maio de 2016
 \bibitem{daq-user-guide} NI USB-6009 -- USER GUIDE, \url{http://www.ni.com/pdf/manuals/371303n.pdf}, acessado em 3 de maio de 2016
