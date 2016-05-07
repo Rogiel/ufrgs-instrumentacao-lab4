@@ -178,7 +178,7 @@ onde a entrada é dada em temperatura (ºC) e a saída é dada em resistência e
 
 \section{Ponte de Wheatstone}
 
-A próxima etapa da cadeia de medição passa por uma ponte de Whatstone, conforme apresentada na Figura \ref{fig:wheatstone}.
+A próxima etapa da cadeia de medição passa por uma ponte de Wheatstone, conforme apresentada na Figura \ref{fig:wheatstone}.
 
 \begin{figure}[H]
 \center
@@ -201,15 +201,16 @@ A equação da tensão de saída da ponte é dada conforma a Equação \ref{eq:w
 Logo, é possível observar que para o caso em que a resistência elétrica do sensor é igual à resistência elétrica de $R_2$ a saída da ponte é de $0V$. Está situação é chamada de equilíbrio da ponte. Também é importante notar que qualquer incerteza no valor de tensão elétrica da fonte ($V_s$), incorre numa incerteza propagada no valor medido da saída da ponte ($V_o$), para tanto é importante que o valor de tensão elétrica de alimentação seja o mais estável e com menor incerteza possível para obter o melhor resultado.
 
 \subsection{Equilíbrio da ponte de Wheatstone para o Pt100}
+\label{ssec:equilibrio-ponte-pt100}
 Uma vez que o Pt100 já possui comportamento linear, pode-se utilizar seu valor de resistência caraterístico diretamente na ponte. Uma vez que o intervalo de temperatura testadas não incluía a temperatura de $0ºC$, escolheu-se uma outra temperatura intermediária para fazer o equilíbrio da ponte. A fim de obter uma excursão de sinal maior, optou-se por utilizar o ponto médio de resistência elétrica como o ponto de equilíbrio. Este ponto favorece a excursão do sinal pois para temperaturas acima da referência, a tensão de saída da ponte se torna positiva, para temperaturas abaixo, a tensão de saída da ponte se torna negativa.
 
-Dessa forma, considerando o intervalo de medição de resistência elétrica realizado na Seção \ref{sec:resistencia-pt100}, onde o intervalo estipulado foi de 18ºC até 76ºC, a temperatura média entre estes dois extremos é 47ºC, contudo as medidas foram realizadas com resolução de 2ºC, escolheu-se aproximar este valor para a temperatura de 46ºC. Dessa forma, temperaturas entre 48ºC até 76ºC devem fornecer um valor positivo de tensão elétrica na saída da ponte e temperaturas entre 18ºC até 44ºC devem fornecer um valor negativo de tensão elétrica na saída da ponte.
+Dessa forma, considerando o intervalo de medição de resistência elétrica realizado na Seção \ref{sec:resistencia-pt100}, onde o intervalo estipulado foi de 18ºC até 76ºC, a temperatura média entre estes dois extremos é 47ºC, contudo as medidas foram realizadas com resolução de 2ºC, escolheu-se aproximar este valor para a temperatura de 46ºC. Dessa forma, temperaturas entre 48ºC até 76ºC devem fornecer um valor positivo de tensão elétrica na saída da ponte, e temperaturas entre 18ºC até 44ºC devem fornecer um valor negativo de tensão elétrica na saída da ponte.
 
-As Equações \ref{eq:ponte-wheatstone-pt100-sensibilidade} e \ref{eq:ponte-wheatstone-pt100-erro} apresentam as definições da sensibilidade e do erro de linearidade da ponte de Wheatstone aplicadas ao Pt100:
+As Equações \ref{eq:ponte-wheatstone-pt100-sensibilidade} e \ref{eq:ponte-wheatstone-pt100-erro} apresentam as definições da sensibilidade (considerando-se linear) e do erro de linearidade da ponte de Wheatstone aplicadas ao Pt100:
 
 
 \begin{eqnarray}
-	S = V_s \alpha \frac{r}{(r+1)}	 \label{eq:ponte-wheatstone-pt100-sensibilidade} \\
+	S_{LV} = V_s \alpha \frac{r}{(r+1)^2}	 \label{eq:ponte-wheatstone-pt100-sensibilidade} \\
 	\text{Erro de Linearidade} = \left|\frac{\alpha \Delta T}{r+1}\right|			   \label{eq:ponte-wheatstone-pt100-erro}
 \end{eqnarray}
 
@@ -218,16 +219,42 @@ As Equações \ref{eq:ponte-wheatstone-pt100-sensibilidade} e \ref{eq:ponte-whea
 A razão característica da ponte de Wheatstone é definida de acordo com a Equação \ref{eq:ponte-wheatstone-pt100-razao}:
 
 \begin{equation*}
-	R_2 = R_3 = R = r R_0 \therefore
+	R_1 = R_3 = R = r R_0   \therefore
 \end{equation*}
 \begin{equation}
 	r = \frac{R}{R_0}
 	\label{eq:ponte-wheatstone-pt100-razao}
 \end{equation}
 
-\noindent onde $R_2$ e $R_3$ são resistores do braço inferior da ponte e $R_0$ é o valor de resistência elétrica de equilíbrio da ponte (valor de resistência em que a saída é zero).
+\noindent onde $R_1$ e $R_3$ são resistores do braço superior da ponte e $R_2=R_0$ é o valor de resistência elétrica de equilíbrio da ponte (valor de resistência em que a saída é zero).
+
 
 \todo{falar sobre o erro de linearidade e senbilidade de projeto}
+
+No experimento realizado, primeiramente se verificou a resistência elétrica para a temperatura média da faixa escolhida, sendo de $118 \Omega @ 46ºC$, de acordo com amostras realizadas com o sensor Pt100.
+
+Foi escolhido um \textit{Erro de Linearidade} de $0,5\%$, ou $0,005$. Nota-se ainda um valor de $\Delta T$ de $30ºC$, tomando-se por base a temperatura $T_0$ de $46ºC$. De posse desses dados, aplicando a Equação \ref{eq:ponte-wheatstone-pt100-erro}, encontra-se o valor de $r$, sendo:
+
+\begin{equation}
+	r = 22.74
+	\label{eq:ponte-wheatstone-pt100-erro-valor}
+\end{equation} 
+
+Aplicando os valores já encontrados, na Equação \ref{eq:ponte-wheatstone-pt100-sensibilidade}, verifica-se a sensibilidade do sistema, considerando-o linear, isto é, considera $r >> \alpha.\Delta T$, e $V_s=5V$, sendo:
+
+\begin{equation}
+	S_{LV}=0.765 \frac{mV}{ºC}
+	\label{eq:ponte-wheatstone-pt100-sensibilidade-valor}
+\end{equation} 
+
+Usando as relações apresentadas na Equação \ref{eq:ponte-wheatstone-pt100-razao} e o valor de $R_0$ de $118 \Omega$, chega-se ao valor de $R$, que servirá para os resistores $R_1$ e $R_3$, conforme apresentado na Figura \ref{fig:wheatstone}:
+
+\begin{equation}
+	R = r * R_0 = 22.74 * 118 = 2683.32 \simeq 2.7 k\Omega 
+	\label{eq:ponte-wheatstone-pt100-razao-valor}
+\end{equation} 
+
+Para o bom balanceamento da Ponte de Wheatstone, e para centralização em torno do ponto de $46ºC$, foi utilizado o resistor $R_2$ da Ponte com valor de $118\Omega$.
 
 Na Tabela \ref{tab:pt100-ponte-resistores} estão apresentados os valores de resistências elétricas utilizadas na ponte de Wheatstone:
 
@@ -238,16 +265,32 @@ Na Tabela \ref{tab:pt100-ponte-resistores} estão apresentados os valores de res
 \begin{tabular}{|c|c|c|}
 \hline
 	\textbf{Resistor} 	& \textbf{Valor nominal ($\Omega$)} 	& \textbf{Tolerância ($\Omega$)} 	\\ \hline
-	$R_1$				& 100									& 10\%								\\ \hline
-	$R_2$				& 100									& 10\%								\\ \hline
-	$R_3$				& 100									& 10\%								\\ \hline
+	$R_1$				& 2.7$k\Omega$									& 10\%								\\ \hline
+	$R_2$				& 118									& 10\%								\\ \hline
+	$R_3$				& 2.7$k\Omega$									& 10\%								\\ \hline
 \end{tabular}
 \end{table}
-\todo{nao anotamos esses valores, precisamos recalcular ou descobrir eles}
 
-Para alimentação da fonte, foi utilizada uma fonte \todo{fonte do lab} ajustada para tensão elétrica de $2V$ que foi medida utilizando um multímetro \todo{do rodrigo} com uma incerteza de \todo{qual?}. De acordo com os dados fornecidos no manual pelo fabricante da fonte, o \textit{ripple} de tensão da tensão elétrica de saída é insignificante no experimento e pode ser desprezada.
+Com esta configuração, e uma alimentação de $5V \pm 0.2V$ fornecida por um regulador de tensão \textit{LM7805} \cite{datasheet-lm7805}, foram verificadas as tensões elétricas para o ramo interno na Ponte, com o uso de um multímetro digital Minipa ET-2082B com as especificações de precisão informadas pelo fabricante apresentada na Tabela \ref{tab:precisão-multimetro}. A coluna da precisão é apresentada na forma: $\pm$ (a$\%$ leitura + b dígitos), garantido por 1 ano. Como equipamento já tem mais de um ano de uso sem calibragem, esses dados não são totalmente fidedígnos. Foi utilizada a faixa de $200 mV$.
 
-Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
+\begin{table}[H]
+\centering
+\caption{Especificações de precisão do multímetro Minipa ET-2082B para a medição de Tensão DC}
+\label{tab:precisão-multimetro}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Faixa} & \textbf{Precisão} & \textbf{Resolução} \\ \hline
+200 mV         & \multirow{4}{*}{$\pm$ (0.5\% + 3D)} & 100 $\mu$V \\ \cline{1-1} \cline{3-3} 
+2 V            &                              & 1 mV               \\ \cline{1-1} \cline{3-3} 
+20 V           &                              & 10 mV              \\ \cline{1-1} \cline{3-3} 
+200 V          &                              & 100 mV             \\ \hline
+1000 V         & $\pm$ (1.0\% + 5D)           & 1 V                \\ \hline
+\end{tabular}
+\end{table}
+
+%Para alimentação da ponte, foi utilizada uma fonte \todo{fonte do lab} ajustada para tensão elétrica de $2V$ que foi medida utilizando um multímetro \todo{do rodrigo} com uma incerteza de \todo{qual?}. De acordo com os dados fornecidos no manual pelo fabricante da fonte, o \textit{ripple} de tensão da tensão elétrica de saída é insignificante no experimento e pode ser desprezada.
+
+%Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
 
 \subsection{Linearização do NTC}
 \label{sec:ntc-linearizacao}
@@ -357,7 +400,7 @@ Com base na metodologia apresentada na seção \ref{ch:pt100} da Metodologia Exp
 
 \begin{table}[H]
 \centering
-\caption{Amostras de medidas de resistência elétrica do Pt100 - Temperatura 18ºC a 76ºC}
+\caption{Amostras de medidas e médias de resistência elétrica do Pt100 - Temperatura 18ºC a 76ºC}
 \label{tab:amostras-pt100}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -399,7 +442,7 @@ A Figura \ref{fig:pt100-amostras} \todo{verificar se fica esse ou faz outro grá
 
 \begin{figure}[H]
 \center
-\includegraphics[width=0.7\textwidth]{pt100_puro.jpg}
+\includegraphics[width=0.7\textwidth]{grafico_pt100.jpg}
 \caption{Gráfico das amostras experimentais apresentando a variação da resistência elétrica em função da variação da temperatura da água.}
 \label{fig:pt100-amostras}
 \end{figure}
@@ -411,14 +454,14 @@ A regressão linear, com base nos valores da média das amostras obtidas, aprese
 	\label{eq:pt100-reg}
 \end{equation}
 \begin{equation}
-	R^2=0.9994
+	R^2=0.9993
 	\label{eq:pt100-reg-r2}
 \end{equation}
 
 \noindent
 onde $R(T)$ é a resistência elétrica, em $\Omega$, do sensor Pt100, e $T$ é a temperatura, em $ºC$, percebida pelo sensor.
 
-A Equação \ref{eq:pt100-reg-r2} apresenta o valor do coeficiente de linearidade, significando que 99,94\% da variável dependente consegue ser explicada pelos regressores presentes no modelo.
+A Equação \ref{eq:pt100-reg-r2} apresenta o valor do coeficiente de linearidade, significando que 99,93\% da variável dependente consegue ser explicada pelos regressores presentes no modelo.
 
 Com base na Equação \ref{eq:pt100-alpha} pode-se facilmente encontrar o valor do coeficiente de temperatura $\alpha$. Também é possível notar, igualando as Equações \ref{eq:pt100} e \ref{eq:pt100-reg}, que:
 
@@ -433,9 +476,74 @@ De onde se pode extrair o valor de $\alpha$:
 	       &=& 0.00379 [\frac{\Omega}{\Omega ºC}]
 \end{eqnarray}
 
-O valor de $\alpha$ encontrado experimentalmente é compatível com o valor tabelado pela Norma \textit{IEC 751}, que é de 0.00385 $\frac{\Omega}{\Omega ºC}$ para \textit{RTDs} de Platina, que é o caso do Pt100.
+O valor de $\alpha$ encontrado experimentalmente é compatível com o valor tabelado pela Norma \textit{IEC 751}, que é de 0.00385 $\frac{\Omega}{\Omega ºC}$ para \textit{RTDs} de Platina, que é o caso do Pt100, levando-se em conta todas as incertezas contidas no experimento.
 
 Nota-se ainda que a Equação \ref{eq:pt100-alpha-valor} apresenta o valor da sensibilidade $S_{Pt100}$ do sensor.
+
+\subsection{Pt100 com Ponte de Wheatstone }
+Aplicando-se a metodologia apresentada na Subseção \ref{ssec:equilibrio-ponte-pt100}, foram amostradas de forma experimental, aleatoriamente e com duas medidas por temperatura, as tensões elétricas no ramo central da ponte e valores verificados são observados na Tabela \ref{tab:amostras-ponte-pt100}.
+
+\begin{table}[H]
+\centering
+\caption{Amostras de medidas e médias de tensão elétrica na Ponte de Wheatstone com Pt100 - Temperatura de 18ºC a 76ºC}
+\label{tab:amostras-ponte-pt100}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Temp. (ºC)} & \textbf{Medida 1 (mV)} & \textbf{Medida 2 (mV)} & \textbf{Média (mV)} \\ \hline
+18                  & -20,9                  & -21,2                  & -21,1               \\ \hline
+20                  & -19,9                  & -20,1                  & -20,0               \\ \hline
+22                  & -17,4                  & -18,6                  & -18,0               \\ \hline
+24                  & -16,2                  & -16,7                  & -16,5               \\ \hline
+26                  & -15,9                  & -16,2                  & -16,1               \\ \hline
+28                  & -14,0                  & -13,7                  & -13,9               \\ \hline
+30                  & -13,3                  & -13,3                  & -13,3               \\ \hline
+32                  & -11,5                  & -11,4                  & -11,5               \\ \hline
+34                  & -10,7                  & -10,8                  & -10,8               \\ \hline
+36                  & -9,2                   & -9,0                   & -9,1                \\ \hline
+38                  & -8,1                   & -8,2                   & -8,2                \\ \hline
+40                  & -6,0                   & -6,7                   & -6,4                \\ \hline
+42                  & -5,3                   & -4,4                   & -4,9                \\ \hline
+44                  & -4,3                   & -4,0                   & -4,2                \\ \hline
+46                  & -2,8                   & -2,6                   & -2,7                \\ \hline
+48                  & -1,5                   & -1,8                   & -1,7                \\ \hline
+50                  & -0,4                   & -0,3                   & -0,4                \\ \hline
+52                  & 1,0                    & 0,8                    & 0,9                 \\ \hline
+54                  & 2,4                    & 1,9                    & 2,2                 \\ \hline
+56                  & 3,4                    & 3,5                    & 3,5                 \\ \hline
+58                  & 4,4                    & 4,8                    & 4,6                 \\ \hline
+60                  & 5,7                    & 6,0                    & 5,9                 \\ \hline
+62                  & 7,2                    & 7,2                    & 7,2                 \\ \hline
+64                  & 8,2                    & 8,6                    & 8,4                 \\ \hline
+66                  & 10,0                   & 10,1                   & 10,1                \\ \hline
+68                  & 10,8                   & 10,9                   & 10,9                \\ \hline
+70                  & 12,5                   & 12,3                   & 12,4                \\ \hline
+72                  & 13,6                   & 13,8                   & 13,7                \\ \hline
+74                  & 15,0                   & 15,0                   & 15,0                \\ \hline
+76                  & 16,2                   & 15,9                   & 16,1                \\ \hline
+\end{tabular}
+\end{table}
+
+É possível perceber claramente pela Tabela \ref{tab:amostras-ponte-pt100} que o ponto de balanceamento da Ponte de Wheatstone não ficou exatamente na temperatura que havia sido projetado, que seria na temperatura de $46ºC$, mas sim por volta de $50.5ºC$. Esse desvio deve-se, principalmente, às incertezas dos resistores utilizados, haja vista que, se $R_2=R_3=2.5k\Omega$ e $R_1=120\Omega$, valores esses dentro das faixas de tolerância dos componentes, o balanceamento da ponte se daria quando o sensor apresentasse $120\Omega$, valor esse que, se inserido na Equação \ref{eq:pt100-reg}, representa uma temperatura aproximada de $50.5ºC$.
+
+Efetuando-se uma regressão linear com os valores obtidos, chega-se à expressão apresentada na Equação \ref{eq:pt100-ponte-reg}, na qual verifica-se uma tensão elétrica em função de uma determinada temperatura, e também ao seu coeficiente de linearidade, apresentado na Equação \ref{eq:pt100-ponte-reg-r2}.
+
+\begin{equation}
+	V(T) = 0.6324*T - 31.958
+	\label{eq:pt100-ponte-reg}
+\end{equation}
+\begin{equation}
+	R^2=0.9993
+	\label{eq:pt100-ponte-reg-r2}
+\end{equation}
+
+A Figura \ref{fig:pt100-amostras-ponte} apresenta o gráfico com as amostras realizadas experimentalmente, utilizando o Pt100 juntamente com a Ponte de Wheatstone.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.8\textwidth]{grafico_pt100_ponte.jpg}
+\caption{Gráfico das amostras experimentais apresentando a variação da tensão elétrica em função da variação da temperatura da água.}
+\label{fig:pt100-amostras-ponte}
+\end{figure}
 
 
 \section{Sensor de temperatura baseado em NTC}
@@ -445,7 +553,7 @@ Na Tabela \ref{tab:amostras-ntc}, estão apresentados os valores de resistência
 
 \begin{table}[H]
 \centering
-\caption{Amostras de medidas de resistência elétrica do NTC - Temperatura 18ºC a 74ºC}
+\caption{Amostras de medidas de resistência elétrica do NTC - Temperatura 16ºC a 74ºC}
 \label{tab:amostras-ntc}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -631,7 +739,7 @@ Embora hajam diferenças nos tempos de acomodação das respostas apresentadas n
 
 %\bibitem{datasheet-lm7905} Datasheet oferecido pelo fabricante do regulador de tensão LM7905PI, disponível em \url{http://www.datasheetlib.com/datasheet/190159/kia7905pi_kec-korea-electronics-corporation.html}.
 
-%\bibitem{datasheet-lm7805} Datasheet oferecido pelo fabricante do regulador de tensão LM7805CV, disponível em \url{http://www.datasheetlib.com/datasheet/221840/l7805cv_stmicroelectronics.html}.
+\bibitem{datasheet-lm7805} Datasheet oferecido pelo fabricante do regulador de tensão LM7805CV, disponível em \url{http://www.datasheetlib.com/datasheet/221840/l7805cv_stmicroelectronics.html}.
 
 %\bibitem{datasheet-lm741} Datasheet oferecido pelo fabricante do amplificador operacional LM741, disponível em \url{http://www.datasheetlib.com/datasheet/818655/lm741_ti-texas-instruments.html}.
 
