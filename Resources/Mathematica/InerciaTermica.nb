@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7883,        195]
-NotebookOptionsPosition[      7625,        181]
-NotebookOutlinePosition[      7984,        197]
-CellTagsIndexPosition[      7941,        194]
+NotebookDataLength[      8315,        208]
+NotebookOptionsPosition[      8004,        192]
+NotebookOutlinePosition[      8416,        210]
+CellTagsIndexPosition[      8373,        207]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -150,14 +150,24 @@ Cell[BoxData[{
       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
       "\"\<../Data/aa.lvm\>\""}], ",", " ", "\"\<TSV\>\""}], "]"}]}], 
   "]"}], "\[IndentingNewLine]", 
- RowBox[{"ThermalShockAnalysis", "[", 
-  RowBox[{"\"\<Down\>\"", ",", 
-   RowBox[{"Import", "[", 
-    RowBox[{
+ RowBox[{
+  RowBox[{"ThermalShockAnalysis", "[", 
+   RowBox[{"\"\<Down\>\"", ",", 
+    RowBox[{"Import", "[", 
      RowBox[{
-      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
-      "\"\<../Data/aa_2.lvm\>\""}], ",", " ", "\"\<TSV\>\""}], "]"}]}], 
-  "]"}], "\[IndentingNewLine]"}], "Input",
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<../Data/aa_2.lvm\>\""}], ",", " ", "\"\<TSV\>\""}], "]"}]}], 
+   "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookFileName", "[", 
+      RowBox[{"EvaluationNotebook", "[", "]"}], "]"}], "<>", "\"\<.pdf\>\""}],
+     ",", " ", 
+    RowBox[{"EvaluationNotebook", "[", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.671373041128169*^9, 3.6713732794953127`*^9}, {
    3.671373310335762*^9, 3.671373387532209*^9}, {3.671373456227798*^9, 
    3.671373593036887*^9}, {3.6713736233017073`*^9, 3.6713737053853483`*^9}, {
@@ -177,10 +187,13 @@ Cell[BoxData[{
    3.671376048047254*^9}, {3.671376113159885*^9, 3.671376252114233*^9}, {
    3.6713762887646112`*^9, 3.671376307383788*^9}, {3.671376365056427*^9, 
    3.6713765246983843`*^9}, {3.671376727427813*^9, 3.671376733674182*^9}, {
-   3.671376857492054*^9, 3.671376881214444*^9}, 3.6713770054551497`*^9}]
+   3.671376857492054*^9, 3.671376881214444*^9}, 3.6713770054551497`*^9, {
+   3.6716440801211367`*^9, 3.671644080457034*^9}}]
 },
 WindowSize->{808, 869},
-WindowMargins->{{158, Automatic}, {Automatic, 28}},
+WindowMargins->{{180, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
 FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
 2016)",
 StyleDefinitions->"Default.nb"
@@ -196,7 +209,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 7063, 159, 471, "Input"]
+Cell[558, 20, 7442, 170, 505, "Input"]
 }
 ]
 *)

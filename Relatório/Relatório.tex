@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 
 \newtoggle{attachments}
-\togglefalse{attachments}
+\toggletrue{attachments}
 
 \graphicspath{
 	{../Resources/Images/}
@@ -126,7 +126,6 @@ Como \textit{ohmímetro} foi utilizado um multímetro digital da Minipa, modelo 
 \end{tabular}
 \end{table}
 
-\todo{discussão sobre os amplificadores, como ele pede no roteiro}
 
 \todo{resto do experimento do pt100}
 
@@ -288,9 +287,7 @@ Com esta configuração, e uma alimentação de $5V \pm 0.2V$ fornecida por um r
 \end{tabular}
 \end{table}
 
-%Para alimentação da ponte, foi utilizada uma fonte \todo{fonte do lab} ajustada para tensão elétrica de $2V$ que foi medida utilizando um multímetro \todo{do rodrigo} com uma incerteza de \todo{qual?}. De acordo com os dados fornecidos no manual pelo fabricante da fonte, o \textit{ripple} de tensão da tensão elétrica de saída é insignificante no experimento e pode ser desprezada.
-
-%Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
+Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
 
 \subsection{Linearização do NTC}
 \label{sec:ntc-linearizacao}
@@ -393,6 +390,212 @@ Na Figura \ref{fig:ntc-linear-esperado} está apresentado a curva esperada da sa
 \end{figure}
 
 Na Figura \ref{fig:ntc-linear-esperado} a linha contínua é o valor real da linearização (note que a curva não é perfeitamente linear) e a linha tracejada é a curva desprezando componentes não lineares da curva contínua. É fácil observar que o erro de linearidade nas extremidades tende à zero e no ponto médio é máximo. Isso mostra que a linearização proposta não é perfeita, e possui um erro de linearidade intrínseco atrelado, mas se comparado com o formato da curva bruta, sem linearização, o resultado obtido possui um erro de linearidade muito inferior, isto é, a forma linearizada é muito mais linear que a forma não linear.
+
+\section{Topologias de Amplificadores para instrumentação}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Na Figura \ref{fig:amplificador-a} está apresentado o esquemático para uma topologia de amplificador de instrumentação.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-A.pdf}
+\caption{Esquemático elétrico do amplificador (A)}
+\label{fig:amplificador-a}
+\end{figure}
+
+Para fins de cálculo, assumirá-se que as relações das Equações \ref{eq:amplificator-a-relacoes-1} e \ref{eq:amplificator-a-relacoes-2} são válidas:
+
+\begin{eqnarray}
+	R_1 = R_2 = R_3 &=& R_0 \label{eq:amplificator-a-relacoes-1} \\
+	R_x &=& R_0(1-\alpha) 	\label{eq:amplificator-a-relacoes-2} 
+\end{eqnarray}
+
+A função de transferência\cite{ti-amplificador} deste amplificador é dada pela Equação \ref{eq:amplificator-a-tf} (o script de cálculo do Mathematica está na página \pageref{att:amplificadores}).
+
+\begin{equation}
+	V(\alpha) = -\frac{\alpha  V}{2}
+	\label{eq:amplificator-a-tf}
+\end{equation}
+
+\noindent onde $V(\alpha)$ é a tensão elétrica de saída do amplificador para uma variação relativa $\alpha$ de resistência elétrica do resistor $R_x$ e $V$ é uma tensão elétrica fixa na entrada do amplificador.
+
+Na Equação \ref{eq:amplificator-a-tf}, é possível observar que há uma relação direta na saída do amplificador em função da variação da resistência elétrica do sensor. Também é fácil observar que a sensibilidade está diretamente relacionada com a tensão elétrica $V$ aplicada na entrada do amplificador.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Uma outra topologia possível para amplificador é utilizar uma ponte de Wheatstone em série com a malha de realimentação do amplificador. Na Figura \ref{fig:amplificador-b} está apresentado o esquemático elétrico da topologia.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-B.pdf}
+\caption{Esquemático elétrico do amplificador (B)}
+\label{fig:amplificador-b}
+\end{figure}
+
+Para fins de cálculo, assumirá-se que as relações das Equações \ref{eq:amplificator-b-relacoes-1}, \ref{eq:amplificator-b-relacoes-2} e \ref{eq:amplificator-b-relacoes-3} são válidas:
+
+\begin{eqnarray}
+	R_1 = R_3 = R_4 = R_5 &=& R_0 \label{eq:amplificator-b-relacoes-1} \\
+	R_2 &=& n R_0 \\ 		\label{eq:amplificator-b-relacoes-2} 
+	R_x &=& R_0(1-\alpha) 	\label{eq:amplificator-b-relacoes-3} 
+\end{eqnarray}
+
+A função de transferência deste amplificador é dada pela Equação \ref{eq:amplificator-b-tf} (o script de cálculo do Mathematica está na página \pageref{att:amplificadores}).
+
+\begin{equation}
+	V(\alpha) = -\frac{\alpha  (n+1) V}{2 (\alpha +2)}
+	\label{eq:amplificator-b-tf}
+\end{equation}
+
+Na Equação \ref{eq:amplificator-b-tf} é observável que nesta topologia é possível aumentar o ganho ajustando o valor da resistência elétrica $R_2$ pela sua contribuição em $n$, conectado à malha de realimentação do circuito. Na Figura \ref{fig:amplificador-b-tf} está apresentada a função de transferência do amplificador para $V=1V$ e $n=1$, onde se vê claramente que a sua resposta não é linear.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-B-TF.pdf}
+\caption{Gráfico apresentando a função de transferência do amplificador (B) para $V=1V$ e $n=1$}
+\label{fig:amplificador-b-tf}
+\end{figure}
+
+A Equação \ref{eq:amplificator-b-sensibility} apresenta a expressão analítica da sensibilidade do sistema.
+
+\begin{equation}
+	\frac{\partial V(\alpha)}{\partial \alpha} = -\frac{(n+1) V}{(\alpha +2)^2}
+	\label{eq:amplificator-b-sensibility}
+\end{equation}
+
+A fim de fazer uma análise da influência do ganho e da variação de resistência elétrica do sensor na sensibilidade do sistema, a Figura \ref{fig:amplificador-b-sensibilidade} apresenta o gráfico da função sensibilidade do filtro:
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-B-Sensibility.pdf}
+\caption{Gráfico apresentando a sensibilidade função de transferência do amplificador (B) para $V=1V$}
+\label{fig:amplificador-b-sensibilidade}
+\end{figure}
+
+Na Figura \ref{fig:amplificador-b-sensibilidade} é possível observar que a sensibilidade do sistema é maior para variações negativas de resistência elétrica, bem como o aumento do ganho implica numa maior sensibilidade.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Outra topologia faz uso de uma ponte de Wheatstone associada diretamente à entrada do amplificador e conta com um resistor $R_3$ do laço de realimentação. O esquemático elétrico da topologia está apresentado na Figura \ref{fig:amplificador-c}.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-C.pdf}
+\caption{Esquemático elétrico do amplificador (C)}
+\label{fig:amplificador-c}
+\end{figure}
+
+Para fins de cálculo, assumirá-se que as relações das Equações \ref{eq:amplificator-c-relacoes-1}, \ref{eq:amplificator-c-relacoes-2}, \ref{eq:amplificator-c-relacoes-3} e \ref{eq:amplificator-c-relacoes-4} são válidas:
+
+\begin{eqnarray}
+	R_1 = R_2 &=& R \label{eq:amplificator-c-relacoes-1} \\
+	R_3 &=& R_0  		\label{eq:amplificator-c-relacoes-2} \\
+	R_4 &=& n R_0 		\label{eq:amplificator-c-relacoes-3} \\
+	R_x &=& R_0(1-\alpha) 	\label{eq:amplificator-c-relacoes-4} 
+\end{eqnarray}
+
+A função de transferência deste amplificador é dada pela Equação \ref{eq:amplificator-c-tf} (o script de cálculo do Mathematica está na página \pageref{att:amplificadores}).
+
+\begin{equation}
+	V(\alpha) = \frac{\alpha n R_0 V}{(\alpha +2) R+2 (\alpha +1) R_0}
+	\label{eq:amplificator-c-tf}
+\end{equation}
+
+Na Equação \ref{eq:amplificator-c-tf} é observável que nesta topologia é possível aumentar o ganho ajustando o valor da resistência elétrica $R_4$ pela sua contribuição em $n$, conectado à malha de realimentação do circuito. O valor de resistência elétrica $R_0$ também colabora para o ganho, mas sua contribuição é mais modesta pois seu valor é utilizado tanto no numerador quando no denominador.
+
+Na Figura \ref{fig:amplificador-c-tf} está apresentada a função de transferência do amplificador para $V=1V$, onde se vê claramente que a sua resposta não é linear.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-C-TF.pdf}
+\caption{Gráfico apresentando a função de transferência do amplificador (C) para $V=1V$, $n=1$ e $R = R_0 = 1000\Omega$}
+\label{fig:amplificador-c-tf}
+\end{figure}
+
+Na Equação \ref{eq:amplificator-c-sensibility} está apresentado a sensibilidade da configuração.
+
+\begin{equation}
+	\frac{\partial V(\alpha)}{\partial \alpha} = \frac{2 n R_0 V (R+R_0)}{((\alpha +2) R+2 (\alpha +1) R_0)^2}
+	\label{eq:amplificator-c-sensibility}
+\end{equation}
+
+A sensibilidade é definida por uma função complexa, e para tanto na Figura  \ref{fig:amplificador-c-sensibilidade} apresenta o gráfico da função sensibilidade para a variação de resistência elétrica $\alpha$ e ganho $n$:
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-C-Sensibility.pdf}
+\caption{Gráfico apresentando a sensibilidade função de transferência do amplificador (c) para $V=1V$ e $R = R_0 = 1000\Omega$}
+\label{fig:amplificador-c-sensibilidade}
+\end{figure}
+
+Na Figura \ref{fig:amplificador-c-sensibilidade}, é visível o impacto do ganho do amplificador na sensibilidade do sistema. Novamente, o sensor é ótimo para sensor cuja resistência elétrica reduz em função de uma variável desejada.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Por fim, outra topologia comum é semelhante à anterior, mas as saídas da ponte de Wheatstone são ligadas nas entradas do amplificador operacional. Na Figura \ref{fig:amplificador-d} está apresentada o esquemático elétrico da topologia.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-D.pdf}
+\caption{Esquemático elétrico do amplificador (D)}
+\label{fig:amplificador-d}
+\end{figure}
+
+Para fins de cálculo, assumirá-se que as relações das Equações \ref{eq:amplificator-d-relacoes-1}, \ref{eq:amplificator-d-relacoes-2} e \ref{eq:amplificator-d-relacoes-3} são válidas:
+
+\begin{eqnarray}
+	R_1 = R_2 = R_3 &=& R_0 \label{eq:amplificator-d-relacoes-1} \\
+	R_4 = R_5 = &=& n R_0 		\label{eq:amplificator-d-relacoes-2} \\
+	R_x &=& R_0(1-\alpha) 	\label{eq:amplificator-d-relacoes-3} 
+\end{eqnarray}
+
+A função de transferência deste amplificador é dada pela Equação \ref{eq:amplificator-d-tf} (o script de cálculo do Mathematica está na página \pageref{att:amplificadores}).
+
+\begin{equation}
+	V(\alpha) = -\frac{\alpha  n^2 V}{\alpha +2 \alpha  n+2 n+1}
+	\label{eq:amplificator-d-tf}
+\end{equation}
+
+Na Equação \ref{eq:amplificator-d-tf} é observável que nesta topologia é possível aumentar o ganho ajustando o valor da resistência elétrica $R_4$ e $R_5$ pela sua contribuição em $n$, conectado à malha de realimentação do circuito. Na Figura \ref{fig:amplificador-d-tf} está apresentada a função de transferência do amplificador para $V=1V$, onde se vê claramente que a sua resposta não é linear.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-D-TF.pdf}
+\caption{Gráfico apresentando a função de transferência do amplificador (D) para $V=1V$, $n=1$}
+\label{fig:amplificador-d-tf}
+\end{figure}
+
+Na Equação \ref{eq:amplificator-d-sensibility} está apresentado a sensibilidade da configuração.
+
+\begin{equation}
+	\frac{\partial V(\alpha)}{\partial \alpha} = -\frac{n^2 V}{(\alpha +1)^2 (2 n+1)}
+	\label{eq:amplificator-d-sensibility}
+\end{equation}
+
+A sensibilidade é definida por uma função complexa, e para tanto na Figura  \ref{fig:amplificador-d-sensibilidade} apresenta o gráfico da função sensibilidade para a variação de resistência elétrica $\alpha$ e ganho $n$:
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{Amplificador-D-Sensibility.pdf}
+\caption{Gráfico apresentando a sensibilidade função de transferência do amplificador (D) para $V=1V$}
+\label{fig:amplificador-d-sensibilidade}
+\end{figure}
+
+Na Figura \ref{fig:amplificador-c-sensibilidade}, é visível que a sensibilidade varia muito a partir de variações de resistência elétrica abaixo de $-0.5$, o ganho, embora cause uma elevação da sensibilidade, o seu efeito é baixo. Este amplificador é ideal para aplicações que não necessitem muito ganho, visto que a sensibilidade em função do ganho é irrelevante perante a variação de sensibilidade para reduções de resistência elétrica.
+
+\todo{discussão sobre os amplificadores, como ele pede no roteiro}
+
+\subsection{Amplificador de Instrumentação}
+
+O amplificador de instrumentação é uma topologia típica utilizada em instrumentação. Sua entrada é diferencial e, embora seja possível, não é comum utilizá-los para dar ganhos significantes (maior de 1000) em um sinal. A Figura \ref{fig:amplificador-instrumentacao} apresenta a topologia típica do amplificador de instrumentação.
+
+%\begin{figure}[H]
+%\center
+%\includegraphics[width=\textwidth]{Amplificador-D-Sensibility.pdf}
+%\caption{Gráfico apresentando a sensibilidade função de transferência do amplificador (D) para $V=1V$}
+%\label{fig:amplificador-d-sensibilidade}
+%\end{figure}
 
 \chapter{Resultados e Discussões}
 \section{Sensor de temperatura baseado em Pt100}
@@ -591,6 +794,7 @@ Na Tabela \ref{tab:amostras-ntc}, estão apresentados os valores de resistência
 \end{tabular}
 \end{table}
 
+\todo{arrumar as escalas aqui}
 
 Na figura \ref{fig:ntc-medidas} está apresentado um gráfico de pontos onde cada ponto corresponde à uma medida realizada experimentalmente.
 
@@ -623,7 +827,7 @@ A título de comparação entre a função de transferência ajustada e os ponto
 \center
 \includegraphics[width=\textwidth]{NTC-FitPlot.pdf}
 \caption{Comparação entre as medidas individuais e a função de transferência ajustada}
-\label{ntc-experimental-comparacao}
+\label{fig:ntc-experimental-comparacao}
 \end{figure}
 
 Para realizar a linearização do NTC, foi escolhido o intervalo de 18ºC até 44ºC para linearizar através do método à 3 pontos equidistantes conforme explicado no capítulo de Metodologia Experimental, página \pageref{sec:ntc-linearizacao}.
@@ -633,7 +837,7 @@ Para tanto, foram feitas 3 medidas em 3 pontos, nos dois extremos (18 e 44 ºC) 
 \begin{table}[H]
 \centering
 \caption{Medidas de tensão elétrica na saída da ponte de Wheatstone para o sensor NTC linearizado. É importante lembrar que estas medidas foram feitas utilizando o dispositivo de aquisição de dados no LabVIEW.}
-\label{tab:amostras-linearizado}
+\label{tab:ntc-linearizado}
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Temp. ($ºC$)} & \textbf{Tensão elétrica (mV)} \\ \hline
@@ -654,18 +858,18 @@ Para tanto, foram feitas 3 medidas em 3 pontos, nos dois extremos (18 e 44 ºC) 
 \end{tabular}
 \end{table}
 
-A Figura \ref{fig:ntc-linear-obtido} apresenta a comparação entre uma linearização perfeita, a curva linearizada esperada e os valores obtidos experimentalmente.
+A Figura \ref{fig:ntc-experimental-comparacao} apresenta a comparação entre uma linearização perfeita, a curva linearizada esperada e os valores obtidos experimentalmente.
 
 \begin{figure}[H]
 \center
 \includegraphics[width=\textwidth]{NTC-Linear-Obtido.pdf}
 \caption{Comparação entre as medidas individuais e a função de transferência ajustada}
-\label{ntc-experimental-comparacao}
+\label{fig:ntc-experimental-comparacao}
 \end{figure}
 
 \noindent onde a linha contínua representa a curva esperada da linearização, a linha tracejada indica uma reta ligando os extremos da região de interesse e os pontos indicam as medidas realizadas experimentalmente.
 
-A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:amostras-linearizado} e da Figura \ref{ntc-experimental-comparacao}, é dada pela função da transferência na Equação \ref{eq:ntc-linearizado}:
+A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:ntc-linearizado} e da Figura \ref{fig:ntc-experimental-comparacao}, é dada pela função da transferência na Equação \ref{eq:ntc-linearizado}:
 
 
 \begin{equation}
@@ -732,19 +936,11 @@ Embora hajam diferenças nos tempos de acomodação das respostas apresentadas n
 \bibitem{mathematica-numerial-precision} \url{https://reference.wolfram.com/language/tutorial/NumericalPrecision.html}, acessado em 26 de abril de 2016
 \bibitem{wikipedia-epsilon} \url{https://en.wikipedia.org/wiki/Machine_epsilon}, acessado em 26 de abril de 2016
 \bibitem{livro-texto}  Balbinot, Alexandre; Brusamarello, Valner J., Instrumentação e Fundamentos de Medida - Vol.1 - 2ª Ed. Rio de Janeiro: LTC, 2014.
-
 \bibitem{daq-specifications} NI USB-6009 -- DEVICE SPECIFICATIONS, \url{http://www.ni.com/pdf/manuals/375296a.pdf}, acessado em 3 de maio de 2016
 \bibitem{daq-user-guide} NI USB-6009 -- USER GUIDE, \url{http://www.ni.com/pdf/manuals/371303n.pdf}, acessado em 3 de maio de 2016
-
-
-%\bibitem{datasheet-lm7905} Datasheet oferecido pelo fabricante do regulador de tensão LM7905PI, disponível em \url{http://www.datasheetlib.com/datasheet/190159/kia7905pi_kec-korea-electronics-corporation.html}.
-
+\bibitem{ti-amplificador} James Karki, \textit{Signal Conditioning Wheatstone Resistive Bridge Sensors}, \url{http://www.ti.com/lit/an/sloa034/sloa034.pdf}, acessado em 4 de maio de 2016
 \bibitem{datasheet-lm7805} Datasheet oferecido pelo fabricante do regulador de tensão LM7805CV, disponível em \url{http://www.datasheetlib.com/datasheet/221840/l7805cv_stmicroelectronics.html}.
-
-%\bibitem{datasheet-lm741} Datasheet oferecido pelo fabricante do amplificador operacional LM741, disponível em \url{http://www.datasheetlib.com/datasheet/818655/lm741_ti-texas-instruments.html}.
-
-
-
+\bibitem{datasheet-ina126} Datasheet oferecido pelo fabricante amplificador de instrumentação INA126, disponível em \url{http://www.ti.com/lit/ds/symlink/ina126.pdf}.
 
 %\bibitem{ref1} Sobrenome, A.B.; Sobrenome, C.D. Title of the cited article. Journal Title 2007, 6, 100-110. 
 %\bibitem{ref2} Balbinot, A.; Brusamarello, V.J.. Title of the cited article. Journal Title 2007, 6, 100-110. 
@@ -758,17 +954,10 @@ Embora hajam diferenças nos tempos de acomodação das respostas apresentadas n
 	\chapter*{Anexos}
 	\label{ch:attachments}
 	\section{Mathematica}
-	\includenotebook{../Resources/Mathematica/Experimento 1-1.nb.pdf}{Pêndulo}{pendulo}
-	\includenotebooksingle{../Resources/Mathematica/Incerteza potenciometro.nb}{Incerteza do potenciômetro}{incerteza-potenciometro}
-	\includenotebooksingle{../Resources/Mathematica/Incertezas-Filtro.nb}{Incerteza do filtro}{incerteza-filtro}
-
-	\section{MATLAB}
-	\label{att:script-matlab}
-	\lstinputlisting[
-		language=MATLAB,
-		numbers=left,
-		caption={Script MATLAB para análise de frequência}
-	]{../Resources/MATLAB/primeiro.m}
+	\includenotebook{../Resources/Mathematica/Amplificadores.nb.pdf}{Amplificadores}{amplificadores}
+	\includenotebook{../Resources/Mathematica/Exponencialinversa.nb.pdf}{Linearização}{linearização}
+	\includenotebooksingle{../Resources/Mathematica/InerciaTermica.nb.pdf}{Inércia Térmica}{inercia-termica}
+	\includenotebooksingle{../Resources/Mathematica/NTC.nb.pdf}{NTC}{ntc}
 }
 
 \end{document}

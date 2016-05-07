@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10616,        313]
-NotebookOptionsPosition[     10202,        294]
-NotebookOutlinePosition[     10560,        310]
-CellTagsIndexPosition[     10517,        307]
+NotebookDataLength[     11143,        330]
+NotebookOptionsPosition[     10675,        309]
+NotebookOutlinePosition[     11087,        327]
+CellTagsIndexPosition[     11044,        324]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -221,9 +221,20 @@ Cell[BoxData[{
         RowBox[{"-", "53.9"}]}], "}"}]}], "}"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"ListPlot", "[", "data", "]"}], "\[IndentingNewLine]", 
- RowBox[{"Grid", "[", "data", "]"}]}], "Input",
+ RowBox[{
+  RowBox[{"Grid", "[", "data", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookFileName", "[", 
+      RowBox[{"EvaluationNotebook", "[", "]"}], "]"}], "<>", "\"\<.pdf\>\""}],
+     ",", " ", 
+    RowBox[{"EvaluationNotebook", "[", "]"}]}], "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.671544136497114*^9, 3.6715441434739447`*^9}, {
-  3.671544426197731*^9, 3.671544430603113*^9}}],
+  3.671544426197731*^9, 3.671544430603113*^9}, {3.671644093881462*^9, 
+  3.671644094264573*^9}}],
 
 Cell[BoxData[
  GraphicsBox[{{}, {{}, 
@@ -261,7 +272,9 @@ Cell[BoxData[
      Scaled[0.05], 
      Scaled[0.05]}},
   Ticks->{Automatic, Automatic}]], "Output",
- CellChangeTimes->{3.671544143821568*^9, 3.671544431170862*^9}],
+ CellChangeTimes->{
+  3.671544143821568*^9, 3.671544431170862*^9, {3.671644094664029*^9, 
+   3.671644100607485*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -289,11 +302,15 @@ Cell[BoxData[
    AutoDelete->False,
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output",
- CellChangeTimes->{3.671544143821568*^9, 3.6715444311807137`*^9}]
+ CellChangeTimes->{
+  3.671544143821568*^9, 3.671544431170862*^9, {3.671644094664029*^9, 
+   3.671644100621908*^9}}]
 }, Open  ]]
 },
 WindowSize->{808, 685},
 WindowMargins->{{52, Automatic}, {Automatic, 31}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
 FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
 2016)",
 StyleDefinitions->"Default.nb"
@@ -311,9 +328,9 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 5896, 157, 391, "Input"],
 Cell[CellGroupData[{
-Cell[6479, 181, 1491, 44, 114, "Input"],
-Cell[7973, 227, 1574, 36, 227, "Output"],
-Cell[9550, 265, 636, 26, 251, "Output"]
+Cell[6479, 181, 1860, 55, 148, "Input"],
+Cell[8342, 238, 1627, 38, 227, "Output"],
+Cell[9972, 278, 687, 28, 251, "Output"]
 }, Open  ]]
 }
 ]

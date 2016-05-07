@@ -1,0 +1,773 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27556,        765]
+NotebookOptionsPosition[     26461,        725]
+NotebookOutlinePosition[     26874,        743]
+CellTagsIndexPosition[     26831,        740]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Amplificador", " ", "A"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"I1", "==", 
+         FractionBox[
+          RowBox[{"V", "-", "Vo"}], 
+          RowBox[{"R0", "+", "Rx"}]]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"I2", "\[Equal]", 
+         FractionBox["V", 
+          RowBox[{"2", " ", "R0"}]]}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"V", "-", 
+          RowBox[{"R0", "*", "I1"}]}], "\[Equal]", 
+         RowBox[{"R0", "*", "I2"}]}]}], "\[IndentingNewLine]", "}"}], ",", 
+      " ", 
+      RowBox[{"{", 
+       RowBox[{"I1", ",", " ", "I2", ",", " ", "Vo"}], "}"}]}], "]"}], "//", 
+    "FullSimplify"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Vo", "/.", 
+      RowBox[{"%", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "/.", 
+     RowBox[{"{", 
+      RowBox[{"Rx", "\[Rule]", 
+       RowBox[{"R0", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Alpha]"}], ")"}]}]}], "}"}]}], "//", 
+    "FullSimplify"}], "\[IndentingNewLine]", 
+   RowBox[{"D", "[", 
+    RowBox[{"%", ",", " ", "\[Alpha]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.671643627806121*^9, 3.671643735079802*^9}, {
+   3.671644150940977*^9, 3.671644156492958*^9}, {3.6716442983250923`*^9, 
+   3.671644307074321*^9}, {3.671645764770046*^9, 3.671645776736723*^9}, 
+   3.67164582706466*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"I1", "\[Rule]", 
+     FractionBox["V", 
+      RowBox[{"2", " ", "R0"}]]}], ",", 
+    RowBox[{"I2", "\[Rule]", 
+     FractionBox["V", 
+      RowBox[{"2", " ", "R0"}]]}], ",", 
+    RowBox[{"Vo", "\[Rule]", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"R0", "-", "Rx"}], ")"}], " ", "V"}], 
+      RowBox[{"2", " ", "R0"}]]}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.671643702205084*^9, 3.671643752303776*^9}, 
+   3.671644174400834*^9, {3.671644302050679*^9, 3.67164434519556*^9}, 
+   3.6716457772099123`*^9, 3.6716458352905073`*^9}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"V", " ", "\[Alpha]"}], "2"]}]], "Output",
+ CellChangeTimes->{{3.671643702205084*^9, 3.671643752303776*^9}, 
+   3.671644174400834*^9, {3.671644302050679*^9, 3.67164434519556*^9}, 
+   3.6716457772099123`*^9, 3.671645835297276*^9}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox["V", "2"]}]], "Output",
+ CellChangeTimes->{{3.671643702205084*^9, 3.671643752303776*^9}, 
+   3.671644174400834*^9, {3.671644302050679*^9, 3.67164434519556*^9}, 
+   3.6716457772099123`*^9, 3.671645835301833*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Amplificador", " ", "B"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           FractionBox["V1", "R"], "+", 
+           FractionBox[
+            RowBox[{"V1", "-", "V2"}], "R0"], "+", 
+           FractionBox[
+            RowBox[{"V1", "-", "V3"}], "Rx"], "+", 
+           FractionBox[
+            RowBox[{"V1", "-", "Vo"}], 
+            RowBox[{"n", " ", "R"}]]}], "\[Equal]", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", 
+            FractionBox[
+             RowBox[{"V1", "-", "V3"}], "Rx"]}], "+", 
+           FractionBox[
+            RowBox[{"V3", "-", "Vm"}], "R0"], "+", "I1"}], "\[Equal]", "0"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", 
+            FractionBox[
+             RowBox[{"V3", "-", "Vm"}], "R0"]}], "-", 
+           FractionBox[
+            RowBox[{"V2", "-", "Vm"}], "R0"]}], "\[Equal]", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            RowBox[{"V2", "-", "Vm"}], "R0"], "-", 
+           FractionBox[
+            RowBox[{"V1", "-", "V2"}], "R0"], "-", "I1"}], "\[Equal]", "0"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"V3", "\[Equal]", 
+          RowBox[{"V2", "+", "V"}]}]}], "\[IndentingNewLine]", "}"}], "/.", 
+       RowBox[{"Vm", "\[Rule]", "0"}]}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+       "V1", ",", " ", "V2", ",", " ", "V3", ",", " ", "I1", ",", " ", "Vo"}],
+        "}"}]}], "]"}], "//", "FullSimplify"}], "\[IndentingNewLine]", 
+   RowBox[{"tf", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Vo", "/.", 
+       RowBox[{"%", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "/.", 
+      RowBox[{"{", 
+       RowBox[{"Rx", "\[Rule]", 
+        RowBox[{"R0", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "\[Alpha]"}], ")"}]}]}], "}"}]}], "//", 
+     "FullSimplify"}]}], "\[IndentingNewLine]", 
+   RowBox[{"sensibility", "=", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{"%", ",", " ", "\[Alpha]"}], "]"}], "//", "FullSimplify"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"tfPlot", "=", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"tf", "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"n", "\[Rule]", "1"}], ",", " ", 
+          RowBox[{"V", "\[Rule]", "1"}]}], "}"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"\[Alpha]", ",", " ", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<\[Alpha]\>\"", ",", " ", "\"\<Vo (V)\>\""}], "}"}]}], 
+       ",", " ", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", 
+        "\"\<-1 \[LessEqual] \[Alpha] \[LessEqual] 1, V=1V\>\""}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<Images/Amplificador-B-TF.pdf\>\""}], ",", " ", "tfPlot"}], "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sensibilityPlot", "=", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{"sensibility", "/.", 
+        RowBox[{"V", "\[Rule]", "1"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", " ", "1", ",", " ", "20"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Alpha]", ",", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<Ganho\>\"", ",", " ", "\"\<\[Alpha]\>\"", ",", " ", 
+          "\"\<Sensibilidade\>\""}], "}"}]}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<Images/Amplificador-B-Sensibility.pdf\>\""}], ",", " ", 
+      "sensibilityPlot"}], "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.6716401619441023`*^9, 3.671640305366523*^9}, {
+   3.671640358132082*^9, 3.6716404320031567`*^9}, {3.671640503321419*^9, 
+   3.6716405196421347`*^9}, {3.671640595385038*^9, 3.671640799884595*^9}, {
+   3.671641393589452*^9, 3.6716414099553413`*^9}, {3.671643577579876*^9, 
+   3.671643598969461*^9}, 3.671643738202807*^9, {3.671644159599464*^9, 
+   3.6716441617584553`*^9}, {3.671644312385002*^9, 3.671644317568184*^9}, {
+   3.6716457863131237`*^9, 3.671645820399275*^9}, {3.671645973901433*^9, 
+   3.671646300852236*^9}, {3.6716463566632967`*^9, 3.67164636443556*^9}, {
+   3.671646470498928*^9, 3.671646571952211*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"V1", "\[Rule]", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"R0", "-", "Rx"}], ")"}], " ", "V"}], 
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{"R0", "+", "Rx"}], ")"}]}]]}], ",", 
+    RowBox[{"V2", "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox["V", "2"]}]}], ",", 
+    RowBox[{"V3", "\[Rule]", 
+     FractionBox["V", "2"]}], ",", 
+    RowBox[{"I1", "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"3", " ", "R0"}], "+", "Rx"}], ")"}], " ", "V"}], 
+       RowBox[{"2", " ", "R0", " ", 
+        RowBox[{"(", 
+         RowBox[{"R0", "+", "Rx"}], ")"}]}]]}]}], ",", 
+    RowBox[{"Vo", "\[Rule]", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "+", "n"}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{"R0", "-", "Rx"}], ")"}], " ", "V"}], 
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{"R0", "+", "Rx"}], ")"}]}]]}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.671646301110149*^9, 3.671646364747425*^9, 3.6716464547531967`*^9, 
+   3.671646511740252*^9, {3.671646544871236*^9, 3.671646572584731*^9}, 
+   3.671647152510364*^9}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", "n"}], ")"}], " ", "V", " ", "\[Alpha]"}], 
+   RowBox[{"2", " ", 
+    RowBox[{"(", 
+     RowBox[{"2", "+", "\[Alpha]"}], ")"}]}]]}]], "Output",
+ CellChangeTimes->{
+  3.671646301110149*^9, 3.671646364747425*^9, 3.6716464547531967`*^9, 
+   3.671646511740252*^9, {3.671646544871236*^9, 3.671646572584731*^9}, 
+   3.671647152519968*^9}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", "n"}], ")"}], " ", "V"}], 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"2", "+", "\[Alpha]"}], ")"}], "2"]]}]], "Output",
+ CellChangeTimes->{
+  3.671646301110149*^9, 3.671646364747425*^9, 3.6716464547531967`*^9, 
+   3.671646511740252*^9, {3.671646544871236*^9, 3.671646572584731*^9}, 
+   3.671647152527252*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Amplificador", " ", "C"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          FractionBox["V1", "R"], "+", 
+          FractionBox["V1", "Rx"], "+", "I1"}], "\[Equal]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          FractionBox["V2", "R"], "+", 
+          FractionBox["V2", "R0"], "-", "I1"}], "\[Equal]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["V1", "Rx"]}], "-", 
+          FractionBox["V2", "R0"], "-", 
+          FractionBox["Vo", 
+           RowBox[{"n", " ", "R0"}]]}], "\[Equal]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"V1", "\[Equal]", 
+         RowBox[{"V2", "+", "V"}]}]}], "\[IndentingNewLine]", "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"V1", ",", " ", "V2", ",", " ", "I1", ",", " ", "Vo"}], 
+       "}"}]}], "]"}], "//", "FullSimplify"}], "\[IndentingNewLine]", 
+   RowBox[{"tf", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Vo", "/.", 
+       RowBox[{"%", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "/.", 
+      RowBox[{"{", 
+       RowBox[{"Rx", "\[Rule]", 
+        RowBox[{"R0", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "\[Alpha]"}], ")"}]}]}], "}"}]}], "//", 
+     "Simplify"}]}], "\[IndentingNewLine]", 
+   RowBox[{"sensibility", "=", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{"%", ",", " ", "\[Alpha]"}], "]"}], "//", "FullSimplify"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"tfPlot", "=", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"tf", "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"n", "\[Rule]", "1"}], ",", " ", 
+          RowBox[{"V", "\[Rule]", "1"}], ",", " ", 
+          RowBox[{"R0", "\[Rule]", "1000"}], ",", " ", 
+          RowBox[{"R", "\[Rule]", "1000"}]}], "}"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"\[Alpha]", ",", " ", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<\[Alpha]\>\"", ",", " ", "\"\<Vo (V)\>\""}], "}"}]}], 
+       ",", " ", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", 
+        "\"\<-1 \[LessEqual] \[Alpha] \[LessEqual] 1, V=1V, R0=1000\
+\[CapitalOmega]\>\""}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<Images/Amplificador-C-TF.pdf\>\""}], ",", " ", "tfPlot"}], "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sensibilityPlot", "=", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{"sensibility", "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"V", "\[Rule]", "1"}], ",", " ", 
+          RowBox[{"R0", "\[Rule]", "1000"}], ",", " ", 
+          RowBox[{"R", "\[Rule]", "1000"}]}], "}"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", " ", "1", ",", " ", "20"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Alpha]", ",", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<Ganho\>\"", ",", " ", "\"\<\[Alpha]\>\"", ",", " ", 
+          "\"\<Sensibilidade\>\""}], "}"}]}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<Images/Amplificador-C-Sensibility.pdf\>\""}], ",", " ", 
+      "sensibilityPlot"}], "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.671641111143763*^9, 3.671641284438775*^9}, {
+   3.671641357126899*^9, 3.6716413598294897`*^9}, {3.671641520459219*^9, 
+   3.671641562807089*^9}, {3.671641734060898*^9, 3.671641772683239*^9}, {
+   3.6716435527711267`*^9, 3.6716435751865377`*^9}, 3.671643740185568*^9, {
+   3.6716441639724483`*^9, 3.6716441658136*^9}, {3.671644321965887*^9, 
+   3.671644356369035*^9}, {3.6716458019127398`*^9, 3.671645829978929*^9}, {
+   3.671647136542692*^9, 3.671647147007504*^9}, {3.671647186162055*^9, 
+   3.671647252824782*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"V1", "\[Rule]", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"R", "+", "R0"}], ")"}], " ", "Rx", " ", "V"}], 
+      RowBox[{
+       RowBox[{"2", " ", "R0", " ", "Rx"}], "+", 
+       RowBox[{"R", " ", 
+        RowBox[{"(", 
+         RowBox[{"R0", "+", "Rx"}], ")"}]}]}]]}], ",", 
+    RowBox[{"V2", "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"R0", " ", 
+        RowBox[{"(", 
+         RowBox[{"R", "+", "Rx"}], ")"}], " ", "V"}], 
+       RowBox[{
+        RowBox[{"2", " ", "R0", " ", "Rx"}], "+", 
+        RowBox[{"R", " ", 
+         RowBox[{"(", 
+          RowBox[{"R0", "+", "Rx"}], ")"}]}]}]]}]}], ",", 
+    RowBox[{"I1", "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"R", "+", "R0"}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"R", "+", "Rx"}], ")"}], " ", "V"}], 
+       RowBox[{"R", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", " ", "R0", " ", "Rx"}], "+", 
+          RowBox[{"R", " ", 
+           RowBox[{"(", 
+            RowBox[{"R0", "+", "Rx"}], ")"}]}]}], ")"}]}]]}]}], ",", 
+    RowBox[{"Vo", "\[Rule]", 
+     FractionBox[
+      RowBox[{"n", " ", "R0", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "R0"}], "+", "Rx"}], ")"}], " ", "V"}], 
+      RowBox[{
+       RowBox[{"2", " ", "R0", " ", "Rx"}], "+", 
+       RowBox[{"R", " ", 
+        RowBox[{"(", 
+         RowBox[{"R0", "+", "Rx"}], ")"}]}]}]]}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.67164120127417*^9, 3.671641228575903*^9}, {
+   3.671641269792808*^9, 3.671641284775256*^9}, {3.6716413576319113`*^9, 
+   3.671641360536783*^9}, {3.671641508957983*^9, 3.671641563132018*^9}, {
+   3.6716417476911507`*^9, 3.671641772939473*^9}, 3.671643744193367*^9, 
+   3.6716441745146914`*^9, {3.671644328313241*^9, 3.671644356656289*^9}, {
+   3.6716458075553017`*^9, 3.671645835387845*^9}, {3.671647139818355*^9, 
+   3.671647171300434*^9}, {3.671647215242036*^9, 3.671647253348648*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"n", " ", "R0", " ", "V", " ", "\[Alpha]"}], 
+  RowBox[{
+   RowBox[{"2", " ", "R0", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", "\[Alpha]"}], ")"}]}], "+", 
+   RowBox[{"R", " ", 
+    RowBox[{"(", 
+     RowBox[{"2", "+", "\[Alpha]"}], ")"}]}]}]]], "Output",
+ CellChangeTimes->{{3.67164120127417*^9, 3.671641228575903*^9}, {
+   3.671641269792808*^9, 3.671641284775256*^9}, {3.6716413576319113`*^9, 
+   3.671641360536783*^9}, {3.671641508957983*^9, 3.671641563132018*^9}, {
+   3.6716417476911507`*^9, 3.671641772939473*^9}, 3.671643744193367*^9, 
+   3.6716441745146914`*^9, {3.671644328313241*^9, 3.671644356656289*^9}, {
+   3.6716458075553017`*^9, 3.671645835387845*^9}, {3.671647139818355*^9, 
+   3.671647171300434*^9}, {3.671647215242036*^9, 3.671647253363926*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"2", " ", "n", " ", "R0", " ", 
+   RowBox[{"(", 
+    RowBox[{"R", "+", "R0"}], ")"}], " ", "V"}], 
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"2", " ", "R0", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", "\[Alpha]"}], ")"}]}], "+", 
+     RowBox[{"R", " ", 
+      RowBox[{"(", 
+       RowBox[{"2", "+", "\[Alpha]"}], ")"}]}]}], ")"}], "2"]]], "Output",
+ CellChangeTimes->{{3.67164120127417*^9, 3.671641228575903*^9}, {
+   3.671641269792808*^9, 3.671641284775256*^9}, {3.6716413576319113`*^9, 
+   3.671641360536783*^9}, {3.671641508957983*^9, 3.671641563132018*^9}, {
+   3.6716417476911507`*^9, 3.671641772939473*^9}, 3.671643744193367*^9, 
+   3.6716441745146914`*^9, {3.671644328313241*^9, 3.671644356656289*^9}, {
+   3.6716458075553017`*^9, 3.671645835387845*^9}, {3.671647139818355*^9, 
+   3.671647171300434*^9}, {3.671647215242036*^9, 3.671647253443801*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Amplificador", " ", "D"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            RowBox[{"V", "-", "V1"}], "R0"], "+", 
+           FractionBox[
+            RowBox[{"V", "-", "V1"}], "R0"]}], "\[Equal]", "0"}], ","}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          FractionBox["V1", "R0"], "+", 
+          FractionBox["V1", 
+           RowBox[{"n", " ", "R0"}]], "-", 
+          FractionBox[
+           RowBox[{"V", "-", "V1"}], "R0"]}], "\[Equal]", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          FractionBox["V1", "Rx"], "+", 
+          FractionBox[
+           RowBox[{"V1", "-", "Vo"}], 
+           RowBox[{"n", " ", "R0"}]], "-", 
+          FractionBox[
+           RowBox[{"V", "-", "V1"}], "R0"]}], "\[Equal]", "0"}]}], 
+       "\[IndentingNewLine]", "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"V1", ",", " ", "Vo"}], "}"}]}], "]"}], "//", "FullSimplify"}],
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"tf", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Vo", "/.", 
+       RowBox[{"%", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "/.", 
+      RowBox[{"{", 
+       RowBox[{"Rx", "\[Rule]", 
+        RowBox[{"R0", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "\[Alpha]"}], ")"}]}]}], "}"}]}], "//", 
+     "Simplify"}]}], "\[IndentingNewLine]", 
+   RowBox[{"sensibility", "=", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{"%", ",", " ", "\[Alpha]"}], "]"}], "//", "FullSimplify"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"tfPlot", "=", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"tf", "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"n", "\[Rule]", "1"}], ",", " ", 
+          RowBox[{"V", "\[Rule]", "1"}]}], "}"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"\[Alpha]", ",", " ", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<\[Alpha]\>\"", ",", " ", "\"\<Vo (V)\>\""}], "}"}]}], 
+       ",", " ", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", 
+        "\"\<-1 \[LessEqual] \[Alpha] \[LessEqual] 1, V=1V\>\""}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<Images/Amplificador-D-TF.pdf\>\""}], ",", " ", "tfPlot"}], "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sensibilityPlot", "=", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{"sensibility", "/.", 
+        RowBox[{"{", 
+         RowBox[{"V", "\[Rule]", "1"}], "}"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", " ", "1", ",", " ", "20"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Alpha]", ",", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<Ganho\>\"", ",", " ", "\"\<\[Alpha]\>\"", ",", " ", 
+          "\"\<Sensibilidade\>\""}], "}"}]}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<Images/Amplificador-D-Sensibility.pdf\>\""}], ",", " ", 
+      "sensibilityPlot"}], "]"}], ";"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6716420805413237`*^9, 3.6716421738370533`*^9}, {
+   3.6716422851837187`*^9, 3.671642387998502*^9}, {3.671642527218521*^9, 
+   3.671642545426159*^9}, 3.671642584480275*^9, {3.6716430817996063`*^9, 
+   3.671643088837883*^9}, 3.6716431433105373`*^9, {3.6716432653156967`*^9, 
+   3.6716432872078238`*^9}, {3.671643383354499*^9, 3.671643409660851*^9}, {
+   3.671643531681836*^9, 3.671643566723989*^9}, 3.6716437416982117`*^9, {
+   3.671644167972498*^9, 3.671644170260421*^9}, {3.6716443245890217`*^9, 
+   3.671644340627161*^9}, {3.671645804144277*^9, 3.671645831619089*^9}, {
+   3.6716473032779627`*^9, 3.6716473349627666`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"V1", "\[Rule]", 
+     FractionBox[
+      RowBox[{"n", " ", "V"}], 
+      RowBox[{"1", "+", 
+       RowBox[{"2", " ", "n"}]}]]}], ",", 
+    RowBox[{"Vo", "\[Rule]", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["n", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"R0", "-", "Rx"}], ")"}], " ", "V"}], 
+      RowBox[{"Rx", "+", 
+       RowBox[{"2", " ", "n", " ", "Rx"}]}]]}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.671642169413547*^9, 3.671642174197547*^9}, {
+   3.671642301192089*^9, 3.6716423888077297`*^9}, 3.671642487133844*^9, {
+   3.671642531339883*^9, 3.6716425458019037`*^9}, 3.671642585130539*^9, 
+   3.671642781495709*^9, {3.671643084994424*^9, 3.6716430919355383`*^9}, 
+   3.67164314378695*^9, {3.671643265827183*^9, 3.671643287943803*^9}, 
+   3.671643376998763*^9, 3.67164341006549*^9, 3.671643535189025*^9, 
+   3.6716435678265257`*^9, 3.6716437422140007`*^9, 3.671644035529813*^9, 
+   3.671644174585322*^9, {3.671644325101212*^9, 3.671644345329699*^9}, {
+   3.6716458046459417`*^9, 3.6716458354419937`*^9}, {3.671647313814467*^9, 
+   3.6716473226906776`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], " ", "V", " ", "\[Alpha]"}], 
+   RowBox[{"1", "+", 
+    RowBox[{"2", " ", "n"}], "+", "\[Alpha]", "+", 
+    RowBox[{"2", " ", "n", " ", "\[Alpha]"}]}]]}]], "Output",
+ CellChangeTimes->{{3.671642169413547*^9, 3.671642174197547*^9}, {
+   3.671642301192089*^9, 3.6716423888077297`*^9}, 3.671642487133844*^9, {
+   3.671642531339883*^9, 3.6716425458019037`*^9}, 3.671642585130539*^9, 
+   3.671642781495709*^9, {3.671643084994424*^9, 3.6716430919355383`*^9}, 
+   3.67164314378695*^9, {3.671643265827183*^9, 3.671643287943803*^9}, 
+   3.671643376998763*^9, 3.67164341006549*^9, 3.671643535189025*^9, 
+   3.6716435678265257`*^9, 3.6716437422140007`*^9, 3.671644035529813*^9, 
+   3.671644174585322*^9, {3.671644325101212*^9, 3.671644345329699*^9}, {
+   3.6716458046459417`*^9, 3.6716458354419937`*^9}, {3.671647313814467*^9, 
+   3.671647322705317*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], " ", "V"}], 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      RowBox[{"2", " ", "n"}]}], ")"}], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "+", "\[Alpha]"}], ")"}], "2"]}]]}]], "Output",
+ CellChangeTimes->{{3.671642169413547*^9, 3.671642174197547*^9}, {
+   3.671642301192089*^9, 3.6716423888077297`*^9}, 3.671642487133844*^9, {
+   3.671642531339883*^9, 3.6716425458019037`*^9}, 3.671642585130539*^9, 
+   3.671642781495709*^9, {3.671643084994424*^9, 3.6716430919355383`*^9}, 
+   3.67164314378695*^9, {3.671643265827183*^9, 3.671643287943803*^9}, 
+   3.671643376998763*^9, 3.67164341006549*^9, 3.671643535189025*^9, 
+   3.6716435678265257`*^9, 3.6716437422140007`*^9, 3.671644035529813*^9, 
+   3.671644174585322*^9, {3.671644325101212*^9, 3.671644345329699*^9}, {
+   3.6716458046459417`*^9, 3.6716458354419937`*^9}, {3.671647313814467*^9, 
+   3.671647322714816*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookFileName", "[", 
+      RowBox[{"EvaluationNotebook", "[", "]"}], "]"}], "<>", "\"\<.pdf\>\""}],
+     ",", " ", 
+    RowBox[{"EvaluationNotebook", "[", "]"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.6716437569811783`*^9, 3.671643824510078*^9}, {
+  3.671643966506459*^9, 3.671644051585478*^9}}]
+},
+WindowSize->{808, 690},
+WindowMargins->{{312, Automatic}, {37, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1516, 41, 212, "Input"],
+Cell[2099, 65, 634, 18, 48, "Output"],
+Cell[2736, 85, 284, 6, 46, "Output"],
+Cell[3023, 93, 253, 5, 46, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3313, 103, 4863, 128, 428, "Input"],
+Cell[8179, 233, 1271, 40, 50, "Output"],
+Cell[9453, 275, 429, 12, 50, "Output"],
+Cell[9885, 289, 413, 12, 51, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10335, 306, 4390, 114, 388, "Input"],
+Cell[14728, 422, 2080, 57, 90, "Output"],
+Cell[16811, 481, 806, 16, 50, "Output"],
+Cell[17620, 499, 921, 20, 51, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18578, 524, 4384, 116, 393, "Input"],
+Cell[22965, 642, 1163, 26, 49, "Output"],
+Cell[24131, 670, 929, 17, 50, "Output"],
+Cell[25063, 689, 982, 21, 53, "Output"]
+}, Open  ]],
+Cell[26060, 713, 397, 10, 28, "Input"]
+}
+]
+*)
+
