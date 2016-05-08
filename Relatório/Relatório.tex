@@ -695,6 +695,26 @@ Como o próprio nome sugere, esses amplificadores têm em sua saída um resultad
 \noindent
 onde nota-se que o sinal de saída trabalha de forma exponencial com a tensão de entrada, não cabendo a sua aplicação para linearização de sistemas com respostas na forma exponencial, como o caso do NTC.
 
+\subsection{Circuito de Compensação}
+
+O circuito apresentado na Figura \ref{fig:ckt-compensador} tem o seguinte funcionamento: o AmpOp 1 funciona como um simples seguidor de tensão (\textit{buffer} da tensão de entrada $V_{in}$; o AmpOp 2 também funciona como um \textit{buffer}, porém de uma tensão estipulada pelo divisor de tensão regulado pelo diodo zener de $5.6V$, o resistor de $10k\Omega$ e o potenciômetro de $2k\Omega$; o AmpOp 3 está na configuração \textit{Amplificador Subtrator}, na qual apresenta na saída a diferença entre os valores apresentados na saída dos outros dois AmpOps, multiplicado por um fator relacionado com os resistores de $5k\Omega$ e de $142.86k\Omega$.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{ckt_compensacao.jpg}
+\caption{Modelo elétrico de circuito compensador}
+\text{Fonte: Balbinot, A., Roteiro Lab 04 - Instrumentação A, 2016/1}
+\label{fig:ckt-compensador}
+\end{figure}
+
+Calculando-se o divisor resistivo da entrada do AmpOp 2, para uma tensão de $0.7V$ na entrada não-inversora, é necessário que o potenciômetro esteja com $R=1.428k\Omega$. Assim estabelecido, a tensão de saída do circuito é dada por:
+
+\begin{equation}
+	V_{out}=\frac{142.86k\Omega}{5k\Omega}.(0.7V-V_{in})=28.57(0.7V-V_{in})
+	\label{eq:ckt-compensador-saida}
+\end{equation}
+
+Esse tipo de circuito pode ser utilizado como um circuito compensador para o caso de sensores \todo{verificar a aplicação desse compensador}
 
 
 \chapter{Resultados e Discussões}
