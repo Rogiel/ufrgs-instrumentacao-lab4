@@ -609,6 +609,94 @@ A finalidade dos resistores $R_a$ e $R_6$ é fazer a regulagem do ganho do siste
 
 Embora seja possível construir um amplificador de instrumentação utilizando peças discretas o casamento de resistências elétricas é muito difícil pois resistores de baixa tolerância são difíceis de encontrar ou muito custosos. Para tanto, é comum utilizar amplificadores comerciais e encapsulados onde os resistores são ajustados à laser\cite{wikipedia-ia}, para que haja o casamento de resistências, o que implica que o $CMRR$ seja muito mais baixo que um mesmo amplificador de instrumentação discreto.
 
+\subsection{Uso de amplificadores para linearização}
+
+Como já verificado, alguns sensores apresentam suas funções de transferência de forma não-linear, como é o caso do NTC, que apresenta uma função de transferência com saída exponencial. Para esses casos, uma boa opção de linearização é o uso de circuitos que apliquem funções inversas às dos sensores. Para sensores que apresentam respostas exponenciais, sua função inversa é a logarítmica.
+
+A Figura \ref{fig:amplificador-logaritmico} apresenta duas topologias de montagem de um Amplificador Logarítmico (\textit{AmpLog}). Em (a) verifica-se um \textit{AmpLog Diodo}, e em (b) um \textit{AmpLog Transdiodo}. 
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{amp_log.jpg}
+\caption{Modelo elétrico de amplificadores logarítmicos. (a) AmpLog Diodo. (b) AmpLog Transdiodo}
+\text{Fonte: Balbinot, A., Roteiro Lab 04 - Instrumentação A, 2016/1}
+\label{fig:amplificador-logaritmico}
+\end{figure}
+
+Analisando o circuito do AmpLog Diodo, toma-se atenção para o funcionamento do diodo semicondutor. A Equação \ref{eq:corrente-diodo} apresenta a equação básica para a corrente $I_D$ através do diodo.
+
+\begin{equation}
+	I_D=I_S.(e^{\frac{q V_D}{K T}}-1)
+	\label{eq:corrente-diodo}
+\end{equation}
+
+\noindent
+onde $I_S$ é a corrente de saturação do diodo, $V_D$ é a tensão direta através do diodo, $q$ é a carga eletrônica, $K$ é a constante de Boltzmann e $T$ é a temperatura absoluta.
+
+Por meio de manipulações algébricas, tem-se o valor da tensão sobre o diodo, em função das correntes, conforme a Equação \ref{eq:tensao-diodo}.
+
+\begin{equation}
+	V_D= -\frac{KT}{q} ln\left ( \frac{I_D}{I_S} \right )
+	\label{eq:tensao-diodo}
+\end{equation}
+
+Como $I_D=I_1$, sendo $I_1$ a corrente que circula pelo resistor $R_1$, com $I_1=\frac{V_{in}}{R_1}$, a tensão de saída do AmpLog é a tensão sobre o diodo, que é dada por:
+
+\begin{equation}
+	V_{out}= -\frac{KT}{q} ln\left ( \frac{V_{in}}{R_1 I_S} \right )
+	\label{eq:amplog-diodo-saida}
+\end{equation}
+
+Verificando a Equação \ref{eq:amplog-diodo-saida}, percebe-se que o sinal de entrada $V_{in}$ encontra-se dentro do logarítmo neperiano ($ln$). Assim sendo, se esse sinal for na forma exponencial, as funções inversas se anularão e o resultado estará linearizado. Cabe aqui também ressaltar que o sinal de entrada $V_{in}$ deverá ser sempre positivo para existir a condição de corrente circulando no diodo.
+
+Para o caso do circuito AmpLog Transdiodo (Figura \ref{fig:amplificador-logaritmico} (b)), a tensão $V_{in}$ de entrada é convertida por $R_1$ em corrente, a qual flui através do coletor do transistor, modulando a tensão base-emissor ($V_{BE}$) de acordo com a tensão de entrada. O AmpOp força a tensão de coletor para a tensão da entrada não-inversora ($0V$). Na análise da corrente de coletor, tem-se:
+
+\begin{equation}
+	I_c=I_s(e^{\frac{q V_{BE}}{KT}}-1)=I_s(e^{\frac{V_{BE}}{V_T}}-1)\approx I_s(e^{\frac{V_{BE}}{V_T}})
+	\label{eq:amplog-transdiodo-corrente}
+\end{equation}
+
+\noindent
+onde $V_T=\frac{KT}{q}$, que é a tensão térmica, $I_c$ é a corrente de coletor, $I_s$ é a corrente de saturação e $V_{BE}$ é a tensão base-emissor do transistor.
+
+Resolvendo a Equação \ref{eq:amplog-transdiodo-corrente} para a tensão base-emissor, tem-se:
+
+\begin{equation}
+	V_{BE}=V_T.ln \left ( \frac{I_c}{I_s} \right )
+	\label{eq:amplog-transdiodo-tensao}
+\end{equation}
+
+Como $I_c=I_1$, sendo $I_1$ a corrente que circula pelo resistor $R_1$, com $I_1=\frac{V_{in}}{R_1}$, a tensão de saída do AmpLog é $-V_{BE}$, isto é:
+
+\begin{equation}
+	V_{out}= -V_T ln\left ( \frac{V_{in}}{R_1 I_s} \right )
+	\label{eq:amplog-transdiodo-saida}
+\end{equation}
+
+Nota-se que os dois modelos de AmpLogs apresentados têm suas saídas muito semelhantes, ocorrendo a linearização da tensão elétrica de entrada exponencial.
+
+A Figura \ref{fig:amplificador-antilogaritmico} apresenta diagramas muito semelhantes aos da Figura \ref{fig:amplificador-logaritmico}, porém com o diodo e o transistor na posição onde anteriormente estava o resitor $R_1$. Em (a), tem-se então um \textit{Amplificador Anti-Logarítmico Diodo}, e em (b) tem-se um \textit{Amplificador Anti-Logarítmico Transdiodo}, ambos também conhecidos por \textit{AmpALog} ou \textit{Amplificador Exponencial}.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=\textwidth]{amp_alog.jpg}
+\caption{Modelo elétrico de amplificadores anti-logarítmicos. (a) AmpALog Diodo. (b) AmpALog Transdiodo}
+\text{Fonte: Balbinot, A., Roteiro Lab 04 - Instrumentação A, 2016/1}
+\label{fig:amplificador-antilogaritmico}
+\end{figure}
+
+Como o próprio nome sugere, esses amplificadores têm em sua saída um resultado com função exponencial (ou anti-logarítmica). Sendo assim, analisando os circuitos, chega-se à seguinte expressão de saída:
+
+\begin{equation}
+	V_{out}=I_s R_1.e^\frac{-V_{in}}{V_T}
+	\label{eq:ampalog-transdiodo-saida}
+\end{equation}
+
+\noindent
+onde nota-se que o sinal de saída trabalha de forma exponencial com a tensão de entrada, não cabendo a sua aplicação para linearização de sistemas com respostas na forma exponencial, como o caso do NTC.
+
+
+
 \chapter{Resultados e Discussões}
 \section{Sensor de temperatura baseado em Pt100}
 Com base na metodologia apresentada na seção \ref{ch:pt100} da Metodologia Experimental, foram levantadas os valores da resistência elétrica para o sensor Pt100, na faixa especificada, com 2 amostras por temperatura. Os resultados são observados da Tabela \ref{tab:amostras-pt100}, que mostra também uma coluna com o valor médio para cada temperatura, com base nas duas medições. O multímetro foi utilizado na escala de resistência elétrica, para a faixa de 200 $\Omega$, e possui precisão e resolução conforme apresenta da Tabela \ref{tab:precisao-multimetro}.
