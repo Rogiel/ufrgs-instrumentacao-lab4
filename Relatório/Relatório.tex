@@ -1,5 +1,7 @@
 \documentclass[a4paper]{instrumentacao}
 
+\usepackage[brazil]{babel}
+
 \usepackage{listings}
 \usepackage{etoolbox}
 \usepackage{graphicx}
@@ -13,8 +15,7 @@
 	{../Resources/MATLAB/images/}
 }
 
-%todo colocar um titulo "criativo"
-\title{Sobre sensores Pt100 e NTC}
+\title{Calibração e criação de termômetros baseado em efeito termoresistivo utilizando Pt100 e NTC}
 \author{Rogiel Sulzbach \and Rodrigo de Castro Silveira \and Yi Chen Wu}
 \startdate{11/04/2016}
 \finishdate{09/05/2016}
@@ -23,10 +24,12 @@
 	\emailaddress{R.C.S.}{csilveira.rodrigo@gmail.com} e
 	\emailaddress{Y.C.}{yichenpoa@gmail.com}
 }
-\resume{Com o uso de sensores termoresistores, Pt100 e NTC, foram montados termômetros experimentais. Para isso, foram feitas amostras em diversas temperaturas para poder levantar as suas funções de transferência simplificadas, de forma direta e por meio de circuitos condicionadores. Para o NTC, que apresenta forma não linear, foi também efetuado uma linearização. São apresentadas e discutidas algumas opções de circuitos condicionadores, linearizadores e amplificadores de instrumentação, que são estruturas muito úteis no trabalho de termometria.}
-\abstract{With the use of resistance thermometers sensors, Pt100 and NTC, were assembled experimental thermometers. For this, samples were taken at different temperatures in order to raise their simplified transfer functions, directly and through conditioning circuits. For the NTC, which has non-linear manner, linearization was also made. They are presented and discussed some options conditioners circuits, linearizators and instrumentation amplifiers, which are very useful structures in the work of thermometry.\todo{tradução automática... verificar ajustes}} 
-\keywords{Linearização, NTC, Ponte de Wheatstone, Pt100, Temperatura, Termistor, Termometria}
-\institute{Universidade Federal do Rio Grande do Sul, Departamento de Engenharia Elétrica, Curso de Engenharia Elétrica, Instrumentação A, Profs. Dr. Alexandre Balbinot e Dra. Léia Bagesteiro}
+
+\resume{Com o uso de sensores termoresistores, Pt100 e NTC, foram montados termômetros experimentais. Para isso, foram feitas amostras em diversas temperaturas para poder levantar as suas funções de transferência simplificadas, de forma direta e por meio de circuitos condicionadores. Para o NTC, que apresenta função de transferência não linear, um circuito de linearização foi feito. São apresentadas e discutidas algumas opções de circuitos condicionadores, linearizadores e topologias de amplificadores para instrumentação, que são estruturas muito úteis no trabalho de termometria. Foi possível observar a linearidade do sensor Pt100 bem como observar os efeitos do circuito de linearização no NTC, em especial o baixo erro de linearidade obtido no processo com $R^2$ de $0,9998$. Também foi realizada a análise temporal da resposta do NTC quando posto em choque térmico, observou-se que o tempo de resposta do sensor é alto, com pelo menos 20 segundos até atingir a estabilidade, fato que inviabilizaria sua aplicação em sistemas que necessitem alta precisão temporal das medidas ou medidas com altas frequências.}
+\abstract{With the use of thermoresistors sensors, Pt100 and NTC, were assembled experimental thermometers. For this, samples were taken at different temperatures in order to raise their simplified transfer functions, directly and through conditioning circuits. For the NTC, which has a non-linear transfer function, a linearization circuit was also built. There are discussions regarding some conditioning circuit options, linearizators and instrumentation amplifiers topologies, which are very useful structures in the work of thermometry. It was also observed the linearity of the Pt100 sensor and observe the effects of linearization circuit in the NTC, in particular the low linearity error obtained in the process with $R ^ 2$ of $0.9998$. Was also carried out a temporal analysis of the NTC response when brought into thermal shock, it was observed that the sensor response time is high, at least 20 seconds to reach stability, a fact which would hamper its use in systems requiring high precision time of the measures or high frequency measurements.} 
+\keywords{amplificador operacional, compensador, linearização, NTC, ponte de Wheatstone, Pt100, sensor, temperatura, termoresistor, termometria}
+\institute{Universidade Federal do Rio Grande do Sul, Departamento de Engenharia Elétrica, Curso de Engenharia Elétrica, Instrumentação A, Prof. Dr. Alexandre Balbinot}
+
 
 \headertext{Termometria}
 
@@ -722,8 +725,7 @@ Calculando-se o divisor resistivo da entrada do AmpOp 2, para uma tensão de $0.
 	\label{eq:ckt-compensador-saida}
 \end{equation}
 
-Esse tipo de circuito pode ser utilizado como um circuito compensador para o caso de sensores \todo{verificar a aplicação desse compensador}
-
+Esse tipo de circuito pode ser utilizado como um circuito compensador para medidas à 3 fios, onde se deseja minimizar o impacto do fio conectado ao sensor mas se paga um preço em um \textit{offset} da medida. Este \textit{offset} pode ser compensado ajustando cuidadosamente a compensação do circuito.
 
 \chapter{Resultados e Discussões}
 \section{Sensor de temperatura baseado em Pt100}
@@ -920,40 +922,38 @@ Na Tabela \ref{tab:amostras-ntc}, estão apresentados os valores de resistência
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Temp. ($ºC$)} & \textbf{Medida 1 ($\Omega$)} & \textbf{Medida 2 ($\Omega$)} & \textbf{Escala} \\ \hline
- 16 & 3340 & 3330 & \textit{Auto-scale} \\ \hline
- 18 & 3000 & 3000 & \textit{Auto-scale} \\ \hline
- 20 & 2810 & 2770 & \textit{Auto-scale} \\ \hline
- 22 & 2590 & 2530 & \textit{Auto-scale} \\ \hline
- 24 & 2380 & 2400 & \textit{Auto-scale} \\ \hline
- 26 & 2180 & 2160 & \textit{Auto-scale} \\ \hline
- 28 & 1990 & 1970 & \textit{Auto-scale} \\ \hline
- 30 & 1790 & 1770 & \textit{Auto-scale} \\ \hline
- 32 & 1650 & 1640 & \textit{Auto-scale} \\ \hline
- 34 & 1540 & 1520 & \textit{Auto-scale} \\ \hline
- 36 & 1360 & 1380 & \textit{Auto-scale} \\ \hline
- 38 & 1310 & 1300 & \textit{Auto-scale} \\ \hline
- 40 & 1210 & 1180 & \textit{Auto-scale} \\ \hline
- 42 & 1110 & 1090 & \textit{Auto-scale} \\ \hline
- 44 & 1020 & 990 & \textit{Auto-scale} \\ \hline
- 46 & 950 & 930 & \textit{Auto-scale} \\ \hline
- 48 & 860 & 880 & \textit{Auto-scale} \\ \hline
- 50 & 810 & 790 & \textit{Auto-scale} \\ \hline
- 52 & 740 & 740 & \textit{Auto-scale} \\ \hline
- 54 & 690 & 680 & \textit{Auto-scale} \\ \hline
- 56 & 630 & 630 & \textit{Auto-scale} \\ \hline
- 58 & 580 & 580 & \textit{Auto-scale} \\ \hline
- 60 & 560 & 550 & \textit{Auto-scale} \\ \hline
- 62 & 520 & 510 & \textit{Auto-scale} \\ \hline
- 64 & 470 & 480 & \textit{Auto-scale} \\ \hline
- 66 & 460 & 440 & \textit{Auto-scale} \\ \hline
- 68 & 420 & 420 & \textit{Auto-scale} \\ \hline
- 70 & 380 & 380 & \textit{Auto-scale} \\ \hline
- 72 & 360 & 360 & \textit{Auto-scale} \\ \hline
- 74 & 340 & 330 & \textit{Auto-scale} \\ \hline
+ 16 & 3340 & 3330 & \textit{4.000 $k\Omega$} \\ \hline
+ 18 & 3000 & 3000 & \textit{4.000 $k\Omega$} \\ \hline
+ 20 & 2810 & 2770 & \textit{4.000 $k\Omega$} \\ \hline
+ 22 & 2590 & 2530 & \textit{4.000 $k\Omega$} \\ \hline
+ 24 & 2380 & 2400 & \textit{4.000 $k\Omega$} \\ \hline
+ 26 & 2180 & 2160 & \textit{4.000 $k\Omega$} \\ \hline
+ 28 & 1990 & 1970 & \textit{4.000 $k\Omega$} \\ \hline
+ 30 & 1790 & 1770 & \textit{4.000 $k\Omega$} \\ \hline
+ 32 & 1650 & 1640 & \textit{4.000 $k\Omega$} \\ \hline
+ 34 & 1540 & 1520 & \textit{4.000 $k\Omega$} \\ \hline
+ 36 & 1360 & 1380 & \textit{4.000 $k\Omega$} \\ \hline
+ 38 & 1310 & 1300 & \textit{4.000 $k\Omega$} \\ \hline
+ 40 & 1210 & 1180 & \textit{4.000 $k\Omega$} \\ \hline
+ 42 & 1110 & 1090 & \textit{4.000 $k\Omega$} \\ \hline
+ 44 & 1020 & 990 & \textit{4.000 $k\Omega$} \\ \hline
+ 46 & 950 & 930 & \textit{4.000 $k\Omega$} \\ \hline
+ 48 & 860 & 880 & \textit{4.000 $k\Omega$} \\ \hline
+ 50 & 810 & 790 & \textit{4.000 $k\Omega$} \\ \hline
+ 52 & 740 & 740 & \textit{4.000 $k\Omega$} \\ \hline
+ 54 & 690 & 680 & \textit{4.000 $k\Omega$} \\ \hline
+ 56 & 630 & 630 & \textit{4.000 $k\Omega$} \\ \hline
+ 58 & 580 & 580 & \textit{4.000 $k\Omega$} \\ \hline
+ 60 & 560 & 550 & \textit{4.000 $k\Omega$} \\ \hline
+ 62 & 520 & 510 & \textit{4.000 $k\Omega$} \\ \hline
+ 64 & 470 & 480 & \textit{4.000 $k\Omega$} \\ \hline
+ 66 & 460 & 440 & \textit{4.000 $k\Omega$} \\ \hline
+ 68 & 420 & 420 & \textit{4.000 $k\Omega$} \\ \hline
+ 70 & 380.1 & 380.1 & \textit{400.0 $\Omega$} \\ \hline
+ 72 & 360.6 & 360.8 & \textit{400.0 $\Omega$} \\ \hline
+ 74 & 340.4 & 330.6 & \textit{400.0 $\Omega$} \\ \hline
 \end{tabular}
 \end{table}
-
-\todo{arrumar as escalas aqui}
 
 Na figura \ref{fig:ntc-medidas} está apresentado um gráfico de pontos onde cada ponto corresponde à uma medida realizada experimentalmente.
 
@@ -1119,9 +1119,6 @@ Nesta atividade de laboratório foi feito o levantamento da curva experimental d
 O experimento do NTC foi mais interessante, nele foi extraída a função de transferência de resistência elétrica sensor de resistência elétrica e foi confirmado o esperado pela teoria: sua resposta é exponencial para a variação de temperatura. Visto este fato, é possível realizar uma operação de linearização, nela o comportamento do resistor é aproximado a da função $1/x$ que tem um comportamento muito semelhante à função exponencial dentro de um pequeno intervalo. Este comportamento é obtido de forma eletrônica através de um resistor em paralelo com o sensor. Conforme constatado, a curva teve na linearização um erro de linearidade muito melhor do esperado na ordem de $0.999$. Logo, o método de linearização proposto foi bem sucedido e mostra que, embora o comportamento do sensor seja exponencial e portanto não-linear, é um sensor bem comportado. Isto é, utilizando uma simples aproximação é possível obter retas que aproximam muito bem o comportamento equivalente linear do sensor.
 
 Na análise do regime transitório do sensor foi constado que o NTC possui um tempo de estabilização bastante elevado, onde aplicações que se necessita de controle de temperatura em frequências acima de 0.1Hz o sensor é impróprio, uma vez que o sensor necessita ao mínimo 10 segundos até atingir a estabilidade mesmo com variações de temperatura inferiores à $20ºC$. Contudo, para aplicações onde não se tem altas variações de temperatura tal como medidas temporais de temperatura ambiente ou controle de temperatura de fornos, o NTC pode ser uma boa alternativa pois nestas aplicações variações bruscas de temperatura são muito improváveis. Em especial no caso de um sistema de controle de temperatura é possível que a inércia térmica da planta sistema a ser controlado seja muito superior a inércia do sensor, implicando que a inércia do sensor possa ser desprezada caso não seja necessária alta resolução temporal de temperatura.
-
-
-\todo{lembrar as escalas dos multímetros, é importante mesmo. é a primeira coisa que ele enche o saco}
 
 \newpage
 \begin{thebibliography}{9}
