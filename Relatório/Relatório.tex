@@ -895,6 +895,19 @@ Aplicando-se a definição de sensibilidade de um sistema, para o corrente exper
 
 O valor verificado na Equação \ref{eq:pt100-ponte-sensibilidade} difere do valor calculado na Equação \ref{eq:ponte-wheatstone-pt100-sensibilidade-valor} em função das incertezas nas medidas das amostras, erro de linearidade contido nas regressões e outras incertezas inclusas no processo.
 
+Na Figura \ref{fig:sensibilidade-normalizada} pode-se verificar o gráfico relacionando a Sensibilidade Normalizada com a razão de resistências da ponte ($r$). Nota-se que o valor de $r$ que possui uma maior sensibilidade, $0.25$, é com $r=1$. Para o experimento realizado, optou-se por apresentar um erro de linearidade menor e perder na sensibilidade. Essa é uma escolha que deve ser feita com base na aplicação do sensor. A Equação \ref{eq:sensibilidade-normalizada} mostra o valor da sensibilidade normalizada para o experimento realizado.
+
+\begin{equation}
+	\frac{S_{LV}}{V\alpha}=\frac{r}{(r+1)^2}=\frac{22.74}{(22.74+1)^2}=0.04
+	\label{eq:sensibilidade-normalizada}
+\end{equation}
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.8\textwidth]{NormalizedSensibility.pdf}
+\caption{Gráfico da Sensibilidade Normalizada em função da razão característica da Ponte de Wheatstone do experimento.}
+\label{fig:sensibilidade-normalizada}
+\end{figure}
 
 \section{Sensor de temperatura baseado em NTC}
 
