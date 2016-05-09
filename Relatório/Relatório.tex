@@ -35,8 +35,7 @@
 
 \maketitle
 
-\todo{Tarefa para Casa: para o experimento anterior (item ix) elaborar um gráfico relacionando a Sensibilidade Normalizada como a razão de resistências da ponte - consultar Notas de Aula 03A}
-\todo{d. Apresentar a Cadeia de Medida elaborada para este medidor de temperatura baseado em um NTC elaborado pelo grupo}
+
 \todo{i. criar uma tabela registrando a saída de tensão da ponte como função da temperatura. Calcular a sensibilidade em mv/C da ponte desenvolvida}
 \todo{ii. usar a equação da ponte para calcular a resistência do termistor como uma função da temperatura. Tabular seus dados e resultados. Plotar um gráfico resistência versus temperatura (em Kelvin) e estimar o valor para o (utilizar conceitos de Estatística)}
 
@@ -179,7 +178,7 @@ A cadeia de medidas deste experimento é dada pela Figura \ref{fig:ntc-cadeia-me
 
 \begin{figure}[H]
 \center
-\includegraphics[width=0.7\textwidth]{CadeiaMedidas.pdf}
+\includegraphics[width=0.5\textwidth]{cadeia_medidas_pt100.jpg}
 \caption{Cadeia de medidas para o sensor NTC}
 \label{fig:ntc-cadeia-medidas}
 \end{figure}
@@ -990,6 +989,15 @@ A título de comparação entre a função de transferência ajustada e os ponto
 \label{fig:ntc-experimental-comparacao}
 \end{figure}
 
+Na Figura \ref{fig:ntc-cadeia-medidas} verifica-se a cadeia de medidas experimental do sensor NTC. Os valores da segunda etapa da cadeia referem-se aos valores obtidos por meio da Equação \ref{eq:ntc-experimental}, utilizando os valores máximos e mínimos da primeira etapa.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.8\textwidth]{cadeia_medidas_ntc.jpg}
+\caption{Cadeia de medidas experimental do NTC não-linearizado}
+\label{fig:ntc-cadeia-medidas}
+\end{figure}
+
 Para realizar a linearização do NTC, foi escolhido o intervalo de 18ºC até 44ºC para linearizar através do método à 3 pontos equidistantes conforme explicado no capítulo de Metodologia Experimental, página \pageref{sec:ntc-linearizacao}.
 
 Para tanto, foram feitas 3 medidas em 3 pontos, nos dois extremos (18 e 44 ºC) e no ponto médio (32 ºC). A Tabela \ref{tab:ntc-linearizado} apresenta os valores de tensão elétrica medida na saída da ponte com o sensor linearizado conectado.
@@ -1038,6 +1046,15 @@ A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:ntc-lineariza
 \end{equation}
 
 \noindent onde $V(T)$ é a tensão elétrica (em mV) de saída da ponte em função da temperatura $T$ em ºC.
+
+A Figura \ref{fig:ntc-cadeia-medidas-linearizado} mostra a cadeias de medidas experimental do sistema montado para a linearização da função de transferência do sensor NTC. Na segunda etapa da cadeia, foi utilizada a Equação \ref{eq:ntc-linearizado}, tendo como dados de entrada os valores máximo e mínimo da primeira etapa.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.8\textwidth]{cadeia_medidas_ntc_linearizado.jpg}
+\caption{Cadeia de medidas experimental do NTC linearizado}
+\label{fig:ntc-cadeia-medidas-linearizado}
+\end{figure}
 
 Com a função de transferência linearizada do NTC na ponte de Wheatstone e utilizando o programa do LabVIEW desenvolvido, é possível extrair curvas da resposta temporal do sensor quando a temperatura a qual ele está submetido é variada bruscamente, isto é, quando é dado um choque térmico no sensor.
 
