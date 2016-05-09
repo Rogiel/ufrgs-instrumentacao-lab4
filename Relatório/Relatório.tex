@@ -23,9 +23,9 @@
 	\emailaddress{R.C.S.}{csilveira.rodrigo@gmail.com} e
 	\emailaddress{Y.C.}{yichenpoa@gmail.com}
 }
-\resume{}
-\abstract{}
-\keywords{}
+\resume{Com o uso de sensores termoresistores, Pt100 e NTC, foram montados termômetros experimentais. Para isso, foram feitas amostras em diversas temperaturas para poder levantar as suas funções de transferência simplificadas, de forma direta e por meio de circuitos condicionadores. Para o NTC, que apresenta forma não linear, foi também efetuado uma linearização. São apresentadas e discutidas algumas opções de circuitos condicionadores, linearizadores e amplificadores de instrumentação, que são estruturas muito úteis no trabalho de termometria.}
+\abstract{With the use of resistance thermometers sensors, Pt100 and NTC, were assembled experimental thermometers. For this, samples were taken at different temperatures in order to raise their simplified transfer functions, directly and through conditioning circuits. For the NTC, which has non-linear manner, linearization was also made. They are presented and discussed some options conditioners circuits, linearizators and instrumentation amplifiers, which are very useful structures in the work of thermometry.\todo{tradução automática... verificar ajustes}} 
+\keywords{Amplificador Operacional, Compensador, Linearização, NTC, Ponte de Wheatstone, Pt100, Sensor, Temperatura, Termistor, Termometria}
 \institute{Universidade Federal do Rio Grande do Sul, Departamento de Engenharia Elétrica, Curso de Engenharia Elétrica, Instrumentação A, Profs. Dr. Alexandre Balbinot e Dra. Léia Bagesteiro}
 
 \headertext{Termometria}
@@ -48,6 +48,8 @@ A temperatura é uma grandeza associada à energia cinética média das molécul
 \end{itemize}
 
 Estas propriedades podem ser usadas para criar um instrumento capaz de medir a temperatura de um corpo, colocando um desses tipos de material em contato com o corpo.
+
+No trabalho a seguir serão verificados e discutidos algumas estruturas (circuitos) muito usuais e funcionais para o trabalho de termometria, tais como circuitos condicionadores, linearizadores, compensadores e amplificadores de instrumentação, bem como a montagem de termômetros experimentais, verificando as suas funções de transferência simplificadas, realizando amostragens de forma direta no sensor ou por meio de circuitos condicionadores e, para o caso do NTC, um circuito linearizador.
 
 \chapter{Metodologia Experimental}
 
@@ -97,8 +99,6 @@ Para estimar a função de transferência experimental do termoresistor, projeto
 \noindent
 onde $R$ é um termoresistor Pt100, $T$ é a temperatura da água dentro do copo de Béquer, e o instrumento $\Omega$ é um ohmímetro.
 
-As medidas foram feitas de forma aleatória e com 2 repetições por célula. Após a extração dos resultados, fez-se o ajuste de curvas e obteve-se a função de transferência experimental do termoresistor.
-
 Com o copo de Béquer preenchido com água até a metade para que o processo de aquecimento não levasse muito tempo e nem que fosse necessário aguardar o aquecimento de um grande volume de água nem resfriar o mesmo. Uma vez que a temperatura da agua estivesse ajustada na temperatura desejada, o valor de resistência elétrica correspondente mostrado no multímetro foi anotado.
 
 Para fazer o ajuste de temperatura da água até a temperatura de interesse foram utilizadas 2 práticas: o uso de um aquecedor elétrico para elevar a temperatura e adição de água gelada para abaixar a temperatura. Isto é, caso a temperatura de interesse estivesse acima da temperatura atual da água, um aquecedor elétrico foi utilizado para elevar a temperatura e comparar utilizando um termômetro comercial de referência e caso a temperatura de interesse estivesse abaixo da temperatura atual da água, uma pequena porção de água gelada foi adicionada ao copo até que a temperatura de desejo fosse obtida.
@@ -106,6 +106,8 @@ Para fazer o ajuste de temperatura da água até a temperatura de interesse fora
 O termômetro comercial utilizado não possuía identificação com nome do fabricante mas informa que tem resolução de 0.1ºC dentro do intervalo de interesse com incerteza de 1ºC. Acredita-se (este fator não foi testado) que o termômetro faz uso de uma média móvel com janela entre 20 e 30 segundos devido ao tempo de resposta perceptível do termômetro durante a execução do experimento. Devido a isto, aguardava-se para que o valor mostrado no \textit{display} da referência estivesse, por, pelo menos, 10 segundos num valor estável.
 
 Enquanto o aquecedor estava ligado ou logo após a adição de água gelada, com uma colher de plástico, a água era agitada para que a temperatura fosse homogeneizada por todo volume. Também foi tomado o devido cuidado para que o nem sensor nem o termômetro de referência ficassem muito próximos do aquecedor que poderia causar danos à eles ou provocar erros sistemáticos de medida devido ao super aquecimento interno nos componentes que não pudessem ser facilmente dissipados na duração do experimento.
+
+As medidas foram feitas de forma aleatória e com 2 repetições por célula. Após a extração dos resultados, fez-se o ajuste de curvas e obteve-se a função de transferência experimental do termoresistor.
 
 Como \textit{ohmímetro} foi utilizado um multímetro digital da Minipa, modelo ET-2082b, que possui as especificações de precisão conforme é apresentada na Tabela \ref{tab:precisao-multimetro}. 
 
@@ -126,8 +128,15 @@ Como \textit{ohmímetro} foi utilizado um multímetro digital da Minipa, modelo 
 \end{tabular}
 \end{table}
 
+A cadeia de medidas deste experimento é dada pela Figura \ref{fig:pt100-cadeia-medidas}:
 
-\todo{resto do experimento do pt100}
+\begin{figure}[H]
+\center
+\includegraphics[width=0.5\textwidth]{cadeia_medidas_pt100.jpg}
+\caption{Cadeia de medidas para o sensor Pt100}
+\label{fig:pt100-cadeia-medidas}
+\end{figure}
+
 
 \section{Sensor de temperatura baseado em NTC}
 \label{ch:ntc}
@@ -228,8 +237,6 @@ A razão característica da ponte de Wheatstone é definida de acordo com a Equa
 \noindent onde $R_1$ e $R_3$ são resistores do braço superior da ponte e $R_2=R_0$ é o valor de resistência elétrica de equilíbrio da ponte (valor de resistência em que a saída é zero).
 
 
-\todo{falar sobre o erro de linearidade e senbilidade de projeto}
-
 No experimento realizado, primeiramente se verificou a resistência elétrica para a temperatura média da faixa escolhida, sendo de $118 \Omega @ 46ºC$, de acordo com amostras realizadas com o sensor Pt100.
 
 Foi escolhido um \textit{Erro de Linearidade} de $0,5\%$, ou $0,005$. Nota-se ainda um valor de $\Delta T$ de $30ºC$, tomando-se por base a temperatura $T_0$ de $46ºC$. De posse desses dados, aplicando a Equação \ref{eq:ponte-wheatstone-pt100-erro}, encontra-se o valor de $r$, sendo:
@@ -263,9 +270,9 @@ Na Tabela \ref{tab:pt100-ponte-resistores} estão apresentados os valores de res
 \label{tab:pt100-ponte-resistores}
 \begin{tabular}{|c|c|c|}
 \hline
-	\textbf{Resistor} 	& \textbf{Valor nominal ($\Omega$)} 	& \textbf{Tolerância ($\Omega$)} 	\\ \hline
+	\textbf{Resistor} 	& \textbf{Valor nominal ($\Omega$)} 	& \textbf{Tolerância (\%)} 	\\ \hline
 	$R_1$				& 2.7$k\Omega$									& 10\%								\\ \hline
-	$R_2$				& 118									& 10\%								\\ \hline
+	$R_2$				& 118$\Omega$									& 10\%								\\ \hline
 	$R_3$				& 2.7$k\Omega$									& 10\%								\\ \hline
 \end{tabular}
 \end{table}
@@ -287,7 +294,8 @@ Com esta configuração, e uma alimentação de $5V \pm 0.2V$ fornecida por um r
 \end{tabular}
 \end{table}
 
-Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
+\todo{Não foi adquirido dados para o Pt100}
+%Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
 
 \subsection{Linearização do NTC}
 \label{sec:ntc-linearizacao}
@@ -697,7 +705,7 @@ onde nota-se que o sinal de saída trabalha de forma exponencial com a tensão d
 
 \subsection{Circuito de Compensação}
 
-O circuito apresentado na Figura \ref{fig:ckt-compensador} tem o seguinte funcionamento: o AmpOp 1 funciona como um simples seguidor de tensão (\textit{buffer} da tensão de entrada $V_{in}$; o AmpOp 2 também funciona como um \textit{buffer}, porém de uma tensão estipulada pelo divisor de tensão regulado pelo diodo zener de $5.6V$, o resistor de $10k\Omega$ e o potenciômetro de $2k\Omega$; o AmpOp 3 está na configuração \textit{Amplificador Subtrator}, na qual apresenta na saída a diferença entre os valores apresentados na saída dos outros dois AmpOps, multiplicado por um fator relacionado com os resistores de $5k\Omega$ e de $142.86k\Omega$.
+O circuito apresentado na Figura \ref{fig:ckt-compensador} tem o seguinte funcionamento: o AmpOp 1 funciona como um simples seguidor de tensão (\textit{buffer}) da tensão de entrada $V_{in}$; o AmpOp 2 também funciona como um \textit{buffer}, porém de uma tensão estipulada pelo divisor de tensão regulado pelo diodo zener de $5.6V$, o resistor de $10k\Omega$ e o potenciômetro de $2k\Omega$; o AmpOp 3 está na configuração \textit{Amplificador Subtrator}, na qual apresenta na saída a diferença entre os valores apresentados na saída dos outros dois AmpOps, multiplicado por um fator relacionado com os resistores de $5k\Omega$ e de $142.86k\Omega$.
 
 \begin{figure}[H]
 \center
@@ -867,6 +875,24 @@ A Figura \ref{fig:pt100-amostras-ponte} apresenta o gráfico com as amostras rea
 \caption{Gráfico das amostras experimentais apresentando a variação da tensão elétrica em função da variação da temperatura da água.}
 \label{fig:pt100-amostras-ponte}
 \end{figure}
+
+Na Figura \ref{fig:pt100-cadeia-medidas-ponte} observa-se a  cadeia de medidas experimental do sensor Pt100 na Ponte de Wheatstone, mostrando os valores mínimos e máximos de cada etapa da cadeia: temperatura, em $ºC$, resistência elétrica do sensor, em $\Omega$, e tensão elétrica na Ponte de Wheatstone, em $V$. Os valores de máximos e mínimos da 2ª e da 3ª etapa foram definidos de acordo com as funções de transferência levantadas, aplicadas nos pontos de mínima e máxima temperatura de amostragem.
+
+\begin{figure}[H]
+\center
+\includegraphics[width=0.8\textwidth]{cadeia_medidas_pt100_ponte.jpg}
+\caption{Cadeia de medidas experimentais do Pt100 na Ponte de Wheatstone.}
+\label{fig:pt100-cadeia-medidas-ponte}
+\end{figure}
+
+Aplicando-se a definição de sensibilidade de um sistema, para o corrente experimento tem-se:
+
+\begin{equation}
+	S=\frac{\Delta_{out}}{\Delta_{in}}=\frac{(16.1-(-20.6))V}{(76-18) ºC}=0.633 \frac{V}{ºC}
+	\label{eq:pt100-ponte-sensibilidade}
+\end{equation}
+
+O valor verificado na Equação \ref{eq:pt100-ponte-sensibilidade} difere do valor calculado na Equação \ref{eq:ponte-wheatstone-pt100-sensibilidade-valor} em função das incertezas nas medidas das amostras, erro de linearidade contido nas regressões e outras incertezas inclusas no processo.
 
 
 \section{Sensor de temperatura baseado em NTC}
