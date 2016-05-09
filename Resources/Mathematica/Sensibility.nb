@@ -1,0 +1,641 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25679,        633]
+NotebookOptionsPosition[     25348,        616]
+NotebookOutlinePosition[     25707,        632]
+CellTagsIndexPosition[     25664,        629]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"plot", "=", 
+  RowBox[{"LogLinearPlot", "[", 
+   RowBox[{
+    FractionBox["r", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"r", "+", "1"}], ")"}], "^", "2"}]], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", " ", "0.01", ",", " ", "100"}], "}"}], ",", " ", 
+    RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", " ", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<r\>\"", ",", " ", 
+       FractionBox[
+        SubscriptBox["S", "LV"], "V\[Alpha]"]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+     "\"\<Images/NormalizedSensibility.pdf\>\""}], ",", " ", "plot"}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.671743586681614*^9, 3.671743706276112*^9}, {
+  3.671743737814417*^9, 3.671743767002833*^9}, {3.67174381086102*^9, 
+  3.671743860585477*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+     1.], LineBox[CompressedData["
+1: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
+IDkaGPzf+R4T+f/z/f8Ax58cuw==
+      "]]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"r\"", TraditionalForm], 
+    FormBox[
+     FractionBox[
+      SubscriptBox["S", "LV"], "V\[Alpha]"], TraditionalForm]},
+  AxesOrigin->{-5.065687185790287, Automatic},
+  CoordinatesToolOptions:>{"DisplayFunction" -> ({
+      Exp[
+       Part[#, 1]], 
+      Part[#, 2]}& ), "CopiedValueFunction" -> ({
+      Exp[
+       Part[#, 1]], 
+      Part[#, 2]}& )},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {
+     Charting`ScaledTicks[{Log, Exp}], 
+     Charting`ScaledFrameTicks[{Log, Exp}]}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "ScalingFunctions" -> None},
+  PlotRange->{{-5.065687185790287, 5.065687185790288}, {0.009802962300206297, 
+   0.24999996859377221`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->FrontEndValueCache[{
+     Charting`ScaledTicks[{Log, Exp}], Automatic}, {{{-4.605170185988091, 
+       FormBox["0.01`", TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {-2.3025850929940455`, 
+       FormBox[
+        TagBox[
+         InterpretationBox["\"0.10\"", 0.1, AutoDelete -> True], 
+         NumberForm[#, {
+           DirectedInfinity[1], 2.}]& ], TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {0., 
+       FormBox["1", TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {2.302585092994046, 
+       FormBox["10", TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {4.605170185988092, 
+       FormBox["100", TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {-6.907755278982137, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-6.214608098422191, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-5.809142990314028, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-5.521460917862246, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-5.298317366548036, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-5.115995809754082, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-4.961845129926823, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-4.8283137373023015`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-4.710530701645918, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-3.912023005428146, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-3.506557897319982, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-3.2188758248682006`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-2.995732273553991, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-2.8134107167600364`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-2.659260036932778, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-2.5257286443082556`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-2.4079456086518722`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-1.6094379124341003`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-1.2039728043259361`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-0.916290731874155, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-0.6931471805599453, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-0.5108256237659907, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-0.35667494393873245`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-0.2231435513142097, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {-0.10536051565782628`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {0.6931471805599453, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {1.0986122886681098`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {1.3862943611198906`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {1.6094379124341003`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {1.791759469228055, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {1.9459101490553132`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {2.0794415416798357`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {2.1972245773362196`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {2.995732273553991, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {3.4011973816621555`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {3.6888794541139363`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {3.912023005428146, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {4.0943445622221, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {4.248495242049359, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {4.382026634673881, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {4.499809670330265, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {5.298317366548036, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {5.703782474656201, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {5.991464547107982, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {6.214608098422191, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {6.396929655216146, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {6.551080335043404, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {6.684611727667927, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {6.802394763324311, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {6.907755278982137, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {7.313220387090301, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}, {7.600902459542082, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}]], TraditionalForm], {0.005, 0.}, {
+        AbsoluteThickness[0.1]}}}, Automatic}]]], "Output",
+ CellChangeTimes->{{3.671743608333918*^9, 3.671743634188809*^9}, {
+   3.671743678667569*^9, 3.671743706590836*^9}, {3.671743769463979*^9, 
+   3.671743784955122*^9}, 3.671743815868167*^9, 3.67174386678716*^9}]
+}, Open  ]]
+},
+WindowSize->{808, 870},
+WindowMargins->{{Automatic, 509}, {38, Automatic}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 936, 26, 69, "Input"],
+Cell[1519, 50, 23813, 563, 272, "Output"]
+}, Open  ]]
+}
+]
+*)
+
