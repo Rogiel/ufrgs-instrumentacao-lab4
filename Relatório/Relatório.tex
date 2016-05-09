@@ -57,7 +57,7 @@ No trabalho a seguir serão verificados e discutidos algumas estruturas (circuit
 
 \chapter{Metodologia Experimental}
 
-Nestes experimentos de laboratório foi utilizado o software Wolfram Mathematica 10.4.0 da Wolfram Research, Inc. para realizar todos os cálculos no computador utilizando precisão do tipo MachinePrecision\cite{mathematica-numerial-precision} onde a precisão dos números de ponto flutuante respeitam os critérios impostos pelo processador (64 bits, precisão dupla) que implementam o padrão IEEE de ponto flutuante, possuem um "Épsilon de Máquina", o menor valor que somado a 1 retorna um valor diferente de 1, isto é, não causa arredondamento \cite{wikipedia-epsilon}, de $2^{-52}$, ou seja, na ordem de $10^{-16}$ e podem, portanto, serem desprezados perante a resolução de todos os outros instrumentos instrumentos utilizados no experimento. Adicionalmente, quando possível, os cálculos foram realizados de forma simbólica com substituição numérica no final. Os scripts utilizados para cálculo estão anexados ao fim do documento, na Página \pageref{ch:attachments}.
+Nestes experimentos de laboratório foi utilizado o software Wolfram Mathematica 10.4.0 da Wolfram Research, Inc. para realizar todos os cálculos no computador utilizando precisão do tipo MachinePrecision\cite{mathematica-numerial-precision} onde a precisão dos números de ponto flutuante respeitam os critérios impostos pelo processador (64 bits, precisão dupla) que implementam o padrão IEEE de ponto flutuante, possuem um "Épsilon de Máquina", o menor valor que somado a 1 retorna um valor diferente de 1, isto é, não causa arredondamento \cite{wikipedia-epsilon}, de $2^{-52}$, ou seja, na ordem de $10^{-16}$ e podem, portanto, serem desprezados perante a resolução de todos os outros instrumentos utilizados no experimento. Adicionalmente, quando possível, os cálculos foram realizados de forma simbólica com substituição numérica no final. Os scripts utilizados para cálculo estão anexados ao fim do documento, na Página \pageref{ch:attachments}.
 
 \section{Sensor de temperatura baseado em Pt100}
 \label{ch:pt100}
@@ -65,7 +65,7 @@ Nestes experimentos de laboratório foi utilizado o software Wolfram Mathematica
 \subsection{Calibração do sensor Pt100}
 \label{sec:resistencia-pt100}
 
-Pt100 é o nome dado a um tipo de termoresistor composto de Platina cuja variação de resistência elétrica é associada à variação de temperatura de forma linear. Outra caraterística importante é que a resistência elétrica nominal a $0ºC$ é de $100 \Omega$. Sendo um sensor linear, faz com que a criação de um termômetro eletrônico seja mais simples do que outros sensores não lineares ou de utilização mais complexa, embora a inércia térmica do sensor não permita que sejam feitas medidas em frequências elevadas como os sensores do tipo termopares permitem.
+Pt100 é o nome dado a um tipo de termoresistor composto de Platina cuja variação de resistência elétrica é associada à variação de temperatura de forma linear. Outra caraterística importante é que a resistência elétrica nominal a $0ºC$ é de $100 \Omega$. Sendo um sensor linear, faz com que a criação de um termômetro eletrônico seja mais simples do que outros sensores não lineares, embora a inércia térmica do sensor não permita que sejam feitas medidas em frequências elevadas como os sensores do tipo termopares permitem.
 
 A função de transferência teórica do Pt100 é dada pela Equação \ref{eq:pt100} \cite{livro-texto}:
 
@@ -105,7 +105,7 @@ onde $R$ é um termoresistor Pt100, $T$ é a temperatura da água dentro do copo
 
 Com o copo de Béquer preenchido com água até a metade para que o processo de aquecimento não levasse muito tempo e nem que fosse necessário aguardar o aquecimento de um grande volume de água nem resfriar o mesmo. Uma vez que a temperatura da agua estivesse ajustada na temperatura desejada, o valor de resistência elétrica correspondente mostrado no multímetro foi anotado.
 
-Para fazer o ajuste de temperatura da água até a temperatura de interesse foram utilizadas 2 práticas: o uso de um aquecedor elétrico para elevar a temperatura e adição de água gelada para abaixar a temperatura. Isto é, caso a temperatura de interesse estivesse acima da temperatura atual da água, um aquecedor elétrico foi utilizado para elevar a temperatura e comparar utilizando um termômetro comercial de referência e caso a temperatura de interesse estivesse abaixo da temperatura atual da água, uma pequena porção de água gelada foi adicionada ao copo até que a temperatura de desejo fosse obtida.
+Para fazer o ajuste de temperatura da água até a temperatura de interesse foram utilizadas 2 práticas: o uso de um aquecedor elétrico para elevar a temperatura e adição de água gelada para rebaixar a temperatura. Isto é, caso a temperatura de interesse estivesse acima da temperatura atual da água, um aquecedor elétrico foi utilizado para elevar a temperatura e comparar utilizando um termômetro comercial de referência e caso a temperatura de interesse estivesse abaixo da temperatura atual da água, uma pequena porção de água gelada foi adicionada ao copo até que a temperatura de desejo fosse obtida.
 
 O termômetro comercial utilizado não possuía identificação com nome do fabricante mas informa que tem resolução de 0.1ºC dentro do intervalo de interesse com incerteza de 1ºC. Acredita-se (este fator não foi testado) que o termômetro faz uso de uma média móvel com janela entre 20 e 30 segundos devido ao tempo de resposta perceptível do termômetro durante a execução do experimento. Devido a isto, aguardava-se para que o valor mostrado no \textit{display} da referência estivesse, por, pelo menos, 10 segundos num valor estável.
 
@@ -113,7 +113,7 @@ Enquanto o aquecedor estava ligado ou logo após a adição de água gelada, com
 
 As medidas foram feitas de forma aleatória e com 2 repetições por célula. Após a extração dos resultados, fez-se o ajuste de curvas e obteve-se a função de transferência experimental do termoresistor.
 
-Como \textit{ohmímetro} foi utilizado um multímetro digital da Minipa, modelo ET-2082b, que possui as especificações de precisão conforme é apresentada na Tabela \ref{tab:precisao-multimetro}. 
+Como ohmímetro foi utilizado um multímetro digital da Minipa, modelo ET-2082b, que possui as especificações de precisão conforme é apresentada na Tabela \ref{tab:precisao-multimetro}. 
 
 \begin{table}[H]
 \centering
@@ -147,7 +147,7 @@ A cadeia de medidas deste experimento é dada pela Figura \ref{fig:pt100-cadeia-
 \subsection{Calibração do sensor NTC}
 O NTC (\textit{Negative Temperature Coefficient}) é um termoresistor, não-linear cujo coeficiente de temperatura é negativo e, portanto, sua resistência elétrica decai à medida que a temperatura se eleva.
 
-Analogamente ao sensor de temperatura baseado em Pt100 (Página \pageref{ch:pt100}), para que seja possível a construção de um termômetro utilizando um sensor do tipo NTC, é necessário que primeiramente seja levantada a função de transferência do componente para que seja possível utilizá-la na cadeia de medidas do termômetro.
+Analogamente ao sensor de temperatura baseado em Pt100 (Página \pageref{ch:pt100}), para que seja possível a construção de um termômetro utilizando um sensor do tipo NTC, é necessário que primeiramente seja levantada a função de transferência do componente para então utilizá-la na cadeia de medidas do termômetro.
 
 A função de transferência teórica do NTC é dada pela Equação \ref{eq:ntc} \cite{livro-texto}.
 
@@ -201,14 +201,14 @@ A próxima etapa da cadeia de medição passa por uma ponte de Wheatstone, confo
 
 \noindent onde $R_1$, $R_2$ e $R_3$ são os valores de resistência elétrica calculadas para equilíbrio e sensibilidade de especificação da ponte, $R_s$ é a resistência elétrica do sensor (NTC e Pt100), $V-$ e $V+$ são as saídas em tensão elétrica.
 
-A equação da tensão de saída da ponte é dada conforma a Equação \ref{eq:wheatstone}:
+A equação da tensão elétrica de saída da ponte é dada conforma a Equação \ref{eq:wheatstone}:
 
 \begin{equation}
 	V_o = \left({{R_2}\over{R_1 + R_2}} - {{R_s}\over{R_s + R_3}}\right)V_s
 	\label{eq:wheatstone}
 \end{equation}
 
-\noindent onde $R_1$, $R_2$ e $R_3$ são os valores de resistência elétrica calculadas para equilíbrio e sensibilidade de especificação da ponte, $R_s$ é a resistência elétrica do sensor (NTC e Pt100), $V_0$ é a tensão elétrica diferencial de saída da ponte e $V_s$ é a tensão de alimentação da ponte.
+\noindent onde $R_1$, $R_2$ e $R_3$ são os valores de resistência elétrica calculadas para equilíbrio e sensibilidade de especificação da ponte, $R_s$ é a resistência elétrica do sensor (NTC e Pt100), $V_0$ é a tensão elétrica diferencial de saída da ponte e $V_s$ é a tensão elétrica de alimentação da ponte.
 
 Logo, é possível observar que para o caso em que a resistência elétrica do sensor é igual à resistência elétrica de $R_2$ a saída da ponte é de $0V$. Está situação é chamada de equilíbrio da ponte. Também é importante notar que qualquer incerteza no valor de tensão elétrica da fonte ($V_s$), incorre numa incerteza propagada no valor medido da saída da ponte ($V_o$), para tanto é importante que o valor de tensão elétrica de alimentação seja o mais estável e com menor incerteza possível para obter o melhor resultado.
 
@@ -396,7 +396,7 @@ Na Figura \ref{fig:ntc-linear-esperado} está apresentado a curva esperada da sa
 
 Na Figura \ref{fig:ntc-linear-esperado} a linha contínua é o valor real da linearização (note que a curva não é perfeitamente linear) e a linha tracejada é a curva desprezando componentes não lineares da curva contínua. É fácil observar que o erro de linearidade nas extremidades tende à zero e no ponto médio é máximo. Isso mostra que a linearização proposta não é perfeita, e possui um erro de linearidade intrínseco atrelado, mas se comparado com o formato da curva bruta, sem linearização, o resultado obtido possui um erro de linearidade muito inferior, isto é, a forma linearizada é muito mais linear que a forma não linear.
 
-\subsection{Extração da resposta transitória do NTC sobre choque térmico}
+\subsection{Extração da resposta transitória do NTC posto em choque térmico}
 Para observar a resposta transitória do sensor, utilizou-se dois copos de Béquer, um com água fria e outro com água quente e o sensor foi rapidamente trocado de temperatura e a curva temporal de temperatura (utilizando o sensor linearizado na ponte de Wheatstone e utilizando a função de transferência inversa) e os dados fora armazenados no LabVIEW.
 
 Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
@@ -405,7 +405,7 @@ Para a aquisição dos dados foi utilizado uma placa de aquisição de dados com
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Na Figura \ref{fig:amplificador-a} está apresentado o esquemático para uma topologia de amplificador de instrumentação.
+Na Figura \ref{fig:amplificador-a} está apresentado o esquemático para uma topologia de amplificador comumente utilizada em instrumentação.
 
 \begin{figure}[H]
 \center
@@ -539,7 +539,7 @@ A sensibilidade é definida por uma função complexa, e para tanto na Figura  \
 \label{fig:amplificador-c-sensibilidade}
 \end{figure}
 
-Na Figura \ref{fig:amplificador-c-sensibilidade}, é visível o impacto do ganho do amplificador na sensibilidade do sistema. Novamente, o sensor é ótimo para sensor cuja resistência elétrica reduz em função de uma variável desejada.
+Na Figura \ref{fig:amplificador-c-sensibilidade}, é visível o impacto do ganho do amplificador na sensibilidade do sistema. Novamente, o amplificador é ótimo para sensor cuja resistência elétrica reduz em função de uma variável desejada.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -607,13 +607,14 @@ O amplificador de instrumentação é uma topologia típica utilizada em instrum
 
 Os dois primeiros amplificadores (ligados às entradas a e b) são \textit{buffers} de tensão elétrica e o terceiro amplificador (ligado à saída) é um amplificador diferencial. Os \textit{buffers} na entrada garantem que a impedância de entrada seja muito alta, o que é ideal para realizar medidas de tensão elétrica com a menor interferência possível no sistema.
 
-A função de transferência deste amplificador é dada pela Equação \ref{...}, conforme extraído do artigo da Wikipedia\cite{wikipedia-ia} sobre o amplificador de instrumentação:
+A função de transferência deste amplificador é dada pela Equação \ref{eq:amplificador-de-instrumentaca}, conforme extraído do artigo da Wikipedia\cite{wikipedia-ia} sobre o amplificador de instrumentação:
 
 \begin{equation}
 	V_\mathrm{out} = \left (1 + {2 R_1 \over R_\mathrm{a}} \right ) {R_6 \over R_2} \left(V_a - V_b\right)
+	\label{eq:amplificador-de-instrumentacao}
 \end{equation}
 
-A finalidade dos resistores $R_a$ e $R_6$ é fazer a regulagem do ganho do sistema. Aumento de $R_a$ implica na redução do ganho e um aumento em $R_6$ implica no aumento do ganho. Também é possível fazer ajuste de ganho pelos resistores $R_1$, $R_2$ e $R_3$, mas tal é mais trabalhoso pois os resistores estão presentes em partes e é preciso que seja aumentado ambos na mesma proporcionalidade, caso contrário o amplificador perde a sua característica.
+A finalidade dos resistores $R_a$ e $R_6$ é fazer a regulagem do ganho do sistema. Aumento de $R_a$ implica na redução do ganho e um aumento em $R_6$ implica no aumento do ganho. Também é possível fazer ajuste de ganho pelos resistores $R_1$, $R_2$ e $R_3$, mas tal é mais trabalhoso pois os resistores estão presentes em pares e é preciso que seja aumentado ambos na mesma proporcionalidade, caso contrário o amplificador perde a sua característica.
 
 Embora seja possível construir um amplificador de instrumentação utilizando peças discretas o casamento de resistências elétricas é muito difícil pois resistores de baixa tolerância são difíceis de encontrar ou muito custosos. Para tanto, é comum utilizar amplificadores comerciais e encapsulados onde os resistores são ajustados à laser\cite{wikipedia-ia}, para que haja o casamento de resistências, o que implica que o $CMRR$ seja muito mais baixo que um mesmo amplificador de instrumentação discreto.
 
@@ -781,7 +782,7 @@ A Figura \ref{fig:pt100-amostras} mostra os pontos de temperatura verificados, b
 A regressão linear, com base nos valores da média das amostras obtidas, apresentou como função de transferência experimental os seguintes resultados:
 
 \begin{equation}
-	R(T) = 0.381*T + 100.46
+	R(T) = 0.381T + 100.46
 	\label{eq:pt100-reg}
 \end{equation}
 \begin{equation}
@@ -859,7 +860,7 @@ Aplicando-se a metodologia apresentada na Subseção \ref{ssec:equilibrio-ponte-
 Efetuando-se uma regressão linear com os valores obtidos, chega-se à expressão apresentada na Equação \ref{eq:pt100-ponte-reg}, na qual verifica-se uma tensão elétrica em função de uma determinada temperatura, e também ao seu coeficiente de linearidade, apresentado na Equação \ref{eq:pt100-ponte-reg-r2}.
 
 \begin{equation}
-	V(T) = 0.6324*T - 31.958
+	V(T) = 0.6324T - 31.958
 	\label{eq:pt100-ponte-reg}
 \end{equation}
 \begin{equation}
@@ -885,7 +886,7 @@ Na Figura \ref{fig:pt100-cadeia-medidas-ponte} observa-se a  cadeia de medidas e
 \label{fig:pt100-cadeia-medidas-ponte}
 \end{figure}
 
-Aplicando-se a definição de sensibilidade de um sistema, para o corrente experimento tem-se:
+Aplicando-se a definição de sensibilidade de um sistema, para o experimento tem-se:
 
 \begin{equation}
 	S=\frac{\Delta_{out}}{\Delta_{in}}=\frac{(16.1-(-20.6))V}{(76-18) ºC}=0.633 \frac{V}{ºC}
