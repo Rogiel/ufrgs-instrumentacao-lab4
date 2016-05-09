@@ -36,7 +36,7 @@
 \maketitle
 
 \chapter{Introdução}
-A termometria é uma parte da termologia que estuda a temperatura e as formas pelas quais ela pode ser medida.  É uma das grandes áreas da Instrumentação e, sem dúvida, uma das mais importantes. O controle e monitoramento de temperatura é uma variável de grande valia em diversos sistemas, principalmente em processos industriais, onde a temperatura de fornos, por exemplo, devem ser cuidadosamente monitorados para que o produto não sofra avalias ou deformações na sua estrutura.
+A termometria é uma parte da termologia que estuda a temperatura e as formas pelas quais ela pode ser medida. É uma das grandes áreas da Instrumentação e, sem dúvida, uma das mais importantes. O controle e monitoramento de temperatura é uma variável de grande valia em diversos sistemas, principalmente em processos industriais, onde a temperatura de fornos, por exemplo, devem ser cuidadosamente monitorados para que o produto não sofra avalias ou deformações na sua estrutura.
 
 A temperatura é uma grandeza associada à energia cinética média das moléculas de um corpo. Quando a temperatura de um corpo muda, algumas propriedades desse corpo se modificam. Por exemplo:
 
@@ -294,9 +294,6 @@ Com esta configuração, e uma alimentação de $5V \pm 0.2V$ fornecida por um r
 \end{tabular}
 \end{table}
 
-\todo{Não foi adquirido dados para o Pt100}
-%Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
-
 \subsection{Linearização do NTC}
 \label{sec:ntc-linearizacao}
 
@@ -304,11 +301,10 @@ Conforme indicado na Equação \ref{eq:ntc}, o NTC possui comportamento não-lin
 
 \begin{figure}[H]
 \center
-[circuito]
-\caption{Circuito elétrico da ponte de Wheatstone}
+\includegraphics[width=\textwidth]{Wheatstone-NTC-Linear.pdf}
+\caption{Circuito elétrico da ponte de Wheatstone com um sensor NTC linearizado}
 \label{fig:ntc-linear}
 \end{figure}
-\todo{circuito}
 
 \noindent
 onde $R_l$ é o valor numérico da resistência elétrica de linearização, $R_s$ é o sensor e $R$ é a resistência elétrica equivalente do sensor linearizado. É importante ressaltar que este método não oferece uma linearização perfeita, isto é, o método apenas tenta aproximar o comportamento linear da melhor forma possível nesta topologia.
@@ -376,18 +372,15 @@ O processo apresentado é funcional e a saída tem um erro de linearidade bem ba
 Da equação \ref{eq:ponte-wheatstone-ntc-limitado}, é possível extrair as equações correspondentes à sensibilidade (Equação \ref{eq:ponte-wheatstone-ntc-sensibilidade}) e ao erro de linearidade da ponte linearizada  (Equação \ref{eq:ponte-wheatstone-ntc-erro}).
 
 \begin{eqnarray}
-	S 							= ...			\\ \label{eq:ponte-wheatstone-ntc-sensibilidade}
-	\text{Erro de Linearidade} = ...			 	   \label{eq:ponte-wheatstone-ntc-erro}
+	S_{LV} = V_s \alpha \frac{r}{(r+1)^2}	 \label{eq:ponte-wheatstone-ntc-sensibilidade} \\
+	\text{Erro de Linearidade} = \left|\frac{\alpha \Delta T}{r+1}\right|			   \label{eq:ponte-wheatstone-ntc-erro}
 \end{eqnarray}
 
-\todo{equações anteriores}
+\noindent onde $V_s$ é a tensão elétrica de alimentação da fonte, $\alpha$ é a constante de aquecimento equivalente do NTC (é obtida assumindo-se que a curva linearizada do NTC seja um Pt100, e calcula-se o valor de $\alpha$ equivalente para aquele tipo de sensor), $r$ é a razão característica da ponte e $\Delta T$ é a variação de temperatura máxima do sistema.
 
 Por definição de projeto, adotou-se um erro de linearidade máximo de $20\%$ e sensibilidade de $0.2 V$. 
 
 \subsection{Equilíbrio da ponte de Wheatstone para o NTC}
-
-\todo{apresentar os calculos dos resistores}
-
 Na Figura \ref{fig:ntc-linear-esperado} está apresentado a curva esperada da saída da ponte para o NTC linearizado:
 
 \begin{figure}[H]
@@ -398,6 +391,11 @@ Na Figura \ref{fig:ntc-linear-esperado} está apresentado a curva esperada da sa
 \end{figure}
 
 Na Figura \ref{fig:ntc-linear-esperado} a linha contínua é o valor real da linearização (note que a curva não é perfeitamente linear) e a linha tracejada é a curva desprezando componentes não lineares da curva contínua. É fácil observar que o erro de linearidade nas extremidades tende à zero e no ponto médio é máximo. Isso mostra que a linearização proposta não é perfeita, e possui um erro de linearidade intrínseco atrelado, mas se comparado com o formato da curva bruta, sem linearização, o resultado obtido possui um erro de linearidade muito inferior, isto é, a forma linearizada é muito mais linear que a forma não linear.
+
+\subsection{Extração da resposta transitória do NTC sobre choque térmico}
+Para observar a resposta transitória do sensor, utilizou-se dois copos de Béquer, um com água fria e outro com água quente e o sensor foi rapidamente trocado de temperatura e a curva temporal de temperatura (utilizando o sensor linearizado na ponte de Wheatstone e utilizando a função de transferência inversa) e os dados fora armazenados no LabVIEW.
+
+Para a aquisição dos dados foi utilizado uma placa de aquisição de dados comercial da National Instruments, modelo NI USB-6009, cujo conversor analógico-digital possui 14 bits\cite{daq-specifications}. Numa etapa anterior à amostragem, o sinal passou por um filtro passa-baixas de Butterworth de quarta ordem com frequência de corte de 100 Hz implementado na topologia de filtros ativos de Sallen-Key. No LabVIEW, foi configurado os limites de amostragem na margem de $\pm 1V$, logo o intervalo total de 14 bits corresponde ao limites de $-1V$ até $+1V$, uma excursão de $2V$ que resulta numa resolução de $0.12\text{ mV/bit}$.
 
 \section{Topologias de Amplificadores para instrumentação}
 
@@ -592,8 +590,6 @@ A sensibilidade é definida por uma função complexa, e para tanto na Figura  \
 
 Na Figura \ref{fig:amplificador-c-sensibilidade}, é visível que a sensibilidade varia muito a partir de variações de resistência elétrica abaixo de $-0.5$, o ganho, embora cause uma elevação da sensibilidade, o seu efeito é baixo. Este amplificador é ideal para aplicações que não necessitem muito ganho, visto que a sensibilidade em função do ganho é irrelevante perante a variação de sensibilidade para reduções de resistência elétrica.
 
-\todo{discussão sobre os amplificadores, como ele pede no roteiro}
-
 \subsection{Amplificador de Instrumentação}
 
 O amplificador de instrumentação é uma topologia típica utilizada em instrumentação. Sua entrada é diferencial e, embora seja possível, não é comum utilizá-los para dar ganhos significantes (maior de 1000) em um sinal. A Figura \ref{fig:amplificador-instrumentacao} apresenta a topologia típica do amplificador de instrumentação.
@@ -769,11 +765,11 @@ Com base na metodologia apresentada na seção \ref{ch:pt100} da Metodologia Exp
 \end{tabular}
 \end{table}
 
-A Figura \ref{fig:pt100-amostras} \todo{verificar se fica esse ou faz outro gráfico no Mathematica} mostra os pontos de temperatura verificados, bem como a curva ajustada para os valores obtidos.
+A Figura \ref{fig:pt100-amostras} mostra os pontos de temperatura verificados, bem como a curva ajustada para os valores obtidos.
 
 \begin{figure}[H]
 \center
-\includegraphics[width=0.7\textwidth]{grafico_pt100.jpg}
+\includegraphics[width=\textwidth]{Pt100-Experimental.pdf}
 \caption{Gráfico das amostras experimentais apresentando a variação da resistência elétrica em função da variação da temperatura da água.}
 \label{fig:pt100-amostras}
 \end{figure}
@@ -871,7 +867,7 @@ A Figura \ref{fig:pt100-amostras-ponte} apresenta o gráfico com as amostras rea
 
 \begin{figure}[H]
 \center
-\includegraphics[width=0.8\textwidth]{grafico_pt100_ponte.jpg}
+\includegraphics[width=\textwidth]{Pt100-Experimental-Bridge.pdf}
 \caption{Gráfico das amostras experimentais apresentando a variação da tensão elétrica em função da variação da temperatura da água.}
 \label{fig:pt100-amostras-ponte}
 \end{figure}
@@ -1074,6 +1070,12 @@ Conforme afirmado na análise de resposta temporal, o primeiro segundo de varia�
 Embora hajam diferenças nos tempos de acomodação das respostas apresentadas nas Figuras \ref{fig:ntc-choque-acima-tempo} e \ref{fig:ntc-choque-abaixo-tempo}, é visível que o sensor apresenta inércia térmica acima de 10s e seu uso seria impróprio para aplicações com frequências acima de $0.05Hz$, pois o sensor ainda não estaria em regime permanente e portanto incapaz de estimar a temperatura real.
 
 \chapter{Conclusões}
+Nesta atividade de laboratório foi feito o levantamento da curva experimental de um termoresistor linear do tipo Pt100, nele foi observado o comportamento linear a as formas de extrair informações corretas do sensor.
+
+O experimento do NTC foi mais interessante, nele foi extraída a função de transferência de resistência elétrica sensor de resistência elétrica e foi confirmado o esperado pela teoria: sua resposta é exponencial para a variação de temperatura. Visto este fato, é possível realizar uma operação de linearização, nela o comportamento do resistor é aproximado a da função $1/x$ que tem um comportamento muito semelhante à função exponencial dentro de um pequeno intervalo. Este comportamento é obtido de forma eletrônica através de um resistor em paralelo com o sensor. Conforme constatado, a curva teve na linearização um erro de linearidade muito melhor do esperado na ordem de $0.999$. Logo, o método de linearização proposto foi bem sucedido e mostra que, embora o comportamento do sensor seja exponencial e portanto não-linear, é um sensor bem comportado. Isto é, utilizando uma simples aproximação é possível obter retas que aproximam muito bem o comportamento equivalente linear do sensor.
+
+Na análise do regime transitório do sensor foi constado que o NTC possui um tempo de estabilização bastante elevado, onde aplicações que se necessita de controle de temperatura em frequências acima de 0.1Hz o sensor é impróprio, uma vez que o sensor necessita ao mínimo 10 segundos até atingir a estabilidade mesmo com variações de temperatura inferiores à $20ºC$. Contudo, para aplicações onde não se tem altas variações de temperatura tal como medidas temporais de temperatura ambiente ou controle de temperatura de fornos, o NTC pode ser uma boa alternativa pois nestas aplicações variações bruscas de temperatura são muito improváveis. Em especial no caso de um sistema de controle de temperatura é possível que a inércia térmica da planta sistema a ser controlado seja muito superior a inércia do sensor, implicando que a inércia do sensor possa ser desprezada caso não seja necessária alta resolução temporal de temperatura.
+
 
 \todo{lembrar as escalas dos multímetros, é importante mesmo. é a primeira coisa que ele enche o saco}
 
