@@ -1,5 +1,7 @@
 \documentclass[a4paper]{instrumentacao}
 
+\usepackage[brazil]{babel}
+
 \usepackage{listings}
 \usepackage{etoolbox}
 \usepackage{graphicx}
@@ -23,10 +25,10 @@
 	\emailaddress{R.C.S.}{csilveira.rodrigo@gmail.com} e
 	\emailaddress{Y.C.}{yichenpoa@gmail.com}
 }
-\resume{Com o uso de sensores termoresistores, Pt100 e NTC, foram montados termômetros experimentais. Para isso, foram feitas amostras em diversas temperaturas para poder levantar as suas funções de transferência simplificadas, de forma direta e por meio de circuitos condicionadores. Para o NTC, que apresenta forma não linear, foi também efetuado uma linearização. São apresentadas e discutidas algumas opções de circuitos condicionadores, linearizadores e amplificadores de instrumentação, que são estruturas muito úteis no trabalho de termometria.}
-\abstract{With the use of resistance thermometers sensors, Pt100 and NTC, were assembled experimental thermometers. For this, samples were taken at different temperatures in order to raise their simplified transfer functions, directly and through conditioning circuits. For the NTC, which has non-linear manner, linearization was also made. They are presented and discussed some options conditioners circuits, linearizators and instrumentation amplifiers, which are very useful structures in the work of thermometry.\todo{tradução automática... verificar ajustes}} 
-\keywords{Amplificador Operacional, Compensador, Linearização, NTC, Ponte de Wheatstone, Pt100, Sensor, Temperatura, Termistor, Termometria}
-\institute{Universidade Federal do Rio Grande do Sul, Departamento de Engenharia Elétrica, Curso de Engenharia Elétrica, Instrumentação A, Profs. Dr. Alexandre Balbinot e Dra. Léia Bagesteiro}
+\resume{Com o uso de sensores termoresistores, Pt100 e NTC, foram montados termômetros experimentais. Para isso, foram feitas amostras em diversas temperaturas para poder levantar as suas funções de transferência simplificadas, de forma direta e por meio de circuitos condicionadores. Para o NTC, que apresenta função de transferência não linear, um circuito de linearização foi feito. São apresentadas e discutidas algumas opções de circuitos condicionadores, linearizadores e topologias de amplificadores para instrumentação, que são estruturas muito úteis no trabalho de termometria. Foi possível observar a linearidade do sensor Pt100 bem como observar os efeitos do circuito de linearização no NTC, em especial o baixo erro de linearidade obtido no processo com $R^2$ de $0,9998$. Também foi realizada a análise temporal da resposta do NTC quando posto em choque térmico, observou-se que o tempo de resposta do sensor é alto, com pelo menos 20 segundos até atingir a estabilidade, fato que inviabilizaria sua aplicação em sistemas que necessitem alta precisão temporal das medidas ou medidas com altas frequências.}
+\abstract{With the use of thermoresistors sensors, Pt100 and NTC, were assembled experimental thermometers. For this, samples were taken at different temperatures in order to raise their simplified transfer functions, directly and through conditioning circuits. For the NTC, which has a non-linear transfer function, a linearization circuit was also built. There are discussions regarding some conditioning circuit options, linearizators and instrumentation amplifiers topologies, which are very useful structures in the work of thermometry. It was also observed the linearity of the Pt100 sensor and observe the effects of linearization circuit in the NTC, in particular the low linearity error obtained in the process with $R ^ 2$ of $0.9998$. Was also carried out a temporal analysis of the NTC response when brought into thermal shock, it was observed that the sensor response time is high, at least 20 seconds to reach stability, a fact which would hamper its use in systems requiring high precision time of the measures or high frequency measurements.} 
+\keywords{amplificador operacional, compensador, linearização, NTC, ponte de Wheatstone, Pt100, sensor, temperatura, termoresistor, termometria}
+\institute{Universidade Federal do Rio Grande do Sul, Departamento de Engenharia Elétrica, Curso de Engenharia Elétrica, Instrumentação A, Prof. Dr. Alexandre Balbinot}
 
 \headertext{Termometria}
 

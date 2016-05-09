@@ -10,7 +10,7 @@
 \RequirePackage{todonotes}
 \RequirePackage{float}
 \RequirePackage{cite}
-\RequirePackage{url}
+\PassOptionsToPackage{hyphens}{url}\RequirePackage{url}
 \RequirePackage{hyperref}
 \RequirePackage{cleveref}
 \RequirePackage[all]{hypcap}
@@ -184,15 +184,20 @@
 
 \begin{adjustwidth}{1cm}{}
 \noindent
+\sloppy
 \textbf{Resumo}: \theresume
 \vspace{1.5em}
 
-\noindent\textbf{Abstract}: \theabstract
+\noindent
+\sloppy\textbf{Abstract}: \theabstract
 \vspace{1.5em}
 
-\noindent\textbf{Palavras Chaves}: \thekeywords
+\noindent
+\sloppy\textbf{Palavras Chaves}: \thekeywords
 
 \vspace{1em} \hrule
 \end{adjustwidth}
 \end{titlepage}
 }
+
+\sloppy
