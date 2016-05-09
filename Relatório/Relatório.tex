@@ -25,18 +25,17 @@
 }
 \resume{Com o uso de sensores termoresistores, Pt100 e NTC, foram montados termômetros experimentais. Para isso, foram feitas amostras em diversas temperaturas para poder levantar as suas funções de transferência simplificadas, de forma direta e por meio de circuitos condicionadores. Para o NTC, que apresenta forma não linear, foi também efetuado uma linearização. São apresentadas e discutidas algumas opções de circuitos condicionadores, linearizadores e amplificadores de instrumentação, que são estruturas muito úteis no trabalho de termometria.}
 \abstract{With the use of resistance thermometers sensors, Pt100 and NTC, were assembled experimental thermometers. For this, samples were taken at different temperatures in order to raise their simplified transfer functions, directly and through conditioning circuits. For the NTC, which has non-linear manner, linearization was also made. They are presented and discussed some options conditioners circuits, linearizators and instrumentation amplifiers, which are very useful structures in the work of thermometry.\todo{tradução automática... verificar ajustes}} 
-\keywords{Amplificador Operacional, Compensador, Linearização, NTC, Ponte de Wheatstone, Pt100, Sensor, Temperatura, Termistor, Termometria}
+\keywords{Linearização, NTC, Ponte de Wheatstone, Pt100, Temperatura, Termistor, Termometria}
 \institute{Universidade Federal do Rio Grande do Sul, Departamento de Engenharia Elétrica, Curso de Engenharia Elétrica, Instrumentação A, Profs. Dr. Alexandre Balbinot e Dra. Léia Bagesteiro}
 
 \headertext{Termometria}
 
 \begin{document}
-\fontsize{13pt}{15pt}\selectfont
+\fontsize{12pt}{16pt}\selectfont
 
 \maketitle
 
 
-\todo{i. criar uma tabela registrando a saída de tensão da ponte como função da temperatura. Calcular a sensibilidade em mv/C da ponte desenvolvida}
 \todo{ii. usar a equação da ponte para calcular a resistência do termistor como uma função da temperatura. Tabular seus dados e resultados. Plotar um gráfico resistência versus temperatura (em Kelvin) e estimar o valor para o (utilizar conceitos de Estatística)}
 
 \chapter{Introdução}
@@ -132,12 +131,12 @@ Como ohmímetro foi utilizado um multímetro digital da Minipa, modelo ET-2082b,
 \end{tabular}
 \end{table}
 
-A cadeia de medidas deste experimento é dada pela Figura \ref{fig:pt100-cadeia-medidas}:
+A cadeia de medidas proposta para este experimento é dada pela Figura \ref{fig:pt100-cadeia-medidas}:
 
 \begin{figure}[H]
 \center
 \includegraphics[width=0.5\textwidth]{cadeia_medidas_pt100.jpg}
-\caption{Cadeia de medidas para o sensor Pt100}
+\caption{Cadeia de medidas proposta para o sensor Pt100}
 \label{fig:pt100-cadeia-medidas}
 \end{figure}
 
@@ -174,12 +173,12 @@ onde $R$ é um termoresistor NTC, $T$ é a temperatura da água dentro do copo d
 
 As medidas foram feitas de forma aleatória e com 2 repetições por célula. Após a extração dos resultados, fez-se o ajuste de curvas e obteve-se a função de transferência experimental do termoresistor.
 
-A cadeia de medidas deste experimento é dada pela Figura \ref{fig:ntc-cadeia-medidas}:
+A cadeia de medidas proposta neste experimento é dada pela Figura \ref{fig:ntc-cadeia-medidas}:
 
 \begin{figure}[H]
 \center
 \includegraphics[width=0.5\textwidth]{cadeia_medidas_pt100.jpg}
-\caption{Cadeia de medidas para o sensor NTC}
+\caption{Cadeia de medidas proposta para o sensor NTC}
 \label{fig:ntc-cadeia-medidas}
 \end{figure}
 
@@ -1027,6 +1026,7 @@ Para tanto, foram feitas 3 medidas em 3 pontos, nos dois extremos (18 e 44 ºC) 
 \end{tabular}
 \end{table}
 
+
 A Figura \ref{fig:ntc-experimental-comparacao} apresenta a comparação entre uma linearização perfeita, a curva linearizada esperada e os valores obtidos experimentalmente.
 
 \begin{figure}[H]
@@ -1047,6 +1047,14 @@ A reta que melhor ajusta os dados experimentais da Tabela \ref{tab:ntc-lineariza
 \end{equation}
 
 \noindent onde $V(T)$ é a tensão elétrica (em mV) de saída da ponte em função da temperatura $T$ em ºC.
+
+Com base nos dados da Tabela \ref{tab:ntc-linearizado} é possível calcular a sensibilidade, em $\frac{mV}{ºC}$, da ponte desenvolvida, apresentada na Equação \ref{eq:ntc-linearizado-sensibilidade}. Observa-se que o mesmo resultado é obtido com a derivação da Equação \ref{eq:ntc-linearizado}.
+
+\begin{equation}
+	S=\left | \frac{\Delta_{out}}{\Delta_{in}} \right |=\left | \frac{(-53.9-50.7)}{(44-18)} \right |=4.03 \frac{mV}{ºC}
+	\label{eq:ntc-linearizado-sensibilidade}
+\end{equation}
+
 
 A Figura \ref{fig:ntc-cadeia-medidas-linearizado} mostra a cadeias de medidas experimental do sistema montado para a linearização da função de transferência do sensor NTC. Na segunda etapa da cadeia, foi utilizada a Equação \ref{eq:ntc-linearizado}, tendo como dados de entrada os valores máximo e mínimo da primeira etapa.
 
