@@ -35,7 +35,11 @@
 \RequirePackage{pdfpages}
 \RequirePackage{pbox}
 
-\fontsize{20pt}{0pt}\selectfont
+\AtBeginDocument{
+	\fontsize{12pt}{16pt}\selectfont
+	\let\oldref=\ref
+	\def\ref#1{(\oldref{#1})}
+}
 
 %% TEMPLATE ARGUMENTS
 \newcommand{\institute}[1]{%
